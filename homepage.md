@@ -1,4 +1,4 @@
 ---
-layout: redirect_elka
+layout: elka
 title: homepage(pl)
 ---
