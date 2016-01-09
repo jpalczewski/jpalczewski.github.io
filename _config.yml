@@ -1,11 +1,11 @@
 # Site settings
-title: jpalczewski blog 
+title: jpalczewski
 header-img: img/home-bg.jpg
-email: jpalczewski@gmail.com 
+email: jpalczewski@gmail.com
 description: "jpalczewski blog, really!"
 #baseurl: "/"
 url: "http://jpalczewski.github.io"
-github_username: jpalczewski 
+github_username: jpalczewski
 #facebook_username:  IronSummitMedia
 
 # Build settings
