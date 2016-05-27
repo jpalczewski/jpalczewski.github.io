@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>General on jpalczewski blog</title>
+    <link>http://jpalczewski.github.io/categories/general/</link>
+    <description>Recent content in General on jpalczewski blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <lastBuildDate>Fri, 27 May 2016 01:29:47 +0200</lastBuildDate>
+    <atom:link href="http://jpalczewski.github.io/categories/general/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>hello go</title>
+      <link>http://jpalczewski.github.io/post/hello-go/</link>
+      <pubDate>Fri, 27 May 2016 01:29:47 +0200</pubDate>
+      
+      <guid>http://jpalczewski.github.io/post/hello-go/</guid>
+      <description>&lt;p&gt;New start with another static generator - as you can see, it&amp;rsquo;s hugo this time.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

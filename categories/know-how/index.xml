@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Know How on jpalczewski blog</title>
+    <link>http://jpalczewski.github.io/categories/know-how/</link>
+    <description>Recent content in Know How on jpalczewski blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <lastBuildDate>Sat, 09 Jan 2016 01:34:29 +0200</lastBuildDate>
+    <atom:link href="http://jpalczewski.github.io/categories/know-how/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Jak skonfiguorwać pocztę na elce?</title>
+      <link>http://jpalczewski.github.io/post/poczta_elka/</link>
+      <pubDate>Sat, 09 Jan 2016 01:34:29 +0200</pubDate>
+      
+      <guid>http://jpalczewski.github.io/post/poczta_elka/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Post przeportowany ze starego bloga.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Nowy layout. Taki piękny!&lt;/p&gt;
+
+&lt;p&gt;Jeżeli ktoś trafi tutaj w rozpaczy(hej!), odrzucony vaporowym stylem dokumentacji sieci na &lt;a href=&#34;http://elka.pw.edu.pl&#34;&gt;elce&lt;/a&gt;, to nauczony doświadczeniem(czyt: wielokrotnym wyklikiwaniem ustawień w ciemno) wypunktuję sobie na przyszłość najważniejsze fragmenty, aktualne na dzień publikacji postu:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Adres serwera pop3/imap/smtp&lt;/strong&gt;: &lt;code&gt;mion.elka.pw.edu.pl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nazwa użytkownika&lt;/strong&gt;: login z &lt;code&gt;mion&lt;/code&gt;a.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Port pop3&lt;/strong&gt;: &lt;code&gt;997&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Port smtp&lt;/strong&gt;: &lt;code&gt;587&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Szyfrowanie&lt;/strong&gt;: SMTP używa TLSa, POP3 używa SSLa.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

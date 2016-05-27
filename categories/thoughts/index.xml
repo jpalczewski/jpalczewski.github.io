@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on jpalczewski blog</title>
+    <link>http://jpalczewski.github.io/categories/thoughts/</link>
+    <description>Recent content in Thoughts on jpalczewski blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <lastBuildDate>Sun, 03 Jan 2016 01:41:27 +0200</lastBuildDate>
+    <atom:link href="http://jpalczewski.github.io/categories/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Databases and python #1</title>
+      <link>http://jpalczewski.github.io/post/databases_python/</link>
+      <pubDate>Sun, 03 Jan 2016 01:41:27 +0200</pubDate>
+      
+      <guid>http://jpalczewski.github.io/post/databases_python/</guid>
+      <description>&lt;p&gt;Few thoughts from &lt;a href=&#34;https://github.com/jpalczewski/NFZQueueViewer&#34;&gt;NFZQueueViewer&lt;/a&gt; project.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What happens when you plan that name from one column wouldn&amp;rsquo;t exceed size of 100 chars?
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt; 
+NIEPUBLICZNY ZAKŁAD OPIEKI ZDROWOTNEJ SANATORIUM UZDROWISKOWE &amp;quot;KRYSTYNKA&amp;quot; W CIECHOCINKU UTWORZONY PRZEZ OŚRDEK WCZASOWO-PROFILAKTYCZNY &amp;quot;KRYSTYNKA&amp;quot; SANATORIUM UZDROWISKOWE &amp;quot;KRYSTYNKA&amp;quot; SP. Z O.O. W CIECHOCINKU         208
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;And why exception-based code in python is bad:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt; 
+&lt;span style=&#34;color: #2838b0&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #785840&#34;&gt;parrse_date&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;):&lt;/span&gt;
+    &lt;span style=&#34;color: #b83838&#34;&gt;try&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        datetime&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;datetime&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;strptime&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #b83838&#34;&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;)&lt;/span&gt;
+    except &lt;span style=&#34;color: #b83838&#34;&gt;ValueError&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #b83838&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;
+    except &lt;span style=&#34;color: #b83838&#34;&gt;TypeError&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; s
+
+&lt;span style=&#34;color: #2838b0&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #785840&#34;&gt;parse_date2&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;):&lt;/span&gt;
+    &lt;span style=&#34;color: #2838b0&#34;&gt;if&lt;/span&gt; type&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;str&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #b83838&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #2838b0&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; s
+
+&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #388038&#34;&gt;print&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;timeit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;timeit&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;parse_date(&amp;#39;1970-01-01&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; setup&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;from __main__ import parse_date&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;))&lt;/span&gt;
+&lt;span style=&#34;color: #444444&#34;&gt;31&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #444444&#34;&gt;87844313700043&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #388038&#34;&gt;print&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;timeit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;timeit&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;parse_date2(&amp;#39;1970-01-01&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; setup&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;from __main__ import parse_date2&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;))&lt;/span&gt;
+&lt;span style=&#34;color: #444444&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #444444&#34;&gt;3313458009943133&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
