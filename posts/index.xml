@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on jpalczewski blog</title>
+    <link>http://jpalczewski.github.io/posts/</link>
+    <description>Recent content in Posts on jpalczewski blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <lastBuildDate>Fri, 27 May 2016 03:44:46 +0200</lastBuildDate>
+    <atom:link href="http://jpalczewski.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>tcsd and rngd together</title>
+      <link>http://jpalczewski.github.io/posts/tcsd-and-rngd-together/</link>
+      <pubDate>Fri, 27 May 2016 03:44:46 +0200</pubDate>
+      
+      <guid>http://jpalczewski.github.io/posts/tcsd-and-rngd-together/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s a tricky way to make rngd daemon&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
