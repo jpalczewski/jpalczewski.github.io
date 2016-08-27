@@ -63,7 +63,7 @@
     "datePublished": "1016-00-17T12:16:01\x2b01:00",
     "dateModified" : "27086-56-277T08:276:568\x2b27:00",
     "url" : "http:\/\/jpalczewski.github.io\/post\/w7-time\/",
-    "wordCount" : "53",
+    "wordCount" : "54",
     "image" : [],
     "keywords" : [  ]
 }
@@ -125,14 +125,17 @@
     </span>
     <p>Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run <a href="http://www.oxid.it/cain.html">certain app</a>. Unfortunately, Windows weren&rsquo;t happy enough to allow me to do so, constantly changing time.</p>
 
-<p>How I fixed it?
-&ldquo;&rsquo;
-@echo off
-:loop
-date 12-07-27
-time 14:24:00
-goto loop
-&ldquo;&rsquo;</p>
+<p>How I fixed it?</p>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #888888">@</span><span style="color: #2838b0">echo</span> off
+<span style="color: #888888">:</span><span style="color: #289870">loop</span>
+<span style="color: #2838b0">date</span> 12-07-27
+<span style="color: #2838b0">time</span> 14:24:00
+<span style="color: #2838b0">goto</span> <span style="color: #289870">loop</span>
+</pre></div>
+
+
+<p>Don&rsquo;t do it.</p>
 
   </div>
   
