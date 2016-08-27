@@ -6,8 +6,27 @@
     <description>Recent content on jpalczewski blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
-    <lastBuildDate>Sat, 04 Jun 2016 02:19:25 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Aug 2016 20:09:56 +0200</lastBuildDate>
     <atom:link href="http://jpalczewski.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windows 7 and time</title>
+      <link>http://jpalczewski.github.io/post/w7-time/</link>
+      <pubDate>Sat, 27 Aug 2016 20:09:56 +0200</pubDate>
+      
+      <guid>http://jpalczewski.github.io/post/w7-time/</guid>
+      <description>&lt;p&gt;Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run &lt;a href=&#34;http://www.oxid.it/cain.html&#34;&gt;certain app&lt;/a&gt;. Unfortunately, Windows weren&amp;rsquo;t happy enough to allow me to do so, constantly changing time.&lt;/p&gt;
+
+&lt;p&gt;How I fixed it?
+&amp;ldquo;&amp;rsquo;
+@echo off
+:loop
+date 12-07-27
+time 14:24:00
+goto loop
+&amp;ldquo;&amp;rsquo;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hall of fame</title>

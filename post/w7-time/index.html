@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Know How &middot; Jacek Palczewski</title>
+  <title>Windows 7 and time &middot; Jacek Palczewski</title>
 
   
   <link rel="stylesheet" href="http://jpalczewski.github.io/css/poole.css">
@@ -27,9 +27,9 @@
   
   
   
-  <link href="http://jpalczewski.github.io/categories/know-how/index.xml" rel="alternate" type="application/rss+xml" title="jpalczewski blog &middot; Jacek Palczewski" />
+  
 
-  <meta name="description" content="">
+  <meta name="description" content="Setting time in Windows 7 in the most crazy way.">
   <meta name="keywords" content="">
   
   <script>
@@ -43,6 +43,32 @@
   </script>
   
 <!-- ENTERING partial seo-schema.html -->
+
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "articleSection" : "post",
+    "name" : "Windows 7 and time",
+    "headline" : "Windows 7 and time",
+    "description" : "Setting time in Windows 7 in the most crazy way.",
+    "inLanguage" : "pl-PL",
+    "author" : "",
+    "accountablePerson" : "",
+    "creator" : "",
+    "publisher" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2016",
+    "datePublished": "1016-00-17T12:16:01\x2b01:00",
+    "dateModified" : "27086-56-277T08:276:568\x2b27:00",
+    "url" : "http:\/\/jpalczewski.github.io\/post\/w7-time\/",
+    "wordCount" : "53",
+    "image" : [],
+    "keywords" : [  ]
+}
+</script>
+
 
 <!-- LEAVING partial seo-schema.html -->
 
@@ -90,38 +116,31 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://jpalczewski.github.io/post/w7-time/">Windows 7 and time</a>
+  <div class="post">
+    <h1 class="post-title">Windows 7 and time</h1>
+    <span class="post-date">Aug 27, 2016 &middot; 1 minute read
     
-    &middot;
+    <br/>
     <a class="label" href="http://jpalczewski.github.io/categories/know-how">know-how</a><a class="label" href="http://jpalczewski.github.io/categories/english">english</a><a class="label" href="http://jpalczewski.github.io/categories/windows">windows</a>
     </span>
-    &middot; <time>Aug 27, 2016</time></li>
+    <p>Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run <a href="http://www.oxid.it/cain.html">certain app</a>. Unfortunately, Windows weren&rsquo;t happy enough to allow me to do so, constantly changing time.</p>
+
+<p>How I fixed it?
+&ldquo;&rsquo;
+@echo off
+:loop
+date 12-07-27
+time 14:24:00
+goto loop
+&ldquo;&rsquo;</p>
+
+  </div>
   
-    <li><a href="http://jpalczewski.github.io/post/tpm-and-rngd/">tcsd and rngd together</a>
-    
-    &middot;
-    <a class="label" href="http://jpalczewski.github.io/categories/english">english</a><a class="label" href="http://jpalczewski.github.io/categories/linux">linux</a><a class="label" href="http://jpalczewski.github.io/categories/know-how">know-how</a>
-    </span>
-    &middot; <time>Jun 4, 2016</time></li>
-  
-    <li><a href="http://jpalczewski.github.io/posts/tcsd-and-rngd-together/">tcsd and rngd together</a>
-    
-    &middot;
-    <a class="label" href="http://jpalczewski.github.io/categories/archlinux">archlinux</a><a class="label" href="http://jpalczewski.github.io/categories/know-how">know-how</a><a class="label" href="http://jpalczewski.github.io/categories/english">english</a>
-    </span>
-    &middot; <time>May 27, 2016</time></li>
-  
-    <li><a href="http://jpalczewski.github.io/post/poczta_elka/">Jak skonfiguorwać pocztę na elce?</a>
-    
-    &middot;
-    <a class="label" href="http://jpalczewski.github.io/categories/elka">elka</a><a class="label" href="http://jpalczewski.github.io/categories/know-how">know-how</a><a class="label" href="http://jpalczewski.github.io/categories/polish">polish</a>
-    </span>
-    &middot; <time>Jan 9, 2016</time></li>
-  
-  </ul>
 </div>
+
+
+
+
 
 </body>
 </html>
