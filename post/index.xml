@@ -17,7 +17,7 @@
       <guid>http://jpalczewski.github.io/post/w7-time/</guid>
       <description>&lt;p&gt;Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run &lt;a href=&#34;http://www.oxid.it/cain.html&#34;&gt;certain app&lt;/a&gt;. Unfortunately, Windows weren&amp;rsquo;t happy enough to allow me to do so, constantly changing time.&lt;/p&gt;
 
-&lt;p&gt;How I fixed it?&lt;/p&gt;
+&lt;p&gt;How I fixed it ?&lt;/p&gt;
 
 &lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color: #2838b0&#34;&gt;echo&lt;/span&gt; off
 &lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #289870&#34;&gt;loop&lt;/span&gt;
