@@ -2,20 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jpalczewski blog</title>
-    <link>http://jpalczewski.github.io/</link>
+    <link>https://jpalczewski.github.io/index.xml</link>
     <description>Recent content on jpalczewski blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <lastBuildDate>Sat, 27 Aug 2016 20:09:56 +0200</lastBuildDate>
-    <atom:link href="http://jpalczewski.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jpalczewski.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Windows 7 and time</title>
-      <link>http://jpalczewski.github.io/post/w7-time/</link>
+      <link>https://jpalczewski.github.io/post/w7-time/</link>
       <pubDate>Sat, 27 Aug 2016 20:09:56 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/post/w7-time/</guid>
-      <description>&lt;p&gt;Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run &lt;a href=&#34;http://www.oxid.it/cain.html&#34;&gt;certain app&lt;/a&gt;. Unfortunately, Windows weren&amp;rsquo;t happy enough to allow me to do so, constantly changing time.&lt;/p&gt;
+      <guid>https://jpalczewski.github.io/post/w7-time/</guid>
+      <description>&lt;p&gt;Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run &lt;a href=&#34;http://www.oxid.it/cain.html&#34;&gt;certain app&lt;/a&gt;. Unfortunately, Windows weren&amp;rsquo;t happy enough to allow me to do so, constantly changing time.
+&lt;/p&gt;
 
 &lt;p&gt;How I fixed it?&lt;/p&gt;
 
@@ -27,16 +28,15 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Don&amp;rsquo;t do it.&lt;/p&gt;
-</description>
+&lt;p&gt;Don&amp;rsquo;t do it.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hall of fame</title>
-      <link>http://jpalczewski.github.io/hall-of-fame/</link>
+      <link>https://jpalczewski.github.io/hall-of-fame/</link>
       <pubDate>Sat, 04 Jun 2016 02:19:25 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/hall-of-fame/</guid>
+      <guid>https://jpalczewski.github.io/hall-of-fame/</guid>
       <description>
 
 &lt;p&gt;List of completed projects that I&amp;rsquo;m proud of.&lt;/p&gt;
@@ -53,10 +53,10 @@
     
     <item>
       <title>tcsd and rngd together</title>
-      <link>http://jpalczewski.github.io/post/tpm-and-rngd/</link>
+      <link>https://jpalczewski.github.io/post/tpm-and-rngd/</link>
       <pubDate>Sat, 04 Jun 2016 01:12:14 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/post/tpm-and-rngd/</guid>
+      <guid>https://jpalczewski.github.io/post/tpm-and-rngd/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a tricky way to don&amp;rsquo;t choose between rngd or &lt;a href=&#34;https://wiki.archlinux.org/index.php/Trusted_Platform_Module#Securing_SSH_Keys&#34;&gt;SSH keys wired with your computer&lt;/a&gt; because it is possible to use it in one time, despite the fact that they both want exclusive access to TPM.&lt;/p&gt;
 
 &lt;p&gt;To do that, you should create a file
@@ -80,63 +80,65 @@ When you can see a &lt;code&gt;/dev/hwrng&lt;/code&gt; device, then it&amp;rsquo
     
     <item>
       <title>tcsd and rngd together</title>
-      <link>http://jpalczewski.github.io/posts/tcsd-and-rngd-together/</link>
+      <link>https://jpalczewski.github.io/posts/tcsd-and-rngd-together/</link>
       <pubDate>Fri, 27 May 2016 03:44:46 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/posts/tcsd-and-rngd-together/</guid>
+      <guid>https://jpalczewski.github.io/posts/tcsd-and-rngd-together/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a tricky way to make rngd daemon&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>http://jpalczewski.github.io/about/</link>
+      <link>https://jpalczewski.github.io/about/</link>
       <pubDate>Fri, 27 May 2016 02:19:25 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/about/</guid>
+      <guid>https://jpalczewski.github.io/about/</guid>
       <description>&lt;p&gt;To be updated.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>license</title>
-      <link>http://jpalczewski.github.io/license/</link>
+      <link>https://jpalczewski.github.io/license/</link>
       <pubDate>Fri, 27 May 2016 02:06:42 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/license/</guid>
+      <guid>https://jpalczewski.github.io/license/</guid>
       <description>&lt;p&gt;Test test&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>homepage(external link)</title>
-      <link>http://jpalczewski.github.io/homepage/</link>
+      <link>https://jpalczewski.github.io/homepage/</link>
       <pubDate>Fri, 27 May 2016 02:01:05 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/homepage/</guid>
+      <guid>https://jpalczewski.github.io/homepage/</guid>
       <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0;URL=&#39;http://mion.elka.pw.edu.pl/~jpalczew/&#39;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>hello go</title>
-      <link>http://jpalczewski.github.io/post/hello-go/</link>
+      <link>https://jpalczewski.github.io/post/hello-go/</link>
       <pubDate>Fri, 27 May 2016 01:29:47 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/post/hello-go/</guid>
+      <guid>https://jpalczewski.github.io/post/hello-go/</guid>
       <description>&lt;p&gt;New start with another static generator - as you can see, it&amp;rsquo;s hugo this time.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Jak skonfiguorwać pocztę na elce?</title>
-      <link>http://jpalczewski.github.io/post/poczta_elka/</link>
+      <link>https://jpalczewski.github.io/post/poczta_elka/</link>
       <pubDate>Sat, 09 Jan 2016 01:34:29 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/post/poczta_elka/</guid>
+      <guid>https://jpalczewski.github.io/post/poczta_elka/</guid>
       <description>&lt;p&gt;&lt;em&gt;Post przeportowany ze starego bloga.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Nowy layout. Taki piękny!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Jeżeli ktoś trafi tutaj w rozpaczy(hej!), odrzucony vaporowym stylem dokumentacji sieci na &lt;a href=&#34;http://elka.pw.edu.pl&#34;&gt;elce&lt;/a&gt;, to nauczony doświadczeniem(czyt: wielokrotnym wyklikiwaniem ustawień w ciemno) wypunktuję sobie na przyszłość najważniejsze fragmenty, aktualne na dzień publikacji postu:&lt;/p&gt;
 
@@ -146,17 +148,17 @@ When you can see a &lt;code&gt;/dev/hwrng&lt;/code&gt; device, then it&amp;rsquo
 &lt;li&gt;&lt;strong&gt;Port pop3&lt;/strong&gt;: &lt;code&gt;997&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Port smtp&lt;/strong&gt;: &lt;code&gt;587&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Szyfrowanie&lt;/strong&gt;: SMTP używa TLSa, POP3 używa SSLa.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Databases and python #1</title>
-      <link>http://jpalczewski.github.io/post/databases_python/</link>
+      <link>https://jpalczewski.github.io/post/databases_python/</link>
       <pubDate>Sun, 03 Jan 2016 01:41:27 +0200</pubDate>
       
-      <guid>http://jpalczewski.github.io/post/databases_python/</guid>
-      <description>&lt;p&gt;Few thoughts from &lt;a href=&#34;https://github.com/jpalczewski/NFZQueueViewer&#34;&gt;NFZQueueViewer&lt;/a&gt; project.&lt;/p&gt;
+      <guid>https://jpalczewski.github.io/post/databases_python/</guid>
+      <description>&lt;p&gt;Few thoughts from &lt;a href=&#34;https://github.com/jpalczewski/NFZQueueViewer&#34;&gt;NFZQueueViewer&lt;/a&gt; project.
+&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;What happens when you plan that name from one column wouldn&amp;rsquo;t exceed size of 100 chars?
@@ -187,8 +189,7 @@ NIEPUBLICZNY ZAKŁAD OPIEKI ZDROWOTNEJ SANATORIUM UZDROWISKOWE &amp;quot;KRYSTYN
 &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #388038&#34;&gt;print&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;timeit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;timeit&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;parse_date2(&amp;#39;1970-01-01&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; setup&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;from __main__ import parse_date2&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;))&lt;/span&gt;
 &lt;span style=&#34;color: #444444&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #444444&#34;&gt;3313458009943133&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-</description>
+&lt;/p&gt;</description>
     </item>
     
   </channel>
