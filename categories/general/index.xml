@@ -10,12 +10,11 @@
     
     <item>
       <title>hello go</title>
-      <link>https://jpalczewski.github.io/post/hello-go/</link>
+      <link>https://jpalczewski.github.io/posts/</link>
       <pubDate>Fri, 27 May 2016 01:29:47 +0200</pubDate>
       
-      <guid>https://jpalczewski.github.io/post/hello-go/</guid>
-      <description>&lt;p&gt;New start with another static generator - as you can see, it&amp;rsquo;s hugo this time.&lt;/p&gt;
-</description>
+      <guid>https://jpalczewski.github.io/posts/</guid>
+      <description></description>
     </item>
     
   </channel>

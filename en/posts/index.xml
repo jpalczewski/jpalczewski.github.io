@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on jpalczewski blog</title>
+    <link>https://jpalczewski.github.io/en/posts/index.xml</link>
+    <description>Recent content in Posts on jpalczewski blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <lastBuildDate>Sat, 27 Aug 2016 20:09:56 +0200</lastBuildDate>
+    <atom:link href="https://jpalczewski.github.io/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windows 7 and time</title>
+      <link>https://jpalczewski.github.io/en/posts/w7-time/</link>
+      <pubDate>Sat, 27 Aug 2016 20:09:56 +0200</pubDate>
+      
+      <guid>https://jpalczewski.github.io/en/posts/w7-time/</guid>
+      <description>&lt;p&gt;Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run &lt;a href=&#34;http://www.oxid.it/cain.html&#34;&gt;certain app&lt;/a&gt;. Unfortunately, Windows weren&amp;rsquo;t happy enough to allow me to do so, constantly changing time.
+&lt;/p&gt;
+
+&lt;p&gt;How I fixed it?&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color: #2838b0&#34;&gt;echo&lt;/span&gt; off
+&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #289870&#34;&gt;loop&lt;/span&gt;
+&lt;span style=&#34;color: #2838b0&#34;&gt;date&lt;/span&gt; 12-07-27
+&lt;span style=&#34;color: #2838b0&#34;&gt;time&lt;/span&gt; 14:24:00
+&lt;span style=&#34;color: #2838b0&#34;&gt;goto&lt;/span&gt; &lt;span style=&#34;color: #289870&#34;&gt;loop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Don&amp;rsquo;t do it.&lt;/p&gt;
+
+&lt;p&gt;And what was the reason? Windows 7 in this particular situation didn&amp;rsquo;t allow me to change time - it was still changing, no matter what I had done - so, such a dirty trick was a way to do what I want to do.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>tcsd and rngd together</title>
+      <link>https://jpalczewski.github.io/en/posts/tpm-and-rngd/</link>
+      <pubDate>Sat, 04 Jun 2016 01:12:14 +0200</pubDate>
+      
+      <guid>https://jpalczewski.github.io/en/posts/tpm-and-rngd/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s a tricky way to don&amp;rsquo;t choose between rngd or &lt;a href=&#34;https://wiki.archlinux.org/index.php/Trusted_Platform_Module#Securing_SSH_Keys&#34;&gt;SSH keys wired with your computer&lt;/a&gt; because it is possible to use it in one time, despite the fact that they both want exclusive access to TPM.&lt;/p&gt;
+
+&lt;p&gt;To do that, you should create a file
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;/etc/modules-load.d/tpm-rng.conf 
+&lt;/pre&gt;&lt;/div&gt;
+
+with one line:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;tpm-rng
+&lt;/pre&gt;&lt;/div&gt;
+
+And restart or modprobe that module.
+When you can see a &lt;code&gt;/dev/hwrng&lt;/code&gt; device, then it&amp;rsquo;s necessary to point a rngd daemon to it(f.e. in &lt;code&gt;/etc/modules-load.d/tpm-rng.conf 
+&lt;/code&gt; on Archlinux):
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;RNGD_OPTS=&amp;quot;-r /dev/hwrng&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s all. Both services are running on my laptop without any problem.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>hello go</title>
+      <link>https://jpalczewski.github.io/en/posts/hello-go/</link>
+      <pubDate>Fri, 27 May 2016 01:29:47 +0200</pubDate>
+      
+      <guid>https://jpalczewski.github.io/en/posts/hello-go/</guid>
+      <description>&lt;p&gt;New start with another static generator - as you can see, it&amp;rsquo;s hugo this time.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Databases and python #1</title>
+      <link>https://jpalczewski.github.io/en/posts/databases_python/</link>
+      <pubDate>Sun, 03 Jan 2016 01:41:27 +0200</pubDate>
+      
+      <guid>https://jpalczewski.github.io/en/posts/databases_python/</guid>
+      <description>&lt;p&gt;Few thoughts from &lt;a href=&#34;https://github.com/jpalczewski/NFZQueueViewer&#34;&gt;NFZQueueViewer&lt;/a&gt; project.
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What happens when you plan that name from one column wouldn&amp;rsquo;t exceed size of 100 chars?
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt; 
+NIEPUBLICZNY ZAKŁAD OPIEKI ZDROWOTNEJ SANATORIUM UZDROWISKOWE &amp;quot;KRYSTYNKA&amp;quot; W CIECHOCINKU UTWORZONY PRZEZ OŚRDEK WCZASOWO-PROFILAKTYCZNY &amp;quot;KRYSTYNKA&amp;quot; SANATORIUM UZDROWISKOWE &amp;quot;KRYSTYNKA&amp;quot; SP. Z O.O. W CIECHOCINKU         208
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;And why exception-based code in python is bad:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt; 
+&lt;span style=&#34;color: #2838b0&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #785840&#34;&gt;parrse_date&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;):&lt;/span&gt;
+    &lt;span style=&#34;color: #b83838&#34;&gt;try&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        datetime&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;datetime&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;strptime&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #b83838&#34;&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;)&lt;/span&gt;
+    except &lt;span style=&#34;color: #b83838&#34;&gt;ValueError&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #b83838&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;
+    except &lt;span style=&#34;color: #b83838&#34;&gt;TypeError&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; s
+
+&lt;span style=&#34;color: #2838b0&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #785840&#34;&gt;parse_date2&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;):&lt;/span&gt;
+    &lt;span style=&#34;color: #2838b0&#34;&gt;if&lt;/span&gt; type&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color: #888888&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;str&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #b83838&#34;&gt;&amp;#39;1970-01-01&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #2838b0&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #2838b0&#34;&gt;return&lt;/span&gt; s
+
+&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #388038&#34;&gt;print&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;timeit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;timeit&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;parse_date(&amp;#39;1970-01-01&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; setup&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;from __main__ import parse_date&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;))&lt;/span&gt;
+&lt;span style=&#34;color: #444444&#34;&gt;31&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #444444&#34;&gt;87844313700043&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #388038&#34;&gt;print&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;timeit&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;timeit&lt;span style=&#34;color: #888888&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;parse_date2(&amp;#39;1970-01-01&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;,&lt;/span&gt; setup&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #b83838&#34;&gt;&amp;quot;from __main__ import parse_date2&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;))&lt;/span&gt;
+&lt;span style=&#34;color: #444444&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #444444&#34;&gt;3313458009943133&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

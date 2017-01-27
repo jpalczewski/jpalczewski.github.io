@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <title>
-    hello go // jpalczewski blog
+    Know How // jpalczewski blog
   </title>
 
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -12,15 +12,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 <meta name="description" content="">
-<meta name="keywords" content="hugo,">
+<meta name="keywords" content="">
 <meta name="author" content="">
 <meta name="generator" content="Hugo 0.18.1" />
 
-  <meta property="og:title" content="hello go" />
+  <meta property="og:title" content="Know How" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://jpalczewski.github.io/posts/" />
+<meta property="og:url" content="https://jpalczewski.github.io/en/categories/know-how/" />
 
 
   
@@ -42,7 +42,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="jpalczewski blog" />
+  <link href="https://jpalczewski.github.io/categories/know-how/index.xml" rel="alternate" type="application/rss+xml" title="jpalczewski blog" />
 
     
   
@@ -90,9 +90,9 @@
         
           <li class="nav-item"><span class="nav-item-separator">//</span><a href="/en/posts">Blog(EN)</a></li>
         
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">About me</a></li>
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/en/about/">About me</a></li>
         
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/hall-of-fame/">Hall of fame</a></li>
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/en/hall-of-fame/">Hall of fame</a></li>
         
       </ul>
     </nav>
@@ -113,13 +113,13 @@
             <header class="post-header">
             
             <h1 class="post-title">
-              <a href="/posts/poczta_elka/">Jak skonfiguorwać pocztę na elce?</a>
+              <a href="/en/posts/w7-time/">Windows 7 and time</a>
             </h1>
             </header>
             <p class="post-meta">
             	
 		          <span class="post-date">
-		            <span class="post-date-day"><sup>9</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jan</span> <span class="post-date-year">2016</span>
+		            <span class="post-date-day"><sup>27</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2016</span>
 		          </span>
       				
       				
@@ -132,23 +132,61 @@
       					<div class="post-categories">
 				        
       					
-                        <a class="post-category post-category-elka" href="https://jpalczewski.github.io//categories/elka">elka</a>
+                        <a class="post-category post-category-know-how" href="https://jpalczewski.github.io//en/categories/know-how">know-how</a>
       					
-                        <a class="post-category post-category-know-how" href="https://jpalczewski.github.io//categories/know-how">know-how</a>
+                        <a class="post-category post-category-windows" href="https://jpalczewski.github.io//en/categories/windows">windows</a>
       					
       					</div>
       				
             </p>
             
               <article class="post-summary">
-            	<p><em>Post przeportowany ze starego bloga.</em></p>
-
-<p>Nowy layout. Taki piękny!</p>
-
-<p></p>
+            	<p>Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run <a href="http://www.oxid.it/cain.html">certain app</a>. Unfortunately, Windows weren&rsquo;t happy enough to allow me to do so, constantly changing time.
+</p>
               </article>
 			  <div class="read-more-link">
-				<a href="/posts/poczta_elka/"><span class="read-more-slashes">//</span>Read More...</a>
+				<a href="/en/posts/w7-time/"><span class="read-more-slashes">//</span>Read More...</a>
+			  </div>
+            
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
+              <a href="/en/posts/tpm-and-rngd/">tcsd and rngd together</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jun</span> <span class="post-date-year">2016</span>
+		          </span>
+      				
+      				
+      					
+      				
+              
+                <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>1 min. read</em></span>
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+                        <a class="post-category post-category-linux" href="https://jpalczewski.github.io//en/categories/linux">linux</a>
+      					
+                        <a class="post-category post-category-know-how" href="https://jpalczewski.github.io//en/categories/know-how">know-how</a>
+      					
+      					</div>
+      				
+            </p>
+            
+              <article class="post-summary">
+            	There&rsquo;s a tricky way to don&rsquo;t choose between rngd or SSH keys wired with your computer because it is possible to use it in one time, despite the fact that they both want exclusive access to TPM.
+To do that, you should create a file /etc/modules-load.d/tpm-rng.conf  with one line: tpm-rng  And restart or modprobe that module. When you can see a /dev/hwrng device, then it&rsquo;s necessary to point a rngd daemon to it(f.
+              </article>
+			  <div class="read-more-link">
+				<a href="/en/posts/tpm-and-rngd/"><span class="read-more-slashes">//</span>Read More...</a>
 			  </div>
             
           </section>

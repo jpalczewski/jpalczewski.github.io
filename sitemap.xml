@@ -1,137 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
-    <loc>https://jpalczewski.github.io/post/w7-time/</loc>
-    <lastmod>2016-08-27T20:09:56+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/hall-of-fame/</loc>
-    <lastmod>2016-06-04T02:19:25+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/post/tpm-and-rngd/</loc>
-    <lastmod>2016-06-04T01:12:14+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/posts/tcsd-and-rngd-together/</loc>
-    <lastmod>2016-05-27T03:44:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/about/</loc>
-    <lastmod>2016-05-27T02:19:25+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/license/</loc>
-    <lastmod>2016-05-27T02:06:42+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/homepage/</loc>
-    <lastmod>2016-05-27T02:01:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/post/hello-go/</loc>
-    <lastmod>2016-05-27T01:29:47+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/post/poczta_elka/</loc>
-    <lastmod>2016-01-09T01:34:29+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/post/databases_python/</loc>
-    <lastmod>2016-01-03T01:41:27+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/archlinux/</loc>
-    <lastmod>2016-05-27T03:44:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/elka/</loc>
-    <lastmod>2016-01-09T01:34:29+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/english/</loc>
-    <lastmod>2016-08-27T20:09:56+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/general/</loc>
-    <lastmod>2016-05-27T01:29:47+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/know-how/</loc>
-    <lastmod>2016-08-27T20:09:56+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/linux/</loc>
-    <lastmod>2016-06-04T01:12:14+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/polish/</loc>
-    <lastmod>2016-01-09T01:34:29+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/post/</loc>
-    <lastmod>2016-08-27T20:09:56+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/posts/</loc>
-    <lastmod>2016-05-27T03:44:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/python/</loc>
-    <lastmod>2016-01-03T01:41:27+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/thoughts/</loc>
-    <lastmod>2016-01-03T01:41:27+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/categories/windows/</loc>
-    <lastmod>2016-08-27T20:09:56+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/</loc>
-    <lastmod>2016-08-27T20:09:56+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	
+	<sitemap>
+	   	<loc>https://jpalczewski.github.io/en/sitemap.xml</loc>
+		
+	   	<lastmod>2016-05-27T02:19:25+02:00</lastmod>
+		
+	</sitemap>
+	
+	<sitemap>
+	   	<loc>https://jpalczewski.github.io/pl/sitemap.xml</loc>
+		
+	   	<lastmod>2016-05-27T02:19:25+02:00</lastmod>
+		
+	</sitemap>
+	
+</sitemapindex>

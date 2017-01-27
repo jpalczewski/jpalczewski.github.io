@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on jpalczewski blog</title>
+    <link>https://jpalczewski.github.io/en/categories/windows/index.xml</link>
+    <description>Recent content in Windows on jpalczewski blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <atom:link href="https://jpalczewski.github.io/en/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windows 7 and time</title>
+      <link>https://jpalczewski.github.io/en/posts/w7-time/</link>
+      <pubDate>Sat, 27 Aug 2016 20:09:56 +0200</pubDate>
+      
+      <guid>https://jpalczewski.github.io/en/posts/w7-time/</guid>
+      <description>&lt;p&gt;Some time ago I encountered an unordinary problem: I had to set a specific time in Windows 7 in order to run &lt;a href=&#34;http://www.oxid.it/cain.html&#34;&gt;certain app&lt;/a&gt;. Unfortunately, Windows weren&amp;rsquo;t happy enough to allow me to do so, constantly changing time.
+&lt;/p&gt;
+
+&lt;p&gt;How I fixed it?&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #888888&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color: #2838b0&#34;&gt;echo&lt;/span&gt; off
+&lt;span style=&#34;color: #888888&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #289870&#34;&gt;loop&lt;/span&gt;
+&lt;span style=&#34;color: #2838b0&#34;&gt;date&lt;/span&gt; 12-07-27
+&lt;span style=&#34;color: #2838b0&#34;&gt;time&lt;/span&gt; 14:24:00
+&lt;span style=&#34;color: #2838b0&#34;&gt;goto&lt;/span&gt; &lt;span style=&#34;color: #289870&#34;&gt;loop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Don&amp;rsquo;t do it.&lt;/p&gt;
+
+&lt;p&gt;And what was the reason? Windows 7 in this particular situation didn&amp;rsquo;t allow me to change time - it was still changing, no matter what I had done - so, such a dirty trick was a way to do what I want to do.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

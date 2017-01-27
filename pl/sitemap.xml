@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://jpalczewski.github.io/about/</loc>
+    <lastmod>2016-05-27T02:19:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/hall-of-fame/</loc>
+    <lastmod>2016-06-04T02:19:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/posts/</loc>
+    <lastmod>2016-05-27T01:29:47+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/posts/poczta_elka/</loc>
+    <lastmod>2016-01-09T01:34:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/categories/elka/</loc>
+    <lastmod>2016-01-09T01:34:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/categories/general/</loc>
+    <lastmod>2016-05-27T01:29:47+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/</loc>
+    <lastmod>2016-05-27T02:19:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
