@@ -82,7 +82,7 @@
 	
 
     <h1 class="brand-title">jpalczewski&#39;s blog</h1>
-    <h2 class="brand-tagline">zażółć gęślą jaźń</h2>
+    <h2 class="brand-tagline">Yellowing duck mind.</h2>
 
     <nav class="nav">
       <ul class="nav-list">
@@ -96,9 +96,20 @@
         
           <li class="nav-item"><span class="nav-item-separator">//</span><a href="/en/hall-of-fame/">Hall of fame</a></li>
         
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://mion.elka.pw.edu.pl/~jpalczew/">Homepage(PL)</a></li>
+        
       </ul>
     </nav>
 
+    
+    <div class="social-buttons">
+      
+        
+        <a href="https://github.com/jpalczewski" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+      
+    </div>
     
 
   </div>
@@ -150,8 +161,7 @@
 
 <ul>
 <li>What happens when you plan that name from one column wouldn&rsquo;t exceed size of 100 chars?
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span> 
-NIEPUBLICZNY ZAKŁAD OPIEKI ZDROWOTNEJ SANATORIUM UZDROWISKOWE &quot;KRYSTYNKA&quot; W CIECHOCINKU UTWORZONY PRZEZ OŚRDEK WCZASOWO-PROFILAKTYCZNY &quot;KRYSTYNKA&quot; SANATORIUM UZDROWISKOWE &quot;KRYSTYNKA&quot; SP. Z O.O. W CIECHOCINKU         208
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>NIEPUBLICZNY ZAKŁAD OPIEKI ZDROWOTNEJ SANATORIUM UZDROWISKOWE &quot;KRYSTYNKA&quot; W CIECHOCINKU UTWORZONY PRZEZ OŚRDEK WCZASOWO-PROFILAKTYCZNY &quot;KRYSTYNKA&quot; SANATORIUM UZDROWISKOWE &quot;KRYSTYNKA&quot; SP. Z O.O. W CIECHOCINKU         208
 </pre></div>
 </li>
 <li>And why exception-based code in python is bad:</li>
@@ -159,23 +169,23 @@ NIEPUBLICZNY ZAKŁAD OPIEKI ZDROWOTNEJ SANATORIUM UZDROWISKOWE &quot;KRYSTYNKA&q
 
 <p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span> 
 <span style="color: #2838b0">def</span> <span style="color: #785840">parrse_date</span><span style="color: #888888">(</span>s<span style="color: #888888">):</span>
-    <span style="color: #b83838">try</span><span style="color: #888888">:</span>
-        datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>strptime<span style="color: #888888">(</span>s<span style="color: #888888">,</span> <span style="color: #b83838">&#39;%Y-%m-%d&#39;</span><span style="color: #888888">)</span>
-    except <span style="color: #b83838">ValueError</span><span style="color: #888888">:</span>
+    <span style="color: #2838b0">try</span><span style="color: #888888">:</span>
+        datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>strptime<span style="color: #888888">(</span>s<span style="color: #888888">,</span> <span style="color: #b83838">&#39;%Y-%m-</span><span style="color: #b83838; text-decoration: underline">%d</span><span style="color: #b83838">&#39;</span><span style="color: #888888">)</span>
+    <span style="color: #2838b0">except</span> <span style="color: #908828">ValueError</span><span style="color: #888888">:</span>
         <span style="color: #2838b0">return</span> <span style="color: #b83838">&#39;1970-01-01&#39;</span>
-    except <span style="color: #b83838">TypeError</span><span style="color: #888888">:</span>
+    <span style="color: #2838b0">except</span> <span style="color: #908828">TypeError</span><span style="color: #888888">:</span>
         <span style="color: #2838b0">return</span> s
 
 <span style="color: #2838b0">def</span> <span style="color: #785840">parse_date2</span><span style="color: #888888">(</span>s<span style="color: #888888">):</span>
-    <span style="color: #2838b0">if</span> type<span style="color: #888888">(</span>s<span style="color: #888888">)</span><span style="color: #666666">==</span><span style="color: #b83838">str</span><span style="color: #888888">:</span>
+    <span style="color: #2838b0">if</span> <span style="color: #388038">type</span><span style="color: #888888">(</span>s<span style="color: #888888">)</span><span style="color: #666666">==</span><span style="color: #388038">str</span><span style="color: #888888">:</span>
         <span style="color: #2838b0">return</span> <span style="color: #b83838">&#39;1970-01-01&#39;</span>
     <span style="color: #2838b0">else</span><span style="color: #888888">:</span>
         <span style="color: #2838b0">return</span> s
 
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #388038">print</span><span style="color: #888888">(</span>timeit<span style="color: #666666">.</span>timeit<span style="color: #888888">(</span><span style="color: #b83838">&quot;parse_date(&#39;1970-01-01&#39;)&quot;</span><span style="color: #888888">,</span> setup<span style="color: #666666">=</span><span style="color: #b83838">&quot;from __main__ import parse_date&quot;</span><span style="color: #888888">))</span>
-<span style="color: #444444">31</span><span style="color: #666666">.</span><span style="color: #444444">87844313700043</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #388038">print</span><span style="color: #888888">(</span>timeit<span style="color: #666666">.</span>timeit<span style="color: #888888">(</span><span style="color: #b83838">&quot;parse_date2(&#39;1970-01-01&#39;)&quot;</span><span style="color: #888888">,</span> setup<span style="color: #666666">=</span><span style="color: #b83838">&quot;from __main__ import parse_date2&quot;</span><span style="color: #888888">))</span>
-<span style="color: #444444">0</span><span style="color: #666666">.</span><span style="color: #444444">3313458009943133</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #2838b0">print</span><span style="color: #888888">(</span>timeit<span style="color: #666666">.</span>timeit<span style="color: #888888">(</span><span style="color: #b83838">&quot;parse_date(&#39;1970-01-01&#39;)&quot;</span><span style="color: #888888">,</span> setup<span style="color: #666666">=</span><span style="color: #b83838">&quot;from __main__ import parse_date&quot;</span><span style="color: #888888">))</span>
+<span style="color: #444444">31.87844313700043</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #2838b0">print</span><span style="color: #888888">(</span>timeit<span style="color: #666666">.</span>timeit<span style="color: #888888">(</span><span style="color: #b83838">&quot;parse_date2(&#39;1970-01-01&#39;)&quot;</span><span style="color: #888888">,</span> setup<span style="color: #666666">=</span><span style="color: #b83838">&quot;from __main__ import parse_date2&quot;</span><span style="color: #888888">))</span>
+<span style="color: #444444">0.3313458009943133</span>
 </pre></div>
 </p>
 	

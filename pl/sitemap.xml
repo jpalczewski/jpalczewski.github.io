@@ -12,11 +12,6 @@
   </url>
   
   <url>
-    <loc>https://jpalczewski.github.io/posts/</loc>
-    <lastmod>2016-05-27T01:29:47+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jpalczewski.github.io/posts/poczta_elka/</loc>
     <lastmod>2016-01-09T01:34:29+02:00</lastmod>
   </url>
@@ -31,8 +26,8 @@
   </url>
   
   <url>
-    <loc>https://jpalczewski.github.io/categories/general/</loc>
-    <lastmod>2016-05-27T01:29:47+02:00</lastmod>
+    <loc>https://jpalczewski.github.io/posts/</loc>
+    <lastmod>2016-01-09T01:34:29+02:00</lastmod>
     <priority>0</priority>
   </url>
   
