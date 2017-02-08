@@ -53,6 +53,14 @@
 
 &lt;p&gt;Fajne rzeczy, czyli wszystkie ukończone projekty z których jestem dumny.&lt;/p&gt;
 
+&lt;h1 id=&#34;jrotormap-https-github-com-jpalczewski-jrotormap&#34;&gt;&lt;a href=&#34;https://github.com/jpalczewski/JRotorMap&#34;&gt;JRotorMap&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Aplikacja stricte krótkofalarska - rozwiązuje drugi odwrotny problem geodezyjny(na podstawie dwóch współrzędnych oblicza odległość i azymut). Projekt zaliczeniowy na PROZy, dla prowadzącego był zdecydowanie nietypowy.&lt;/p&gt;
+
+&lt;h1 id=&#34;potential-spoon-https-github-com-jpalczewski-potential-spoon&#34;&gt;&lt;a href=&#34;https://github.com/jpalczewski/potential-spoon&#34;&gt;Potential spoon&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Czyli zbiór Julii implementowany w MIPowym asemblerze(czyt. w oparciu o emulator napisany w Javie, czyli MARS). Ładne grafiki w repozytorium.&lt;/p&gt;
+
 &lt;h1 id=&#34;animacja-https-github-com-jpalczewski-animacja&#34;&gt;&lt;a href=&#34;https://github.com/jpalczewski/Animacja&#34;&gt;Animacja&lt;/a&gt;&lt;/h1&gt;
 
 &lt;p&gt;Aplikacja napisana w OpenGLu 3.3 na GKOMy - bez używania ładowania modeli było całkiem ciekawym przeżyciem - dość dużo korzystałem i całkiem miło wspominam &lt;a href=&#34;http://www.learnopengl.com/&#34;&gt;LearnOpenGL tutorial&lt;/a&gt;.&lt;/p&gt;
@@ -66,7 +74,7 @@
     </item>
     
     <item>
-      <title>Jak skonfiguorwać pocztę na elce?</title>
+      <title>Jak skonfigurować pocztę na elce?</title>
       <link>https://jpalczewski.github.io/posts/poczta_elka/</link>
       <pubDate>Sat, 09 Jan 2016 01:34:29 +0200</pubDate>
       
