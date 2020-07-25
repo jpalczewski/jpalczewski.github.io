@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-07-26T00:50:55&#43;02:00</updated>
+    <updated>2020-07-26T01:10:25&#43;02:00</updated>
     <id>https://jpalczewski.github.io/pl/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/pl/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Czy warto studiować na UWMie?</title>
             <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/pl/faq/czy-warto-studiowac-na-uwmie/" />
             <id>https://jpalczewski.github.io/pl/faq/czy-warto-studiowac-na-uwmie/</id>
-            <updated>2020-07-26T00:47:36&#43;02:00</updated>
+            <updated>2020-07-26T01:00:09&#43;02:00</updated>
             <published>2020-07-26T00:32:24&#43;02:00</published>
             <author>
                     <name>Jacek Palczewski</name>
