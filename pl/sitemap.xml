@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://jpalczewski.github.io/pl/</loc>
-    <lastmod>2020-07-25T23:13:40+02:00</lastmod>
+    <lastmod>2020-07-25T23:27:02+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -18,13 +18,63 @@
   </url>
   
   <url>
+    <loc>https://jpalczewski.github.io/pl/tags/meta/</loc>
+    <lastmod>2020-07-25T23:27:02+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/tags/meta/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/tags/meta/"
+                />
+  </url>
+  
+  <url>
     <loc>https://jpalczewski.github.io/pl/personal/</loc>
-    <lastmod>2020-07-25T23:13:40+02:00</lastmod>
+    <lastmod>2020-07-25T23:27:02+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/personal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/personal/"
+                />
   </url>
   
   <url>
     <loc>https://jpalczewski.github.io/pl/personal/reboot/</loc>
-    <lastmod>2020-07-25T23:13:40+02:00</lastmod>
+    <lastmod>2020-07-25T23:27:02+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/personal/reboot/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/personal/reboot/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/pl/tags/</loc>
+    <lastmod>2020-07-25T23:27:02+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/tags/"
+                />
   </url>
   
   <url>
@@ -38,20 +88,6 @@
                 rel="alternate"
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://jpalczewski.github.io/pl/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://jpalczewski.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="https://jpalczewski.github.io/pl/tags/"
                 />
   </url>
   

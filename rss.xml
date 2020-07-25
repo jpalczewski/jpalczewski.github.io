@@ -23,22 +23,22 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Sat, 25 Jul 2020 23:17:43 &#43;0200</lastBuildDate>
+        <lastBuildDate>Sat, 25 Jul 2020 23:33:53 &#43;0200</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://jpalczewski.github.io/rss.xml" />
         
         
             <item>
-                <title>Example 1 of Topic 2</title>
-                <link>https://jpalczewski.github.io/posts/lorem-ipsum/</link>
-                <guid isPermaLink="true">https://jpalczewski.github.io/posts/lorem-ipsum/</guid>
-                <pubDate>Mon, 17 Jun 2019 23:53:00 &#43;0100</pubDate>
+                <title>Reboot</title>
+                <link>https://jpalczewski.github.io/personal/reboot/</link>
+                <guid isPermaLink="true">https://jpalczewski.github.io/personal/reboot/</guid>
+                <pubDate>Sat, 25 Jul 2020 23:29:21 &#43;0200</pubDate>
                 
                     <author>jpalczewski(@t)gmail.com (Jacek Palczewski)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
-                    <description>&lt;p&gt;This summary is the real content of the article.&lt;/p&gt;
+                    <description>&lt;p&gt;Yet another approach to blogging. This time in static manner, based on hugo(again?) - this time with bigger expertise than last time.&lt;/p&gt;
 </description>
                 
                 
@@ -53,13 +53,7 @@
                                 
                                 
                                 
-                                    <category domain="https://jpalczewski.github.io/tags/no_summary/">no_summary</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://jpalczewski.github.io/tags/default_image/">default_image</category>
+                                    <category domain="https://jpalczewski.github.io/tags/meta/">meta</category>
                                 
                             
                         

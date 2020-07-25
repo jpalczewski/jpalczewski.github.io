@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-07-25T23:17:43&#43;02:00</updated>
+    <updated>2020-07-25T23:33:53&#43;02:00</updated>
     <id>https://jpalczewski.github.io/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/atom.xml" />
@@ -17,19 +17,19 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.73.0">Hugo</generator>
         <entry>
-            <title type="text">Example 1 of Topic 2</title>
-            <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/posts/lorem-ipsum/" />
-            <id>https://jpalczewski.github.io/posts/lorem-ipsum/</id>
-            <updated>2020-07-25T20:24:51&#43;02:00</updated>
-            <published>2019-06-17T23:53:00&#43;01:00</published>
+            <title type="text">Reboot</title>
+            <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/personal/reboot/" />
+            <id>https://jpalczewski.github.io/personal/reboot/</id>
+            <updated>2020-07-25T23:33:14&#43;02:00</updated>
+            <published>2020-07-25T23:29:21&#43;02:00</published>
             <author>
                     <name>Jacek Palczewski</name>
                     <uri>https://jpalczewski.github.io/</uri>
                     <email>jpalczewski(@t)gmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">This summary is the real content of the article.</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Yet another approach to blogging. This time in static manner, based on hugo(again?) - this time with bigger expertise than last time.</summary>
             
-                <content type="html">&lt;p&gt;This summary is the real content of the article.&lt;/p&gt;
+                <content type="html">&lt;p&gt;Yet another approach to blogging. This time in static manner, based on hugo(again?) - this time with bigger expertise than last time.&lt;/p&gt;
 </content>
             
             
@@ -44,13 +44,7 @@
                             
                             
                             
-                                <category scheme="https://jpalczewski.github.io/tags/no_summary/" term="no_summary" label="no_summary" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://jpalczewski.github.io/tags/default_image/" term="default_image" label="default_image" />
+                                <category scheme="https://jpalczewski.github.io/tags/meta/" term="meta" label="meta" />
                             
                         
                     
