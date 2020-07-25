@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://jpalczewski.github.io/pl/</loc>
+    <lastmod>2020-07-25T23:13:40+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/pl/personal/</loc>
+    <lastmod>2020-07-25T23:13:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/pl/personal/reboot/</loc>
+    <lastmod>2020-07-25T23:13:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/pl/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/pl/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/tags/"
+                />
+  </url>
+  
+</urlset>

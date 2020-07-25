@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>jpalczewski blog</title>
+        <link>https://jpalczewski.github.io/pl/</link>
+        <description>MemE is a powerful and highly customizable GoHugo theme for personal blogs.</description>
+        <generator>Hugo 0.73.0 https://gohugo.io/</generator>
+        
+            <language>en</language>
+        
+        
+            <managingEditor>jpalczewski(@t)gmail.com (Jacek Palczewski)</managingEditor>
+        
+        
+            <webMaster>jpalczewski(@t)gmail.com (Jacek Palczewski)</webMaster>
+        
+        
+            <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+        
+        <lastBuildDate>Sat, 25 Jul 2020 23:17:43 &#43;0200</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://jpalczewski.github.io/pl/rss.xml" />
+        
+        
+            <item>
+                <title>Reboot</title>
+                <link>https://jpalczewski.github.io/pl/personal/reboot/</link>
+                <guid isPermaLink="true">https://jpalczewski.github.io/pl/personal/reboot/</guid>
+                <pubDate>Sat, 25 Jul 2020 23:05:59 &#43;0200</pubDate>
+                
+                    <author>jpalczewski(@t)gmail.com (Jacek Palczewski)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;Witaj świecie, ponownie. Tym razem w formie statycznej.&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>

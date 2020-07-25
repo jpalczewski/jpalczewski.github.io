@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title type="text">jpalczewski blog</title>
+    <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
+    <updated>2020-07-25T23:17:43&#43;02:00</updated>
+    <id>https://jpalczewski.github.io/pl/</id>
+    <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/pl/" />
+    <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/pl/atom.xml" />
+    <author>
+            <name>Jacek Palczewski</name>
+            <uri>https://jpalczewski.github.io/pl/</uri>
+            
+                <email>jpalczewski(@t)gmail.com</email>
+            </author>
+    <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
+    <generator uri="https://gohugo.io/" version="0.73.0">Hugo</generator>
+        <entry>
+            <title type="text">Reboot</title>
+            <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/pl/personal/reboot/" />
+            <id>https://jpalczewski.github.io/pl/personal/reboot/</id>
+            <updated>2020-07-25T23:13:40&#43;02:00</updated>
+            <published>2020-07-25T23:05:59&#43;02:00</published>
+            <author>
+                    <name>Jacek Palczewski</name>
+                    <uri>https://jpalczewski.github.io/pl/</uri>
+                    <email>jpalczewski(@t)gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Witaj świecie, ponownie. Tym razem w formie statycznej.</summary>
+            
+                <content type="html">&lt;p&gt;Witaj świecie, ponownie. Tym razem w formie statycznej.&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+</feed>

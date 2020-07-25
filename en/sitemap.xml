@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://jpalczewski.github.io/</loc>
+    <lastmod>2020-07-25T23:01:47+02:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/about/</loc>
+    <lastmod>2020-07-25T23:01:47+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/tags/default_image/</loc>
+    <lastmod>2020-07-25T20:24:51+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/posts/lorem-ipsum/</loc>
+    <lastmod>2020-07-25T20:24:51+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/tags/no_summary/</loc>
+    <lastmod>2020-07-25T20:24:51+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/posts/</loc>
+    <lastmod>2020-07-25T20:24:51+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/tags/</loc>
+    <lastmod>2020-07-25T20:24:51+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://jpalczewski.github.io/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/categories/"
+                />
+  </url>
+  
+</urlset>
