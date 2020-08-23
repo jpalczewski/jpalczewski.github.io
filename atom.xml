@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
     <subtitle type="html">jpalczewski place in the internet. Variety of content guaranteed</subtitle>
-    <updated>2020-08-23T23:42:33&#43;02:00</updated>
+    <updated>2020-08-23T23:43:25&#43;02:00</updated>
     <id>https://jpalczewski.github.io/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/atom.xml" />
@@ -16,6 +16,78 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">Will vagrant, KVM and LVM blend in 2020?</title>
+            <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/" />
+            <id>https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/</id>
+            <updated>2020-08-23T23:42:18&#43;02:00</updated>
+            <published>2020-08-22T20:59:07&#43;02:00</published>
+            <author>
+                    <name>Jacek Palczewski</name>
+                    <uri>https://jpalczewski.github.io/</uri>
+                    <email>jpalczewski(@t)gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">&lt;p&gt;Short answer - &lt;em&gt;nope&lt;/em&gt;, there will be only smoke instead.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;</summary>
+            
+                <content type="html">&lt;p&gt;Short answer - &lt;em&gt;nope&lt;/em&gt;, there will be only smoke instead.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;After a long rehab-break&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, I got back to messing around. I wanted to create VM environment that is easy to manage – having in mind how my setup looks like(dell with nvme + HDD) I wanted to utilise hard drive in smart way - first idea came through my past experience with &lt;a href=&#34;https://www.qubes-os.org/&#34;&gt;qubes&lt;/a&gt; operating system[^qubes], where LVM thin provisioning were used in order to manage virtual drives and snapshots – moreover, in my scenario vagrant would be the tool that speeds up defining and configuring instances.&lt;/p&gt;
+&lt;p&gt;So, after countless steps like creating LVM pool, installing vagrant-libvirt plugin&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;, vagrant doesn&amp;rsquo;t want to cooperate due to &lt;code&gt;Snapshots of snapshots are not supported.&lt;/code&gt; . Error which is related with a &lt;a href=&#34;https://github.com/vagrant-libvirt/vagrant-libvirt/issues/690&#34;&gt;4-year-old open issue&lt;/a&gt;. If you look closely again into appropriate place  &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; we can notice that there is an option to specify another pool name - just for curiosity I tested if another pool(directory based on ext4 partition) would be a hotfix  - but not this time.  Due to vagrant internals snapshot is created, but this time with &lt;code&gt;Invalid path for Logical Volume.&lt;/code&gt;  error while executing &lt;code&gt;lvcreate&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So, maybe a ZFS-based pool would be the answer?  🤔&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=8Sbizs-qAwY&#34;&gt;This seems like an old reference&lt;/a&gt; &lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;It might be a matter of another entry. &lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;In case if you are asking - yes, their &lt;a href=&#34;https://github.com/vagrant-libvirt/vagrant-libvirt&#34;&gt;documentation&lt;/a&gt; mentions use case where you would like to specify storage pool name. &lt;a href=&#34;https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/categories/efforts/" term="efforts" label="efforts" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/lvm/" term="LVM" label="LVM" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/kvm/" term="KVM" label="KVM" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/vagrant/" term="vagrant" label="vagrant" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Reboot</title>
             <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/personal/reboot/" />
