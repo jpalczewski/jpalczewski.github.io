@@ -3,8 +3,8 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
-    <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-07-26T01:10:25&#43;02:00</updated>
+    <subtitle type="html">jpalczewski place in the internet. Variety of content guaranteed</subtitle>
+    <updated>2020-08-23T23:42:33&#43;02:00</updated>
     <id>https://jpalczewski.github.io/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/atom.xml" />
@@ -15,7 +15,7 @@
                 <email>jpalczewski(@t)gmail.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
-    <generator uri="https://gohugo.io/" version="0.73.0">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
         <entry>
             <title type="text">Reboot</title>
             <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/personal/reboot/" />
