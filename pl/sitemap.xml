@@ -2,6 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jpalczewski.github.io/pl/posts/101-dell-7567-and-graphics-settings/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/tags/dell/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/tags/fish/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/tags/gpu/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/"
+                />
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/tags/linux/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/posts/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+  </url><url>
+    <loc>https://jpalczewski.github.io/pl/tags/</loc>
+    <lastmod>2021-05-14T03:08:58+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://jpalczewski.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="https://jpalczewski.github.io/pl/tags/"
+                />
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/faq/czy-warto-studiowac-na-uwmie/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
   </url><url>
@@ -18,34 +62,8 @@
                 href="https://jpalczewski.github.io/pl/faq/"
                 />
   </url><url>
-    <loc>https://jpalczewski.github.io/pl/</loc>
-    <lastmod>2020-07-27T13:44:39+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://jpalczewski.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="https://jpalczewski.github.io/pl/"
-                />
-  </url><url>
     <loc>https://jpalczewski.github.io/pl/tags/recenzje/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
-  </url><url>
-    <loc>https://jpalczewski.github.io/pl/tags/</loc>
-    <lastmod>2020-07-27T13:44:39+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://jpalczewski.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="https://jpalczewski.github.io/pl/tags/"
-                />
   </url><url>
     <loc>https://jpalczewski.github.io/pl/tags/uwm/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
