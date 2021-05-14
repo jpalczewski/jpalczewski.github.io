@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
     <subtitle type="html">jpalczewski place in the internet. Variety of content guaranteed</subtitle>
-    <updated>2021-05-14T03:17:48&#43;02:00</updated>
+    <updated>2021-05-14T03:19:13&#43;02:00</updated>
     <id>https://jpalczewski.github.io/pl/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/pl/atom.xml" />
@@ -27,9 +27,7 @@
                     <uri>https://jpalczewski.github.io/pl/</uri>
                     <email>jpalczewski(@t)gmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">Ze względu na to ,że ostatnio coraz częściej grzebię przy ustawieniach karty graficznej czuję potrzebę podsumowania swoich doświadczeń.
-Ostrzeżenie. Mimo mylącego tytułu ten post będzie raczej zbiorem luźnych wniosków i podpowiedzi co powinno być w plikach, aniżeli poprowadzeniem za rękę.
-Układając w myślach akapit na temat mnogości rozwiązań, myślę że warto tutaj odesłać do (wiki z optimus managera)[https://github.</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">&lt;p&gt;Ze względu na to ,że ostatnio coraz częściej grzebię przy ustawieniach karty graficznej czuję potrzebę podsumowania swoich doświadczeń.&lt;/p&gt;</summary>
             
                 <content type="html">&lt;p&gt;Ze względu na to ,że ostatnio coraz częściej grzebię przy ustawieniach karty graficznej czuję potrzebę podsumowania swoich doświadczeń.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Ostrzeżenie.&lt;/strong&gt; Mimo mylącego tytułu ten post będzie raczej zbiorem luźnych wniosków i podpowiedzi co powinno być w plikach, aniżeli poprowadzeniem  za rękę.&lt;/p&gt;
@@ -176,8 +174,7 @@ xrandr --auto
 &lt;p&gt;Co na tym modelu jest jednoznaczne z pozbawieniem się wyjścia HDMI.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/pl/posts/101-dell-7567-and-graphics-settings/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
-</content>
+&lt;/section&gt;</content>
             
             
             
