@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://jpalczewski.github.io/pl/faq/czy-warto-studiowac-na-uwmie/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/faq/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
     <xhtml:link
@@ -20,9 +17,7 @@
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/faq/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
     <xhtml:link
@@ -35,14 +30,10 @@
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/tags/recenzje/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/tags/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
     <xhtml:link
@@ -55,14 +46,10 @@
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/tags/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/tags/uwm/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/tags/meta/</loc>
     <lastmod>2020-07-25T23:56:09+02:00</lastmod>
     <xhtml:link
@@ -75,9 +62,7 @@
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/tags/meta/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/personal/</loc>
     <lastmod>2020-07-25T23:56:09+02:00</lastmod>
     <xhtml:link
@@ -90,9 +75,7 @@
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/personal/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/personal/reboot/</loc>
     <lastmod>2020-07-25T23:56:09+02:00</lastmod>
     <xhtml:link
@@ -105,9 +88,7 @@
                 hreflang="pl"
                 href="https://jpalczewski.github.io/pl/personal/reboot/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/pl/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -120,5 +101,4 @@
                 href="https://jpalczewski.github.io/pl/categories/"
                 />
   </url>
-  
 </urlset>

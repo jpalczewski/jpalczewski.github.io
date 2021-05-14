@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://jpalczewski.github.io/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
@@ -16,9 +15,7 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/categories/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
     <xhtml:link
@@ -31,14 +28,10 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/categories/efforts/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/faq/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
     <xhtml:link
@@ -51,19 +44,13 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/faq/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/tags/kvm/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/tags/lvm/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/tags/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
     <xhtml:link
@@ -76,19 +63,13 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/tags/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/tags/vagrant/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/</loc>
     <lastmod>2020-08-23T23:42:18+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/tags/meta/</loc>
     <lastmod>2020-07-25T23:56:09+02:00</lastmod>
     <xhtml:link
@@ -101,9 +82,7 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/tags/meta/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/personal/</loc>
     <lastmod>2020-07-25T23:56:09+02:00</lastmod>
     <xhtml:link
@@ -116,9 +95,7 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/personal/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/personal/reboot/</loc>
     <lastmod>2020-07-25T23:56:09+02:00</lastmod>
     <xhtml:link
@@ -131,11 +108,8 @@
                 hreflang="en"
                 href="https://jpalczewski.github.io/personal/reboot/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpalczewski.github.io/about/</loc>
     <lastmod>2020-07-27T13:44:39+02:00</lastmod>
   </url>
-  
 </urlset>

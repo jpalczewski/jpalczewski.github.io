@@ -10,7 +10,7 @@
         <title>jpalczewski blog</title>
         <link>https://jpalczewski.github.io/pl/</link>
         <description>jpalczewski place in the internet. Variety of content guaranteed</description>
-        <generator>Hugo 0.74.3 https://gohugo.io/</generator>
+        <generator>Hugo 0.83.1 https://gohugo.io/</generator>
         
             <language>en</language>
         
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Sun, 23 Aug 2020 23:43:25 &#43;0200</lastBuildDate>
+        <lastBuildDate>Fri, 14 May 2021 03:09:41 &#43;0200</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://jpalczewski.github.io/pl/rss.xml" />
         
