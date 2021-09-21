@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
     <subtitle type="html">jpalczewski place in the internet. Variety of content guaranteed</subtitle>
-    <updated>2021-09-21T11:58:11&#43;02:00</updated>
+    <updated>2021-09-21T12:02:28&#43;02:00</updated>
     <id>https://jpalczewski.github.io/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/atom.xml" />
@@ -20,15 +20,14 @@
             <title type="text">Godot pre-commit hook on Windows - no more commits with debug mode enabled</title>
             <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/faq/godot-pre-commit-hook/" />
             <id>https://jpalczewski.github.io/faq/godot-pre-commit-hook/</id>
-            <updated>2021-09-21T11:56:02&#43;02:00</updated>
+            <updated>2021-09-21T12:02:12&#43;02:00</updated>
             <published>2021-09-21T09:54:38&#43;02:00</published>
             <author>
                     <name>Jacek Palczewski</name>
                     <uri>https://jpalczewski.github.io/</uri>
                     <email>jpalczewski(@t)gmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">A few months ago, friend of mine1 asked on Discord &amp;ldquo;Does someone wanna to participate in a game jam?&amp;rdquo;. At first, I was like &amp;ldquo;wtf&amp;rdquo;, however following thoughts were &amp;ldquo;Yes, I wanna to do something creative in my life&amp;rdquo;.
-By accident, we won it, and now I&amp;rsquo;m taking part in development process and we are preparing a release of Martial Law on Steam and Microsoft Store edition — UWP version released there is going to be released on Xbox only2</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">&lt;p&gt;A few months ago, friend of mine&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; asked on Discord &amp;ldquo;Does someone wanna to participate in a game jam?&amp;rdquo;. At first, I was like &amp;ldquo;wtf&amp;rdquo;, however following thoughts were &amp;ldquo;Yes, I wanna to do something creative in my life&amp;rdquo;.&lt;/p&gt;</summary>
             
                 <content type="html">&lt;p&gt;A few months ago, friend of mine&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; asked on Discord &amp;ldquo;Does someone wanna to participate in a game jam?&amp;rdquo;. At first, I was like &amp;ldquo;wtf&amp;rdquo;, however following thoughts were &amp;ldquo;Yes, I wanna to do something creative in my life&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;By accident, &lt;a href=&#34;https://freemmorpg.top/visual-novel-martial-law-tells-about-the-horrors-of-communism-in-poland-igromania/&#34;&gt;we won it&lt;/a&gt;, and now I&amp;rsquo;m taking part in development process and we are preparing &lt;a href=&#34;https://store.steampowered.com/app/1712390/Martial_Law?utm_source=7809&#34;&gt;a release of Martial Law on Steam&lt;/a&gt; and &lt;a href=&#34;https://www.microsoft.com/pl-pl/p/martial-law/9p4r8zqxn589&#34;&gt;Microsoft Store edition&lt;/a&gt; — UWP version released there is going to be released on Xbox only&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -93,8 +92,7 @@ By accident, we won it, and now I&amp;rsquo;m taking part in development process
 &lt;p&gt;My git is from &lt;a href=&#34;https://scoop.sh/&#34;&gt;scoop&lt;/a&gt;. Ported which nor where from PowerShell haven&amp;rsquo;t found any bash on my computer, so I assume that might be built in from git itself.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/section&gt;
-</content>
+&lt;/section&gt;</content>
             
             
             
