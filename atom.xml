@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">jpalczewski blog</title>
     <subtitle type="html">jpalczewski place in the internet. Variety of content guaranteed</subtitle>
-    <updated>2021-05-14T03:19:12&#43;02:00</updated>
+    <updated>2021-09-21T11:58:11&#43;02:00</updated>
     <id>https://jpalczewski.github.io/</id>
     <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://jpalczewski.github.io/atom.xml" />
@@ -15,12 +15,144 @@
                 <email>jpalczewski(@t)gmail.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
-    <generator uri="https://gohugo.io/" version="0.83.1">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.88.1">Hugo</generator>
+        <entry>
+            <title type="text">Godot pre-commit hook on Windows - no more commits with debug mode enabled</title>
+            <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/faq/godot-pre-commit-hook/" />
+            <id>https://jpalczewski.github.io/faq/godot-pre-commit-hook/</id>
+            <updated>2021-09-21T11:56:02&#43;02:00</updated>
+            <published>2021-09-21T09:54:38&#43;02:00</published>
+            <author>
+                    <name>Jacek Palczewski</name>
+                    <uri>https://jpalczewski.github.io/</uri>
+                    <email>jpalczewski(@t)gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">A few months ago, friend of mine1 asked on Discord &amp;ldquo;Does someone wanna to participate in a game jam?&amp;rdquo;. At first, I was like &amp;ldquo;wtf&amp;rdquo;, however following thoughts were &amp;ldquo;Yes, I wanna to do something creative in my life&amp;rdquo;.
+By accident, we won it, and now I&amp;rsquo;m taking part in development process and we are preparing a release of Martial Law on Steam and Microsoft Store edition — UWP version released there is going to be released on Xbox only2</summary>
+            
+                <content type="html">&lt;p&gt;A few months ago, friend of mine&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; asked on Discord &amp;ldquo;Does someone wanna to participate in a game jam?&amp;rdquo;. At first, I was like &amp;ldquo;wtf&amp;rdquo;, however following thoughts were &amp;ldquo;Yes, I wanna to do something creative in my life&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;By accident, &lt;a href=&#34;https://freemmorpg.top/visual-novel-martial-law-tells-about-the-horrors-of-communism-in-poland-igromania/&#34;&gt;we won it&lt;/a&gt;, and now I&amp;rsquo;m taking part in development process and we are preparing &lt;a href=&#34;https://store.steampowered.com/app/1712390/Martial_Law?utm_source=7809&#34;&gt;a release of Martial Law on Steam&lt;/a&gt; and &lt;a href=&#34;https://www.microsoft.com/pl-pl/p/martial-law/9p4r8zqxn589&#34;&gt;Microsoft Store edition&lt;/a&gt; — UWP version released there is going to be released on Xbox only&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Whether gamedev wasn&amp;rsquo;t an attractive field for me in IT field, I like to do everything that isn&amp;rsquo;t feel like true gamedev — I will try to summarize all effects worth sharing on this blog in following weeks.&lt;/p&gt;
+&lt;h2 id=&#34;case&#34;&gt;case&lt;/h2&gt;
+&lt;p&gt;Your workflow process heavily depends on debug mode enabled in Godot, however you don&amp;rsquo;t want to commit it&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. In technical terms, we don&amp;rsquo;t want line&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;na&#34;&gt;debug_mode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;to appear in &lt;code&gt;project.godot&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;research&#34;&gt;research&lt;/h2&gt;
+&lt;h3 id=&#34;debug-i-never-heard-something-like-that&#34;&gt;Debug? I never heard something like that&lt;/h3&gt;
+&lt;p&gt;Approach that was an option, but I haven&amp;rsquo;t chosen it due to possibility of intentional testing of debug release with our beloved beta-testers&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;. Scripts in CI/CD env&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; may just use &lt;code&gt;sed&lt;/code&gt; to always build a production build&lt;/p&gt;
+&lt;h3 id=&#34;debug-gtfo&#34;&gt;Debug? GTFO&lt;/h3&gt;
+&lt;p&gt;Another way that I chose there is git pre-commit hook. It might be irritating at first, however it seems like a better solution — as you can see by frequency of posting there I&amp;rsquo;m rather lazy person, so this allows to easily bypass it whenever I want it.&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Add following snippet as &lt;code&gt;.git/hook/pre-commit&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; grep -Fxq &lt;span class=&#34;s2&#34;&gt;&amp;#34;debug_mode=true&amp;#34;&lt;/span&gt; project.godot&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; Debug mode is enabled, commit rejected
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Disable it if you wanna have happy testers :-)&amp;#34;&lt;/span&gt; 
+    &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;I&amp;rsquo;m running it on Windows and unexpectedly — it works&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Stay tuned for future gamedev-maybe-related tricks!&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Arek, CEO of &lt;a href=&#34;https://fixer.group/&#34;&gt;FIXER Group&lt;/a&gt;.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;And it might be a &lt;strong&gt;very&lt;/strong&gt; painful process due to low popularity of that target.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;In our case it is a continuous deployment, that publish code from branch to steam and debug-dependent solutions which speed up developing process and ruins end-user experience.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;If you are interested in what ruins an end-user experience - this is a cutscene that runs in 12x speed. I saw it too many times.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Its Jenkins here.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;My git is from &lt;a href=&#34;https://scoop.sh/&#34;&gt;scoop&lt;/a&gt;. Ported which nor where from PowerShell haven&amp;rsquo;t found any bash on my computer, so I assume that might be built in from git itself.&amp;#160;&lt;a href=&#34;https://jpalczewski.github.io/faq/godot-pre-commit-hook/#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/categories/snippets/" term="snippets" label="snippets" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/bash/" term="bash" label="bash" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/windows/" term="windows" label="windows" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/git/" term="git" label="git" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/godot/" term="godot" label="godot" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://jpalczewski.github.io/tags/martial-law/" term="Martial Law" label="Martial Law" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Will vagrant, KVM and LVM blend in 2020?</title>
             <link rel="alternate" type="text/html" href="https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/" />
             <id>https://jpalczewski.github.io/faq/will-vagrant-lvm-kvm-blend-in-2020/</id>
-            <updated>2020-08-23T23:42:18&#43;02:00</updated>
+            <updated>2021-05-14T03:19:51&#43;02:00</updated>
             <published>2020-08-22T20:59:07&#43;02:00</published>
             <author>
                     <name>Jacek Palczewski</name>

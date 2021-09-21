@@ -10,7 +10,7 @@
         <title>jpalczewski blog</title>
         <link>https://jpalczewski.github.io/pl/</link>
         <description>jpalczewski place in the internet. Variety of content guaranteed</description>
-        <generator>Hugo 0.83.1 https://gohugo.io/</generator>
+        <generator>Hugo 0.88.1 https://gohugo.io/</generator>
         
             <language>en</language>
         
@@ -23,13 +23,13 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 14 May 2021 03:19:13 &#43;0200</lastBuildDate>
+        <lastBuildDate>Tue, 21 Sep 2021 11:58:11 &#43;0200</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://jpalczewski.github.io/pl/rss.xml" />
         
         
             <item>
-                <title>101: Dell 7567 i podejścia do grafiki pod Linuxem</title>
+                <title>Dell 101: Dell 7567 i podejścia do grafiki pod Linuxem</title>
                 <link>https://jpalczewski.github.io/pl/posts/101-dell-7567-and-graphics-settings/</link>
                 <guid isPermaLink="true">https://jpalczewski.github.io/pl/posts/101-dell-7567-and-graphics-settings/</guid>
                 <pubDate>Sun, 09 May 2021 19:57:38 &#43;0200</pubDate>
@@ -50,7 +50,7 @@
 &lt;p&gt;Wady? Uśpienie komputera ubijało sterownik i całe Bumblebee zdychało, przez co nawet restart systemu był problematyczny(oczywiście, _workaround_istniał - &lt;code&gt;sudo systemctl isolate multi-user.target&lt;/code&gt; i wymuszenie rebootu)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -86,36 +86,36 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fish&#34; data-lang=&#34;fish&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; dss 
-    &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; __is_nvidia_loaded
-        &lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; -l  lsmod &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;lsmod | grep nvidia | wc -l&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$lsmod&lt;/span&gt;  -eq 0
-            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;  0
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fish&#34; data-lang=&#34;fish&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;dss&lt;/span&gt; 
+    &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__is_nvidia_loaded&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;-l&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;lsmod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;lsmod | grep nvidia | wc -l&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$lsmod&lt;/span&gt;  &lt;span class=&#34;na&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
         &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; 1
+            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
         &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
     &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
 
 
     &lt;span class=&#34;k&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$argv&lt;/span&gt;
         &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; single
-            xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output VIRTUAL1 --off --output VIRTUAL2 --off
-            &lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;pgrep intel&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;nf&#34;&gt;xrandr&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; eDP1 &lt;span class=&#34;na&#34;&gt;--primary&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--mode&lt;/span&gt; 1920x1080 &lt;span class=&#34;na&#34;&gt;--pos&lt;/span&gt; 0x0 &lt;span class=&#34;na&#34;&gt;--rotate&lt;/span&gt; normal &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; DP1 &lt;span class=&#34;na&#34;&gt;--off&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; VIRTUAL1 &lt;span class=&#34;na&#34;&gt;--off&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; VIRTUAL2 &lt;span class=&#34;na&#34;&gt;--off&lt;/span&gt;
+            &lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;pgrep&lt;/span&gt; intel&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
         &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; dual
-            optirun intel-virtual-output
-            xrandr --output eDP1 --primary --mode 1920x1080 --pos 1200x840 --rotate normal --output DP1 --off --output VIRTUAL1 --mode VIRTUAL1.446-1920x1200 --pos 0x0 --rotate left --output VIRTUAL2 --off
+            &lt;span class=&#34;nf&#34;&gt;optirun&lt;/span&gt; intel&lt;span class=&#34;na&#34;&gt;-virtual-output&lt;/span&gt;
+            &lt;span class=&#34;nf&#34;&gt;xrandr&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; eDP1 &lt;span class=&#34;na&#34;&gt;--primary&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--mode&lt;/span&gt; 1920x1080 &lt;span class=&#34;na&#34;&gt;--pos&lt;/span&gt; 1200x840 &lt;span class=&#34;na&#34;&gt;--rotate&lt;/span&gt; normal &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; DP1 &lt;span class=&#34;na&#34;&gt;--off&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; VIRTUAL1 &lt;span class=&#34;na&#34;&gt;--mode&lt;/span&gt; VIRTUAL1.&lt;span class=&#34;m&#34;&gt;446&lt;/span&gt;-1920x1200 &lt;span class=&#34;na&#34;&gt;--pos&lt;/span&gt; 0x0 &lt;span class=&#34;na&#34;&gt;--rotate&lt;/span&gt; left &lt;span class=&#34;na&#34;&gt;--output&lt;/span&gt; VIRTUAL2 &lt;span class=&#34;na&#34;&gt;--off&lt;/span&gt;
         &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;status
-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; intel pid: &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;pgrep intel&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; -n  &lt;span class=&#34;s2&#34;&gt;&amp;#34;nvidia modeset:&amp;#34;&lt;/span&gt; 
-            __is_nvidia_loaded
-            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$status&lt;/span&gt; -eq 0
+&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; intel pid: &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;pgrep&lt;/span&gt; intel&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;-n&lt;/span&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;nvidia modeset:&amp;#34;&lt;/span&gt; 
+            &lt;span class=&#34;nf&#34;&gt;__is_nvidia_loaded&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$status&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;-eq&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
                 &lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; drivers possibly unloaded
             &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
                 &lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; drivers loaded
             &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
 
     &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
-    nitrogen --restore
+    &lt;span class=&#34;nf&#34;&gt;nitrogen&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;--restore&lt;/span&gt;
 
 
 &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
@@ -125,7 +125,7 @@
 &lt;/div&gt;&lt;h2 id=&#34;naiwnie&#34;&gt;Naiwnie&lt;/h2&gt;
 &lt;h3 id=&#34;wstawka-w-xorgconfd&#34;&gt;Wstawka w &lt;code&gt;xorg.conf.d&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;Po godzinach prób i błędów wyszło - tylko co?&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;  Section &amp;quot;OutputClass&amp;quot;                                                     
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;  Section &amp;quot;OutputClass&amp;quot;                                                     
       Identifier &amp;quot;intel&amp;quot;                                                    
       MatchDriver &amp;quot;i915&amp;quot;                                                    
       Driver &amp;quot;modesetting&amp;quot;                                                  
@@ -144,7 +144,7 @@
 &lt;p&gt;czyli plik &lt;code&gt;/usr/share/sddm/scripts/Xsetup&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -154,7 +154,7 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/sh
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/sh
 &lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# Było, ale zostawiam na wszelki wypadek.&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;#setxkbmap -layout pl -option  caps:none&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;#setxkbmap -layout pl -option shift:both_capslock_cancel&lt;/span&gt;
