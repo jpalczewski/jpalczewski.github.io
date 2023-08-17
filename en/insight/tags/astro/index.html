@@ -112,10 +112,20 @@
 </ul>
 </li>
 </ul>
+<h3 id="example-of-deploying-astro-blog-to-github-pages">Example of deploying astro blog to github pages</h3>
+<p><a href="https://github.com/jpalczewski/entuzjazm/blob/6bd91f3a1d60714ab80836c2125b2a654d3a1b63/.github/workflows/deploy.yml">There is my example</a> of working github action.</p>
+<p>Things worth to note:</p>
+<ul>
+<li>By using actions to install node and pnpm there is huge time savings due to caching.</li>
+<li>There should be a <code>.nojekyll</code> file in blog root - otherwise css is messed up<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup></li>
+</ul>
 <section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-1">
 <p>Is it a good idea? One of tutorials on integrating utterances with astro doesn’t have it either. I hope not to see it as a opinion whether this is good option, but someday I will give it a try. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p><a href="https://stackoverflow.com/questions/74489844/astro-js-deployment-media-files-not-rendering">Source</a> <a href="#user-content-fnref-2" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
 </li>
 </ol>
 </section>
