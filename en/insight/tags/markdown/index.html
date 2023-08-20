@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="Astro v2.10.12">
     <meta name="google-site-verification" content="eCj5eDvSvCQbudfe1BSUFP9TO89cePOHtUOMJ2l408k">
-    <title>Insights</title>
+    <title></title>
   <link rel="stylesheet" href="/_astro/insight.84e15af9.css" /><script type="module" src="/_astro/page.f7ec53a3.js"></script>
 <script>!(function(w,p,f,c){c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[])})(window,'partytown','forward');/* Partytown 0.7.6 - MIT builder.io */
 !function(t,e,n,i,r,o,a,d,s,c,p,l){function u(){l||(l=1,"/"==(a=(o.lib||"/~partytown/")+(o.debug?"debug/":""))[0]&&(s=e.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(f,1e4),e.addEventListener("pt0",w),r?h(1):n.serviceWorker?n.serviceWorker.register(a+(o.swPath||"partytown-sw.js"),{scope:a}).then((function(t){t.active?h():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&h()}))}),console.error):f())))}function h(t){c=e.createElement(t?"script":"iframe"),t||(c.setAttribute("style","display:block;width:0;height:0;border:0;visibility:hidden"),c.setAttribute("aria-hidden",!0)),c.src=a+"partytown-"+(t?"atomics.js?v=0.7.6":"sandbox-sw.html?"+Date.now()),e.body.appendChild(c)}function f(n,r){for(w(),i==t&&(o.forward||[]).map((function(e){delete t[e.split(".")[0]]})),n=0;n<s.length;n++)(r=e.createElement("script")).innerHTML=s[n].innerHTML,e.head.appendChild(r);c&&c.parentNode.removeChild(c)}function w(){clearTimeout(d)}o=t.partytown||{},i==t&&(o.forward||[]).map((function(e){p=t,e.split(".").map((function(e,n,i){p=p[i[n]]=n+1<i.length?"push"==i[n+1]?[]:p[i[n]]||{}:function(){(t._ptf=t._ptf||[]).push(i,arguments)}}))})),"complete"==e.readyState?u():(t.addEventListener("DOMContentLoaded",u),t.addEventListener("load",u))}(window,document,navigator,top,window.crossOriginIsolated);</script></head>
@@ -31,6 +31,13 @@
     </ul>
   </div>
 </nav>
+    
+  <div class="grid justify-center">
+    <div class="mx-auto w-full container">
+      <h2 class="text-lg">
+        Insights tagged with <span class="font-mono">#markdown</span>:
+      </h2>
+    </div>
     <article class="bg-secondary container px-4 mb-4 prose mx-auto w-full">
   <header class="mb-4 lg:mb-6">
     <h1 class="mb-0 pb-0 mt-1 pt-4">
@@ -104,156 +111,9 @@
             </li>
       </ul>
     </div>
-</article><article class="bg-secondary container px-4 mb-4 prose mx-auto w-full">
-  <header class="mb-4 lg:mb-6">
-    <h1 class="mb-0 pb-0 mt-1 pt-4">
-      <a class="no-underline" href="/en/insight/2023/08/implication-of-deploying-github-page-to-another-repo">Implication of deploying github page to another repo</a>
-    </h1>
-    <p class="mt-0 italic mb-0 pb-0">
-      Published: <time datetime="2023-08-17T13:39:43.000Z">
-        13:39:43
-        17/08/2023
-      </time>
-    </p>
-    <div class="mt-0 pt-0">
-  <a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/astro">
-        #astro
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/github">
-        #github
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/cd">
-        #cd
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/github-actions">
-        #github-actions
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/devops">
-        #devops
-      </a>
-</div>
-  </header>
-
-  <p>Years ago I had a thought to seperate repo with hugo theme and the one with rendered page due to possible use of <a href="https://utteranc.es/">utterances</a><sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>. There are my experiences with both approaches:</p>
-<h2 id="deploying-page-to-the-same-repo">deploying page to the same repo</h2>
-<ul>
-<li>Astro docs provides a <a href="https://docs.astro.build/en/guides/deploy/github/">good starting point</a></li>
-</ul>
-<h2 id="deploying-site-elsewhere">deploying site elsewhere</h2>
-<ul>
-<li>There is a a <a href="https://cpina.github.io/push-to-another-repository-docs/index.html">convinient github-action</a></li>
-<li>Can you reuse <code>withastro/action@v0</code> to build it? You might, but it is designed for scenario above, this action creates an <a href="https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts">artifact</a> that is consumed by <code>actions/deploy-pages@v1</code> action.
-<ul>
-<li>tl;dr: there are better ways</li>
-</ul>
-</li>
-</ul>
-<h3 id="example-of-deploying-astro-blog-to-github-pages">Example of deploying astro blog to github pages</h3>
-<p><a href="https://github.com/jpalczewski/entuzjazm/blob/6bd91f3a1d60714ab80836c2125b2a654d3a1b63/.github/workflows/deploy.yml">There is my example</a> of working github action.</p>
-<p>Things worth to note:</p>
-<ul>
-<li>By using actions to install node and pnpm there is huge time savings due to caching.</li>
-<li>There should be a <code>.nojekyll</code> file in blog root - otherwise css is messed up<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup></li>
-</ul>
-<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
-<ol>
-<li id="user-content-fn-1">
-<p>Is it a good idea? One of tutorials on integrating utterances with astro doesn’t have it either. I hope not to see it as a opinion whether this is good option, but someday I will give it a try. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-<li id="user-content-fn-2">
-<p><a href="https://stackoverflow.com/questions/74489844/astro-js-deployment-media-files-not-rendering">Source</a> <a href="#user-content-fnref-2" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-</ol>
-</section>
-  
-  
-  
-</article><article class="bg-secondary container px-4 mb-4 prose mx-auto w-full">
-  <header class="mb-4 lg:mb-6">
-    <h1 class="mb-0 pb-0 mt-1 pt-4">
-      <a class="no-underline" href="/en/insight/2023/08/multiple-post-types-and-languages-in-astro">Multiple post types and languages in astro</a>
-    </h1>
-    <p class="mt-0 italic mb-0 pb-0">
-      Published: <time datetime="2023-08-15T14:23:43.000Z">
-        14:23:43
-        15/08/2023
-      </time>
-    </p>
-    <div class="mt-0 pt-0">
-  <a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/astro">
-        #astro
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/typescript">
-        #typescript
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/entuzjazm">
-        #entuzjazm
-      </a>
-</div>
-  </header>
-
-  <p>As mentioned in a related insight, the backend of this blog is written in <a href="https://astro.build/">astro</a><sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
-<p>I have merged two things that I am proud of:</p>
-<ul>
-<li>Content collections: Schema-based posts provides excellent flexibility<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup></li>
-<li>Internationalization: Certain posts will target a Polish audience due to their nature, some might be bilingual, while technical posts will primarily be in English.</li>
-</ul>
-<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
-<ol>
-<li id="user-content-fn-1">
-<p>After an extensive research phase, I found that Astro was the ideal choice. Its robust TypeScript support and positive feedback on Reddit convinced me. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-<li id="user-content-fn-2">
-<p>This post is a test-case for those hand-made addons. <a href="#user-content-fnref-2" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-</ol>
-</section>
-  <hr>
-  <div class="bg-primary text-primary-content mx-auto">
-      <h4 class="text-primary-content font-normal">Related insights:</h4>
-      <ul>
-        <li>
-              <a class="link text-primary-content no-underline font-normal hover:underline" href="/en/insight/2023/08/hello-astro">
-                Hello, astro!
-              </a>
-            </li>
-      </ul>
-    </div>
-  <div class=" mx-auto">
-      <h4 class="font-normal">Addresses referenced in this insight:</h4>
-      <ul>
-        <li>
-              <a class="link no-underline hover:underline font-normal" href="https://github.com/jpalczewski/entuzjazm">
-                Github repo with astro code
-              </a>
-            </li>
-      </ul>
-    </div>
-</article><article class="bg-secondary container px-4 mb-4 prose mx-auto w-full">
-  <header class="mb-4 lg:mb-6">
-    <h1 class="mb-0 pb-0 mt-1 pt-4">
-      <a class="no-underline" href="/en/insight/2023/08/hello-astro">Hello, astro!</a>
-    </h1>
-    <p class="mt-0 italic mb-0 pb-0">
-      Published: <time datetime="2023-08-14T14:35:00.000Z">
-        14:35:00
-        14/08/2023
-      </time>
-    </p>
-    <div class="mt-0 pt-0">
-  
-</div>
-  </header>
-
-  <p>New blogging engine, new beginning. Isn’t it? This time with hand-made<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup> scheme<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
-<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
-<ol>
-<li id="user-content-fn-1">
-<p>Thus over complicated. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-<li id="user-content-fn-2">
-<p>Deeply inspired by Obsidian type of linked thinking and past experiences with soup.io <a href="#user-content-fnref-2" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-</ol>
-</section>
-  
-  
-  
 </article>
+  </div>
+
     <footer class="footer p-4 bg-primary text-primary-content justify-items-end container mx-auto">
   <div class="px-5">
     <p>
