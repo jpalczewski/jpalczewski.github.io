@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="inba">
+<html lang="pl" data-theme="inba">
   <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script async type="text/partytown" src="https://analytics.umami.is/script.js" data-website-id="65224a3b-c6d2-4d0e-90f2-85508d3c0a79"></script>
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="Astro v2.10.12">
-    <title></title>
-  <link rel="stylesheet" href="/_astro/insight.84e15af9.css" /><script type="module" src="/_astro/page.f7ec53a3.js"></script>
+    <title>test</title>
+  <link rel="stylesheet" href="/_astro/insight.84e15af9.css" />
+<link rel="stylesheet" href="/_astro/personal.68cd2173.css" /><script type="module">class a extends HTMLElement{connectedCallback(){this.videoId=this.getAttribute("videoid");let t=this.querySelector(".lty-playbtn");if(this.playLabel=t&&t.textContent.trim()||this.getAttribute("playlabel")||"Play",this.style.backgroundImage||(this.posterUrl=`https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`,a.addPrefetch("preload",this.posterUrl,"image"),this.style.backgroundImage=`url("${this.posterUrl}")`),t||(t=document.createElement("button"),t.type="button",t.classList.add("lty-playbtn"),this.append(t)),!t.textContent){const e=document.createElement("span");e.className="lyt-visually-hidden",e.textContent=this.playLabel,t.append(e)}this.addEventListener("pointerover",a.warmConnections,{once:!0}),this.addEventListener("click",e=>this.addIframe())}static addPrefetch(t,e,c){const n=document.createElement("link");n.rel=t,n.href=e,c&&(n.as=c),document.head.append(n)}static warmConnections(){a.preconnected||(a.addPrefetch("preconnect","https://www.youtube-nocookie.com"),a.addPrefetch("preconnect","https://www.google.com"),a.addPrefetch("preconnect","https://googleads.g.doubleclick.net"),a.addPrefetch("preconnect","https://static.doubleclick.net"),a.preconnected=!0)}addIframe(){const t=new URLSearchParams(this.getAttribute("params")||[]);t.append("autoplay","1");const e=document.createElement("iframe");e.width=560,e.height=315,e.title=this.playLabel,e.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",e.allowFullscreen=!0,e.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(this.videoId)}?${t.toString()}`,this.append(e),this.classList.add("lyt-activated"),this.querySelector("iframe").focus()}}customElements.define("lite-youtube",a);
+</script>
+<script type="module" src="/_astro/page.f7ec53a3.js"></script>
 <script>!(function(w,p,f,c){c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[])})(window,'partytown','forward');/* Partytown 0.7.6 - MIT builder.io */
 !function(t,e,n,i,r,o,a,d,s,c,p,l){function u(){l||(l=1,"/"==(a=(o.lib||"/~partytown/")+(o.debug?"debug/":""))[0]&&(s=e.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(f,1e4),e.addEventListener("pt0",w),r?h(1):n.serviceWorker?n.serviceWorker.register(a+(o.swPath||"partytown-sw.js"),{scope:a}).then((function(t){t.active?h():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&h()}))}),console.error):f())))}function h(t){c=e.createElement(t?"script":"iframe"),t||(c.setAttribute("style","display:block;width:0;height:0;border:0;visibility:hidden"),c.setAttribute("aria-hidden",!0)),c.src=a+"partytown-"+(t?"atomics.js?v=0.7.6":"sandbox-sw.html?"+Date.now()),e.body.appendChild(c)}function f(n,r){for(w(),i==t&&(o.forward||[]).map((function(e){delete t[e.split(".")[0]]})),n=0;n<s.length;n++)(r=e.createElement("script")).innerHTML=s[n].innerHTML,e.head.appendChild(r);c&&c.parentNode.removeChild(c)}function w(){clearTimeout(d)}o=t.partytown||{},i==t&&(o.forward||[]).map((function(e){p=t,e.split(".").map((function(e,n,i){p=p[i[n]]=n+1<i.length?"push"==i[n+1]?[]:p[i[n]]||{}:function(){(t._ptf=t._ptf||[]).push(i,arguments)}}))})),"complete"==e.readyState?u():(t.addEventListener("DOMContentLoaded",u),t.addEventListener("load",u))}(window,document,navigator,top,window.crossOriginIsolated);</script></head>
   <body>
     <nav class="navbar bg-base-100">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl" href="/en/insight/">jpalczewski blog</a>
+    <a class="btn btn-ghost normal-case text-xl" href="/pl/insight/">jpalczewski blog</a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       <li class="tooltip tooltip-left" data-tip="Short, random posts.">
-        <a href="/en/insight/">
+        <a href="/pl/insight/">
           Insights
         </a>
       </li>
       <li class="tooltip tooltip-left" data-tip="Personal thoughts or experiences.">
-        <a href="/en/personal/">
+        <a href="/pl/personal/">
           Personal
         </a>
       </li>
@@ -31,63 +34,30 @@
   </div>
 </nav>
     
-  <div class="grid justify-center">
-    <div class="mx-auto w-full container">
-      <h2 class="text-lg">
-        Insights tagged with <span class="font-mono">#typescript</span>:
-      </h2>
-    </div>
-    <article class="bg-secondary container px-4 mb-4 prose mx-auto w-full">
+  <article class="bg-secondary container px-4 mb-4 prose mx-auto w-full">
   <header class="mb-4 lg:mb-6">
     <h1 class="mb-0 pb-0 mt-1 pt-4">
-      <a class="no-underline" href="/en/insight/2023/08/multiple-post-types-and-languages-in-astro">Multiple post types and languages in astro</a>
+      <a class="no-underline" href="/pl/personal/2023/08/test">test</a>
     </h1>
     <p class="mt-0 italic mb-0 pb-0">
-      Published: <time datetime="2023-08-15T12:23:43.000Z">
+      Published: <time datetime="2023-08-08T12:23:43.000Z">
         12:23:43
-        15/08/2023
+        8.08.2023
       </time>
     </p>
     <div class="mt-0 pt-0">
-  <a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/astro">
-        #astro
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/typescript">
-        #typescript
-      </a><a class="no-underline px-1 font-normal font-mono" href="/en/insight/tags/entuzjazm">
-        #entuzjazm
-      </a>
+  
 </div>
   </header>
 
-  <p>As mentioned in a related insight, the backend of this blog is written in <a href="https://astro.build/">astro</a><sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
-<p>I have merged two things that I am proud of:</p>
-<ul>
-<li>Content collections: Schema-based posts provides excellent flexibility<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup></li>
-<li>Internationalization: Certain posts will target a Polish audience due to their nature, some might be bilingual, while technical posts will primarily be in English.</li>
-</ul>
-<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
-<ol>
-<li id="user-content-fn-1">
-<p>After an extensive research phase, I found that Astro was the ideal choice. Its robust TypeScript support and positive feedback on Reddit convinced me. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-<li id="user-content-fn-2">
-<p>This post is a test-case for those hand-made addons. <a href="#user-content-fnref-2" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
-</li>
-</ol>
-</section>
+  <p>Test test</p>
+
+  <div class="pv-1 mv-1">
+        <lite-youtube videoid="9lFORXa6sHA" style="background-image: url('https://i.ytimg.com/vi/9lFORXa6sHA/hqdefault.jpg');"></lite-youtube>
+      </div>
   <hr>
-  <div class="bg-primary text-primary-content mx-auto">
-      <h4 class="text-primary-content font-normal">Related insights:</h4>
-      <ul>
-        <li>
-              <a class="link text-primary-content no-underline font-normal hover:underline" href="/en/insight/2023/08/hello-astro">
-                Hello, astro!
-              </a>
-            </li>
-      </ul>
-    </div>
   <div class=" mx-auto">
-      <h4 class="font-normal">Addresses referenced in this insight:</h4>
+      <h4 class="font-normal">Test:</h4>
       <ul>
         <li>
               <a class="link no-underline hover:underline font-normal" href="https://github.com/jpalczewski/entuzjazm">
@@ -97,7 +67,6 @@
       </ul>
     </div>
 </article>
-  </div>
 
     <footer class="footer p-4 bg-primary text-primary-content justify-items-end container mx-auto">
   <div class="px-5">
