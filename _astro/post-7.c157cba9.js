@@ -1,4 +1,4 @@
-import{c as l,s as p,r}from"./_astro_assets.355ebe8b.js";import{u as c}from"./ProjectList.92e4d5f1.js";import"./index.7db25182.js";/* empty css                          */const e={};function i(n){return n.replaceAll(/__ASTRO_IMAGE_="([^"]+)"/gm,(t,s)=>p({src:e[s].src,...e[s].attributes}))}const o=i(`<p>My hyperfixation havbe recently took me over and I’m now coding alot.</p>
+import{c as l,s as p,r,m as c}from"./_astro_assets.0dbbc1e3.js";import{u as i}from"./ProjectList.7a1f4a10.js";import"./index.7db25182.js";/* empty css                          */const e={};function E(n){return n.replaceAll(/__ASTRO_IMAGE_="([^"]+)"/gm,(t,s)=>p({src:e[s].src,...e[s].attributes}))}const o=E(`<p>My hyperfixation havbe recently took me over and I’m now coding alot.</p>
 <p>To achieve interactivity in Projects tab I plan to use Svelte, while sticking to Astro in other areas.</p>
 <p>In order to maintain same effect of tags<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup> in both context, I have created a separate css file:</p>
 <pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">@tailwind</span><span style="color: #E1E4E8"> base;</span></span>
@@ -39,7 +39,7 @@ import{c as l,s as p,r}from"./_astro_assets.355ebe8b.js";import{u as c}from"./Pr
 <p>Like those visible in top part of this insight. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
 </li>
 </ol>
-</section>`),E={title:"How to share tailwind classes between Astro and Svelte?",language:"en",date:"2023-09-06T20:48:05-02:00",tags:["svelte","astro","webdev","tailwind","css"]},y="/home/runner/work/entuzjazm/entuzjazm/src/content/insight/en/post-7.md",d=void 0;function b(){return`
+</section>`),y={title:"How to share tailwind classes between Astro and Svelte?",language:"en",date:"2023-09-06T20:48:05-02:00",tags:["svelte","astro","webdev","tailwind","css"]},d="/home/runner/work/entuzjazm/entuzjazm/src/content/insight/en/post-7.md",f=void 0;function b(){return`
 My hyperfixation havbe recently took me over and I'm now coding alot.
 
 To achieve interactivity in Projects tab I plan to use Svelte, while sticking to Astro in other areas.
@@ -91,4 +91,4 @@ And the same trick goes in Svelte:
 No messing with both \`svelte-preprocess\` and \`vitePreprocess\` in the same time needed.
 
 [^1]: Like those visible in top part of this insight.
-`}function v(){return o}function w(){return[{depth:2,slug:"footnote-label",text:"Footnotes"}]}const f=l((n,t,s)=>{const{layout:m,...a}=E;return a.file=y,a.url=d,r`${c(o)}`});f[Symbol.for("astro.needsHeadRendering")]=!0;export{f as Content,v as compiledContent,f as default,y as file,E as frontmatter,w as getHeadings,e as images,b as rawContent,d as url};
+`}function v(){return o}function w(){return[{depth:2,slug:"footnote-label",text:"Footnotes"}]}const x=l((n,t,s)=>{const{layout:m,...a}=y;return a.file=d,a.url=f,r`${c()}${i(o)}`});export{x as Content,v as compiledContent,x as default,d as file,y as frontmatter,w as getHeadings,e as images,b as rawContent,f as url};

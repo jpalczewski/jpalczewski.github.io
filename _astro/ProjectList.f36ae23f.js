@@ -1,0 +1,1 @@
+import{P as p}from"./ProjectList.7a1f4a10.js";import"./index.7db25182.js";export{p as default};
