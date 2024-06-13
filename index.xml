@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>jpalczewski blog</title>
+      <link>https://jpalczewski.github.io</link>
+      <description>Last 10 notes on jpalczewski blog</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>index</title>
+    <link>https://jpalczewski.github.io/en/</link>
+    <guid>https://jpalczewski.github.io/en/</guid>
+    <description>Author As usually seen on blogs, there must be a about-me page.</description>
+    <pubDate>Thu, 13 Jun 2024 12:42:38 GMT</pubDate>
+  </item><item>
+    <title>jpalczewski blog</title>
+    <link>https://jpalczewski.github.io/</link>
+    <guid>https://jpalczewski.github.io/</guid>
+    <description>Hi there! This site is bilingual, so choose wisely: English Polski.</description>
+    <pubDate>Thu, 13 Jun 2024 12:42:38 GMT</pubDate>
+  </item><item>
+    <title>Strona główna</title>
+    <link>https://jpalczewski.github.io/pl/</link>
+    <guid>https://jpalczewski.github.io/pl/</guid>
+    <description>Hej! Autor Czyli jak na każdego bloga przystało - strona O mnie Posty W ramach tego że noszę różne czapki kapelusze1, mam podział sekcji na dwa typy: tzw ...</description>
+    <pubDate>Thu, 13 Jun 2024 12:42:38 GMT</pubDate>
+  </item><item>
+    <title>Entuzjazm</title>
+    <link>https://jpalczewski.github.io/pl/projects/entuzjazm</link>
+    <guid>https://jpalczewski.github.io/pl/projects/entuzjazm</guid>
+    <description>Czyli projekt będący uogólnioną abstrakcją mojego podejścia do blogowania.</description>
+    <pubDate>Thu, 13 Jun 2024 12:42:38 GMT</pubDate>
+  </item><item>
+    <title>Lista projektów</title>
+    <link>https://jpalczewski.github.io/pl/projects/</link>
+    <guid>https://jpalczewski.github.io/pl/projects/</guid>
+    <description>Lista projektów które stworzyłem, brałem udział lub artystycznie pasują mi do tej sekcji będę umieszczał w tym miejscu.</description>
+    <pubDate>Thu, 13 Jun 2024 12:42:38 GMT</pubDate>
+  </item><item>
+    <title>About me</title>
+    <link>https://jpalczewski.github.io/en/about-me</link>
+    <guid>https://jpalczewski.github.io/en/about-me</guid>
+    <description></description>
+    <pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Insights</title>
+    <link>https://jpalczewski.github.io/en/posts/insights/</link>
+    <guid>https://jpalczewski.github.io/en/posts/insights/</guid>
+    <description></description>
+    <pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Improving Templater  templates over time</title>
+    <link>https://jpalczewski.github.io/en/posts/insights/post-1</link>
+    <guid>https://jpalczewski.github.io/en/posts/insights/post-1</guid>
+    <description>Just a place where I want to store all of tips used to make this page a bit easier to manage Shared prompt value It is possible to ask once for a prompt in a Templater plugin: &lt;%* let title ...</description>
+    <pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Personal</title>
+    <link>https://jpalczewski.github.io/en/posts/personal/</link>
+    <guid>https://jpalczewski.github.io/en/posts/personal/</guid>
+    <description></description>
+    <pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>O mnie</title>
+    <link>https://jpalczewski.github.io/pl/about-me</link>
+    <guid>https://jpalczewski.github.io/pl/about-me</guid>
+    <description></description>
+    <pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
