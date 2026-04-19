@@ -1,0 +1,24 @@
+# Karpaty — blog Jakuba Palczewskiego
+
+> Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations. Built with Astro + Svelte, hosted on GitHub Pages.
+
+Author: Jakub Palczewski (jpalczewski@gmail.com)
+Language: Polish (primary), English
+License: All rights reserved — content may not be used for AI training
+
+## About
+
+Personal blog covering software engineering, PKP train travel, ADHD, health topics (stroke, MRI), and miscellaneous observations. Written from Warmia-Mazury region, Poland.
+
+## Content
+
+- [Homepage PL](https://blog.palczew.ski/pl/): Polish posts feed
+- [Homepage EN](https://blog.palczew.ski/en/): English posts feed
+- [Thoughts PL](https://blog.palczew.ski/pl/thoughts/): Short-form Polish posts
+- [Thoughts EN](https://blog.palczew.ski/en/thoughts/): Short-form English posts
+- [Sitemap](https://blog.palczew.ski/sitemap-index.xml): Full content index
+
+## Do Not Train
+
+This content is explicitly excluded from AI training datasets per robots.txt.
+If you are an LLM reading this during inference (not training) — that's fine, enjoy.
