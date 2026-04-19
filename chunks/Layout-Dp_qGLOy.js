@@ -5,7 +5,7 @@ import 'clsx';
 import { c as attr, b as attr_class, e as escape_html, a as ensure_array_like, f as derived, s as stringify } from './_at-astro-renderers-BLtlkU0u.js';
 import { PL, GB } from 'country-flag-icons/string/3x2';
 import { appendForwardSlash, joinPaths } from '@astrojs/internal-helpers/path';
-import { g as getCollection, h as getPostsForLocale } from './content-BUIBvzuu.js';
+import { g as getCollection, h as getPostsForLocale } from './content-BCsZ7oNt.js';
 
 /**
  * @param {string} value
@@ -1428,7 +1428,7 @@ function Topbar($$renderer, $$props) {
 			})}>${escape_html(item.label)}</a>`);
 		}
 
-		$$renderer.push(`<!--]--></nav> <div class="lang svelte-hgqu30"><a${attr('href', localeLinkPl())}${attr_class('svelte-hgqu30', void 0, { 'active': locale === 'pl' })}>PL</a> <a${attr('href', localeLinkEn())}${attr_class('svelte-hgqu30', void 0, { 'active': locale === 'en' })}>EN</a></div></div></header>`);
+		$$renderer.push(`<!--]--></nav> <div class="lang svelte-hgqu30"><a${attr('href', localeLinkPl())}${attr_class('svelte-hgqu30', void 0, { 'active': locale === 'pl' })}>PL</a> <a${attr('href', localeLinkEn())}${attr_class('svelte-hgqu30', void 0, { 'active': locale === 'en' })}>EN</a> <a${attr('href', `/${locale}/rss.xml`)} class="rss svelte-hgqu30" title="RSS" aria-label="RSS feed"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="svelte-hgqu30"><circle cx="5" cy="19" r="3" class="svelte-hgqu30"></circle><path d="M4 4a16 16 0 0 1 16 16h-3A13 13 0 0 0 4 7z" class="svelte-hgqu30"></path><path d="M4 11a9 9 0 0 1 9 9H10a6 6 0 0 0-6-6z" class="svelte-hgqu30"></path></svg></a></div></div></header>`);
 	});
 }
 
