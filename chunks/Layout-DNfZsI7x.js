@@ -677,7 +677,7 @@ function getStrategyForUrl(url) {
   }
   return strategy;
 }
-const isServer = Object.assign(__vite_import_meta_env__, { LANG: process.env.LANG, _: process.env._ })?.SSR ?? typeof window === "undefined";
+const isServer = Object.assign(__vite_import_meta_env__, { _: process.env._, LANG: process.env.LANG })?.SSR ?? typeof window === "undefined";
 globalThis.__paraglide = /** @type {any} */
 globalThis.__paraglide ?? {};
 globalThis.__paraglide.ssr = /** @type {any} */

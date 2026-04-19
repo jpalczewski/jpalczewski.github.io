@@ -2,7 +2,7 @@ import { c as createAstro, a as createComponent, m as maybeRenderHead, d as addA
 import 'piccolore';
 import { r as renderEntry, a as getPostUrl, z as formatDateTime, v as estimateReadingTime, e as getTagBreadcrumbs, u as getTranslationInfo, g as getCollection, f as filterDrafts, w as getOutgoingRelationsForDisplay, x as getIncomingRelationsForDisplay } from './content-D7VCeSST.js';
 import { a as PostMeta } from './PostMeta-CaD6UEEt.js';
-import { C as ContinuationNote, U as UpdateNote } from './UpdateNote-O6R8bc_5.js';
+import { C as ContinuationNote, U as UpdateNote } from './UpdateNote-DH4XcEYp.js';
 /* empty css                         */
 
 const $$Astro = createAstro("https://blog.palczew.ski");
