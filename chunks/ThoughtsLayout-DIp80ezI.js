@@ -1,6 +1,6 @@
 import { c as createAstro, a as createComponent, r as renderComponent, b as renderTemplate, e as renderSlot, m as maybeRenderHead } from './astro-server-B4qyNKwf.js';
 import 'piccolore';
-import { $ as $$Layout } from './Layout-BNRdsyE9.js';
+import { $ as $$Layout } from './Layout-h3zhpBQE.js';
 import { g as getCollection, h as getPostsForLocale, A as getUniqueYears, B as getUniqueYearMonths } from './content-Cbsl0NyT.js';
 import { a as createThoughtsNavConfig } from './secondary-nav-config-0UbuDUCn.js';
 
