@@ -1,8 +1,8 @@
 import { c as createAstro, a as createComponent, m as maybeRenderHead, d as addAttribute, r as renderComponent, b as renderTemplate } from './astro-server-B4qyNKwf.js';
 import 'piccolore';
-import { r as renderEntry, c as getPostUrl, z as formatDateTime, v as estimateReadingTime, d as getTagBreadcrumbs, t as getTranslationInfo, g as getCollection, f as filterDrafts, w as getOutgoingRelationsForDisplay, x as getIncomingRelationsForDisplay } from './content-CiPHtHe-.js';
+import { r as renderEntry, c as getPostUrl, z as formatDateTime, v as estimateReadingTime, d as getTagBreadcrumbs, t as getTranslationInfo, g as getCollection, f as filterDrafts, w as getOutgoingRelationsForDisplay, x as getIncomingRelationsForDisplay } from './content-i72727k6.js';
 import { a as PostMeta } from './PostMeta-C5Lje3Jf.js';
-import { C as ContinuationNote, U as UpdateNote } from './UpdateNote-BUcojcrC.js';
+import { C as ContinuationNote, U as UpdateNote } from './UpdateNote-2Jxj0Gva.js';
 /* empty css                         */
 
 const $$Astro = createAstro("https://blog.palczew.ski");

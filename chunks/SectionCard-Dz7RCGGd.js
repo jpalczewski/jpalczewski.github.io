@@ -1,6 +1,6 @@
 import { c as createAstro, a as createComponent, r as renderComponent, b as renderTemplate, e as renderSlot, m as maybeRenderHead, d as addAttribute } from './astro-server-B4qyNKwf.js';
 import 'piccolore';
-import { $ as $$Layout } from './Layout-C9LJxEmE.js';
+import { $ as $$Layout } from './Layout-Babr5MLT.js';
 import { c as createAboutNavConfig } from './secondary-nav-config-0UbuDUCn.js';
 import 'clsx';
 /* empty css                        */

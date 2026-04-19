@@ -1,6 +1,6 @@
 import { c as createAstro, a as createComponent, r as renderComponent, b as renderTemplate, m as maybeRenderHead, e as renderSlot } from './astro-server-B4qyNKwf.js';
 import 'piccolore';
-import { $ as $$ThoughtsLayout } from './ThoughtsLayout-CpJ-uihL.js';
+import { $ as $$ThoughtsLayout } from './ThoughtsLayout-Do4E9wX5.js';
 import { $ as $$Breadcrumbs } from './Breadcrumbs-CWvK6GTD.js';
 import { P as Pagination, a as PostMeta } from './PostMeta-C5Lje3Jf.js';
 import { c as attr, e as escape_html } from './_at-astro-renderers-BLtlkU0u.js';
