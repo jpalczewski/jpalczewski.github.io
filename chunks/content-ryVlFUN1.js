@@ -3,12 +3,9 @@ import { Traverse } from 'neotraverse/modern';
 import pLimit from 'p-limit';
 import { z } from 'zod';
 import { removeBase, isRemotePath, prependForwardSlash } from '@astrojs/internal-helpers/path';
-import { A as AstroError, U as UnknownContentCollectionError, a as createComponent, R as RenderUndefinedEntryError, u as unescapeHTML, b as renderTemplate, h as renderUniqueStylesheet, i as renderScriptElement, j as createHeadAndContent, r as renderComponent } from './astro-server-B4qyNKwf.js';
+import { A as AstroError, U as UnknownContentCollectionError, a as createComponent, R as RenderUndefinedEntryError, u as unescapeHTML, b as renderTemplate, h as renderUniqueStylesheet, i as renderScriptElement, j as createHeadAndContent, r as renderComponent } from './astro-server-CNTtBI_2.js';
 import 'piccolore';
 import * as devalue from 'devalue';
-
-const CONTENT_IMAGE_FLAG = "astroContentImageFlag";
-const IMAGE_IMPORT_PREFIX = "__ASTRO_IMAGE_";
 
 const VALID_INPUT_FORMATS = [
   "jpeg",
@@ -41,6 +38,9 @@ const DEFAULT_HASH_PROPS = [
   "position",
   "background"
 ];
+
+const CONTENT_IMAGE_FLAG = "astroContentImageFlag";
+const IMAGE_IMPORT_PREFIX = "__ASTRO_IMAGE_";
 
 function imageSrcToImportId(imageSrc, filePath) {
   imageSrc = removeBase(imageSrc, IMAGE_IMPORT_PREFIX);
@@ -97,7 +97,7 @@ class ImmutableDataStore {
    */
   static async fromModule() {
     try {
-      const data = await import('./_astro_data-layer-content-smZKWylj.js');
+      const data = await import('./_astro_data-layer-content-DnCFi0Oo.js');
       if (data.default instanceof Map) {
         return ImmutableDataStore.fromMap(data.default);
       }
@@ -338,7 +338,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import('./content-assets-DleWbedO.js');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets-DNDUfzgK.js').then(n => n._);
+  const { getImage } = await import('./_astro_assets-B-SNDp0E.js').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -400,7 +400,7 @@ async function renderEntry(entry) {
   }
   if (entry.deferredRender) {
     try {
-      const { default: contentModules } = await import('./content-modules-yQ1_AEQT.js');
+      const { default: contentModules } = await import('./content-modules-BAG236SW.js');
       const renderEntryImport = contentModules.get(entry.filePath);
       return render({
         collection: "",

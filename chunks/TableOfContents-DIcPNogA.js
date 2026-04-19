@@ -1,8 +1,8 @@
-import { c as createAstro, a as createComponent, m as maybeRenderHead, d as addAttribute, b as renderTemplate, e as renderSlot } from './astro-server-B4qyNKwf.js';
+import { c as createAstro, a as createComponent, m as maybeRenderHead, d as addAttribute, b as renderTemplate, e as renderSlot } from './astro-server-CNTtBI_2.js';
 import 'piccolore';
 import 'clsx';
 /* empty css                             */
-import { e as escape_html, a as ensure_array_like, b as attr_class, c as attr } from './_at-astro-renderers-BLtlkU0u.js';
+import { e as escape_html, a as ensure_array_like, b as attr_class, c as attr } from './_at-astro-renderers-d4pvLIoB.js';
 
 const $$Astro = createAstro("https://blog.palczew.ski");
 const $$TimelineItem = createComponent(($$result, $$props, $$slots) => {

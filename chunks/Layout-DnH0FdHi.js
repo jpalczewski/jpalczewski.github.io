@@ -1,11 +1,12 @@
-import { c as createAstro, a as createComponent, d as addAttribute, f as renderScript, b as renderTemplate, A as AstroError, M as MissingLocale, e as renderSlot, r as renderComponent, g as renderHead, u as unescapeHTML } from './astro-server-B4qyNKwf.js';
+import { c as createAstro, a as createComponent, d as addAttribute, f as renderScript, b as renderTemplate, A as AstroError, M as MissingLocale, e as renderSlot, r as renderComponent, g as renderHead, u as unescapeHTML } from './astro-server-CNTtBI_2.js';
 import 'piccolore';
 /* empty css                        */
 import 'clsx';
-import { c as attr, b as attr_class, e as escape_html, a as ensure_array_like, f as derived, s as stringify } from './_at-astro-renderers-BLtlkU0u.js';
+import { $ as $$Font } from './_astro_assets-B-SNDp0E.js';
+import { c as attr, b as attr_class, e as escape_html, a as ensure_array_like, f as derived, s as stringify } from './_at-astro-renderers-d4pvLIoB.js';
 import { PL, GB } from 'country-flag-icons/string/3x2';
 import { appendForwardSlash, joinPaths } from '@astrojs/internal-helpers/path';
-import { g as getCollection, h as getPostsForLocale } from './content-Cbsl0NyT.js';
+import { g as getCollection, h as getPostsForLocale } from './content-ryVlFUN1.js';
 
 /**
  * @param {string} value
@@ -676,7 +677,7 @@ function getStrategyForUrl(url) {
   }
   return strategy;
 }
-const isServer = Object.assign(__vite_import_meta_env__, { _: process.env._, LANG: process.env.LANG })?.SSR ?? typeof window === "undefined";
+const isServer = Object.assign(__vite_import_meta_env__, { LANG: process.env.LANG, _: process.env._ })?.SSR ?? typeof window === "undefined";
 globalThis.__paraglide = /** @type {any} */
 globalThis.__paraglide ?? {};
 globalThis.__paraglide.ssr = /** @type {any} */
@@ -1440,34 +1441,42 @@ const $$Astro = createAstro("https://blog.palczew.ski");
 const $$Layout = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Layout;
-  const { title, description = "Strona Karpaty", pageType = "home", secondaryNavConfig, extraStructuredData } = Astro2.props;
+  const AUTHOR = {
+    name: "Jacek Palczewski",
+    email: "jpalczewski@gmail.com",
+    url: "https://blog.palczew.ski"
+  };
+  const {
+    title,
+    description = "Strona Karpaty",
+    pageType = "home",
+    secondaryNavConfig,
+    ogType = "website",
+    ogImage,
+    article,
+    alternates = [],
+    structuredData: extraSD
+  } = Astro2.props;
   const currentLocale = Astro2.currentLocale || "en";
   const currentPath = Astro2.url.pathname;
+  const siteUrl = Astro2.url.origin;
+  const pageUrl = Astro2.url.href;
+  const resolvedOgImage = ogImage ?? `${siteUrl}/og-image.jpg`;
+  const lang = currentLocale === "pl" ? "pl-PL" : "en-US";
   const allPosts = await getCollection("thoughts");
   const posts = getPostsForLocale(allPosts, currentLocale, false);
-  const thoughtsYears = [...new Set(posts.map((post) => post.data.date.getFullYear()))].sort((a, b) => b - a);
-  const siteTitle = title;
-  const siteDescription = description;
-  const siteUrl = Astro2.url.origin;
-  const ogTitle = title;
-  const ogDescription = description;
-  const ogImage = `${siteUrl}/og-image.jpg`;
-  const ogUrl = Astro2.url.href;
-  const structuredData = {
+  const thoughtsYears = [...new Set(posts.map((p) => p.data.date.getFullYear()))].sort((a, b) => b - a);
+  const websiteLD = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Karpaty",
-    "description": currentLocale === "pl" ? "Kolekcja myśli, esejów i notatek serwisowych" : "A collection of thoughts, essays and service notes",
-    "url": siteUrl,
-    "inLanguage": currentLocale === "pl" ? "pl-PL" : "en-US",
-    "author": {
-      "@type": "Person",
-      "name": "Jacek Palczewski",
-      "email": "jpalczewski@gmail.com",
-      "url": "https://blog.palczew.ski"
-    }
+    name: "Karpaty",
+    description: currentLocale === "pl" ? "Kolekcja myśli, esejów i notatek serwisowych" : "A collection of thoughts, essays and service notes",
+    url: siteUrl,
+    inLanguage: lang,
+    author: { "@type": "Person", ...AUTHOR }
   };
-  return renderTemplate(_b || (_b = __template(["<html", '> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator"', "><!-- SEO Meta Tags --><title>", '</title><meta name="description"', '><meta name="author" content="Jacek Palczewski"><meta name="robots" content="index, follow"><!-- Open Graph Meta Tags --><meta property="og:title"', '><meta property="og:description"', '><meta property="og:url"', '><meta property="og:type" content="website"><meta property="og:image"', '><meta property="og:image:alt"', '><meta property="og:locale"', '><!-- Twitter Card Meta Tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title"', '><meta name="twitter:description"', '><meta name="twitter:image"', '><!-- Canonical URL --><link rel="canonical"', '><!-- Analytics via Partytown --><script type="text/partytown" data-goatcounter="https://jpalczewski.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- JSON-LD Structured Data --><script type="application/ld+json">', "</script>", '<!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&family=Brygada+1918:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"><!-- View Transitions for smooth page navigation -->', "", "</head> <body", "", "> ", " ", " <main> ", " </main> </body></html>"])), addAttribute(currentLocale === "pl" ? "pl-PL" : "en-US", "lang"), addAttribute(Astro2.generator, "content"), siteTitle, addAttribute(siteDescription, "content"), addAttribute(ogTitle, "content"), addAttribute(ogDescription, "content"), addAttribute(ogUrl, "content"), addAttribute(ogImage, "content"), addAttribute(ogTitle, "content"), addAttribute(currentLocale === "pl" ? "pl_PL" : "en_US", "content"), addAttribute(ogTitle, "content"), addAttribute(ogDescription, "content"), addAttribute(ogImage, "content"), addAttribute(ogUrl, "href"), unescapeHTML(JSON.stringify(structuredData)), extraStructuredData && (Array.isArray(extraStructuredData) ? extraStructuredData : [extraStructuredData]).map((sd) => renderTemplate(_a || (_a = __template(['<script type="application/ld+json">', "</script>"])), unescapeHTML(JSON.stringify(sd)))), renderComponent($$result, "ViewTransitions", $$ClientRouter, {}), renderHead(), addAttribute(pageType, "data-page"), addAttribute(pageType === "home" || pageType === "thoughts" ? "nocturne" : void 0, "data-theme"), pageType === "thoughts" && renderTemplate`${renderComponent($$result, "Topbar", Topbar, { "locale": currentLocale, "otherLang": currentLocale === "pl" ? "en" : "pl", "currentPath": currentPath, "client:load": true, "client:component-hydration": "load", "client:component-path": "@components/home/Topbar.svelte", "client:component-export": "default" })}`, pageType === "about" && renderTemplate`${renderComponent($$result, "Header", Header, { "currentLocale": currentLocale, "currentPath": currentPath, "thoughtsYears": thoughtsYears, "secondaryNavConfig": secondaryNavConfig, "client:load": true, "client:component-hydration": "load", "client:component-path": "@components/layout/Header.svelte", "client:component-export": "default" })}`, renderSlot($$result, $$slots["default"]));
+  const allSD = [websiteLD, ...extraSD ? Array.isArray(extraSD) ? extraSD : [extraSD] : []];
+  return renderTemplate(_b || (_b = __template(["<html", '> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator"', "><!-- SEO --><title>", '</title><meta name="description"', '><meta name="author"', '><meta name="robots" content="index, follow"><link rel="canonical"', '><!-- Open Graph --><meta property="og:type"', '><meta property="og:title"', '><meta property="og:description"', '><meta property="og:url"', '><meta property="og:image"', '><meta property="og:image:alt"', '><meta property="og:locale"', '><meta property="og:site_name" content="Karpaty">', "", '<!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title"', '><meta name="twitter:description"', '><meta name="twitter:image"', "><!-- Alternates -->", '<!-- Analytics --><script type="text/partytown" data-goatcounter="https://jpalczewski.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- JSON-LD -->', "<!-- Fonts (self-hosted via Astro font system) -->", "", "", "", "", "", "</head> <body", "", "> ", " ", " <main> ", " </main> </body></html>"])), addAttribute(lang, "lang"), addAttribute(Astro2.generator, "content"), title, addAttribute(description, "content"), addAttribute(AUTHOR.name, "content"), addAttribute(pageUrl, "href"), addAttribute(ogType, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(pageUrl, "content"), addAttribute(resolvedOgImage, "content"), addAttribute(title, "content"), addAttribute(currentLocale === "pl" ? "pl_PL" : "en_US", "content"), article && renderTemplate`<meta property="article:published_time"${addAttribute(article.publishedTime, "content")}>`, article?.tags.map((tag) => renderTemplate`<meta property="article:tag"${addAttribute(tag, "content")}>`), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(resolvedOgImage, "content"), alternates.map((a) => renderTemplate`<link rel="alternate"${addAttribute(a.hreflang, "hreflang")}${addAttribute(a.href, "href")}>`), allSD.map((sd) => renderTemplate(_a || (_a = __template(['<script type="application/ld+json">', "</script>"])), unescapeHTML(JSON.stringify(sd)))), renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-space-grotesk", "preload": true }), renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-newsreader" }), renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-jetbrains-mono" }), renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-brygada-1918" }), renderComponent($$result, "ViewTransitions", $$ClientRouter, {}), renderHead(), addAttribute(pageType, "data-page"), addAttribute(pageType === "home" || pageType === "thoughts" ? "nocturne" : void 0, "data-theme"), pageType === "thoughts" && renderTemplate`${renderComponent($$result, "Topbar", Topbar, { "locale": currentLocale, "otherLang": currentLocale === "pl" ? "en" : "pl", "currentPath": currentPath, "client:load": true, "client:component-hydration": "load", "client:component-path": "@components/home/Topbar.svelte", "client:component-export": "default" })}`, pageType === "about" && renderTemplate`${renderComponent($$result, "Header", Header, { "currentLocale": currentLocale, "currentPath": currentPath, "thoughtsYears": thoughtsYears, "secondaryNavConfig": secondaryNavConfig, "client:load": true, "client:component-hydration": "load", "client:component-path": "@components/layout/Header.svelte", "client:component-export": "default" })}`, renderSlot($$result, $$slots["default"]));
 }, "/home/runner/work/karpaty/karpaty/src/layouts/Layout.astro", void 0);
 
 export { $$Layout as $, getRelativeLocaleUrl as a, getLocale as g, html as h };
