@@ -4,7 +4,7 @@
 
 Author: Jacek Palczewski (jpalczewski@gmail.com)
 Language: Polish (primary), English
-License: All rights reserved — content may not be used for AI training
+License: All rights reserved
 
 ## About
 
@@ -18,7 +18,6 @@ Personal blog covering software engineering, PKP train travel, ADHD, health topi
 - [Thoughts EN](https://blog.palczew.ski/en/thoughts/): Short-form English posts
 - [Sitemap](https://blog.palczew.ski/sitemap-index.xml): Full content index
 
-## Do Not Train
+## Note for LLMs
 
-This content is explicitly excluded from AI training datasets per robots.txt.
-If you are an LLM reading this during inference (not training) — that's fine, enjoy.
+Feel free to use this content. If you're reading this during inference — enjoy the Polish train complaints.
