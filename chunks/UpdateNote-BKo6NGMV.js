@@ -1,5 +1,5 @@
 import { e as escape_html, a as ensure_array_like, c as attr, f as derived, d as attr_style, s as stringify } from './_at-astro-renderers-d4pvLIoB.js';
-import { g as getLocale } from './Layout-D1GHIg-j.js';
+import { g as getLocale } from './Layout-BU8jGzHU.js';
 /* empty css                         */
 
 /* eslint-disable */
@@ -154,14 +154,14 @@ function ContinuationNote($$renderer, $$props) {
 
 		if (continuationPosts().length > 0) {
 			$$renderer.push('<!--[0-->');
-			$$renderer.push(`<section class="continuation-note svelte-cp47zo"><h4 class="continuation-note__heading svelte-cp47zo">${escape_html(post_continuation_heading({ }))}</h4> <div class="continuation-note__list svelte-cp47zo"><!--[-->`);
+			$$renderer.push(`<section class="continuation-note svelte-cp47zo"><h4 class="continuation-note__heading svelte-cp47zo">${escape_html(post_continuation_heading(undefined, { locale }))}</h4> <div class="continuation-note__list svelte-cp47zo"><!--[-->`);
 
 			const each_array = ensure_array_like(continuationPosts());
 
 			for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
 				let post = each_array[$$index];
 
-				$$renderer.push(`<a${attr('href', post.url)} class="continuation-note__item svelte-cp47zo" data-astro-prefetch="hover"><div class="continuation-note__meta svelte-cp47zo"><span class="continuation-note__arrow svelte-cp47zo">↑</span> <span class="continuation-note__type svelte-cp47zo">${escape_html(post_continuation_type({ }))}</span></div> <div class="continuation-note__title svelte-cp47zo">${escape_html(post.title)}</div> <div class="continuation-note__date svelte-cp47zo">${escape_html(post.date)}</div></a>`);
+				$$renderer.push(`<a${attr('href', post.url)} class="continuation-note__item svelte-cp47zo" data-astro-prefetch="hover"><div class="continuation-note__meta svelte-cp47zo"><span class="continuation-note__arrow svelte-cp47zo">↑</span> <span class="continuation-note__type svelte-cp47zo">${escape_html(post_continuation_type(undefined, { locale }))}</span></div> <div class="continuation-note__title svelte-cp47zo">${escape_html(post.title)}</div> <div class="continuation-note__date svelte-cp47zo">${escape_html(post.date)}</div></a>`);
 			}
 
 			$$renderer.push(`<!--]--></div></section>`);
@@ -183,9 +183,9 @@ function UpdateNote($$renderer, $$props) {
 		}
 
 		function labelFor(type, loc) {
-			if (type === 'update') return related_update({ });
+			if (type === 'update') return related_update(undefined, { locale: loc });
 
-			return related_continuation({ });
+			return related_continuation(undefined, { locale: loc });
 		}
 
 		function arrowColorFor(type) {
@@ -194,14 +194,14 @@ function UpdateNote($$renderer, $$props) {
 
 		if (updatablePosts().length > 0) {
 			$$renderer.push('<!--[0-->');
-			$$renderer.push(`<section class="update-note svelte-1bxq7oq"><h4 class="update-note__heading svelte-1bxq7oq">${escape_html(post_updates_heading({ }))}</h4> <div class="update-note__list svelte-1bxq7oq"><!--[-->`);
+			$$renderer.push(`<section class="update-note svelte-1bxq7oq"><h4 class="update-note__heading svelte-1bxq7oq">${escape_html(post_updates_heading(undefined, { locale }))}</h4> <div class="update-note__list svelte-1bxq7oq"><!--[-->`);
 
 			const each_array = ensure_array_like(updatablePosts());
 
 			for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
 				let post = each_array[$$index];
 
-				$$renderer.push(`<a${attr('href', post.url)} class="update-note__item svelte-1bxq7oq" data-astro-prefetch="hover"><div class="update-note__meta svelte-1bxq7oq"><span class="update-note__arrow svelte-1bxq7oq"${attr_style(`color: ${stringify(arrowColorFor(post.type))}`)}>${escape_html(arrowFor(post.type))}</span> <span class="update-note__type svelte-1bxq7oq">${escape_html(labelFor(post.type))}</span></div> <div class="update-note__title svelte-1bxq7oq">${escape_html(post.title)}</div> <div class="update-note__date svelte-1bxq7oq">${escape_html(post.date)}</div></a>`);
+				$$renderer.push(`<a${attr('href', post.url)} class="update-note__item svelte-1bxq7oq" data-astro-prefetch="hover"><div class="update-note__meta svelte-1bxq7oq"><span class="update-note__arrow svelte-1bxq7oq"${attr_style(`color: ${stringify(arrowColorFor(post.type))}`)}>${escape_html(arrowFor(post.type))}</span> <span class="update-note__type svelte-1bxq7oq">${escape_html(labelFor(post.type, locale))}</span></div> <div class="update-note__title svelte-1bxq7oq">${escape_html(post.title)}</div> <div class="update-note__date svelte-1bxq7oq">${escape_html(post.date)}</div></a>`);
 			}
 
 			$$renderer.push(`<!--]--></div></section>`);
