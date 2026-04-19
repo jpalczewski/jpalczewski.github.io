@@ -1,5 +1,5 @@
 import { e as escape_html, a as ensure_array_like, c as attr, f as derived, d as attr_style, s as stringify } from './_at-astro-renderers-BLtlkU0u.js';
-import { g as getLocale } from './Layout-B44FfWM4.js';
+import { g as getLocale } from './Layout-B7HadfYC.js';
 /* empty css                         */
 
 /* eslint-disable */
