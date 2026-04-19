@@ -2,11 +2,11 @@ import { c as createAstro, a as createComponent, d as addAttribute, f as renderS
 import 'piccolore';
 /* empty css                        */
 import 'clsx';
-import { $ as $$Font } from './_astro_assets-1pQtPNld.js';
+import { $ as $$Font } from './_astro_assets-DWao_wFo.js';
 import { c as attr, b as attr_class, e as escape_html, a as ensure_array_like, f as derived, s as stringify } from './_at-astro-renderers-Bnfhkx0P.js';
 import { PL, GB } from 'country-flag-icons/string/3x2';
 import { appendForwardSlash, joinPaths } from '@astrojs/internal-helpers/path';
-import { g as getCollection, i as getPostsForLocale } from './content-DeT_LGmN.js';
+import { g as getCollection, i as getPostsForLocale } from './content-DEnsadUI.js';
 
 /**
  * @param {string} value
@@ -677,7 +677,7 @@ function getStrategyForUrl(url) {
   }
   return strategy;
 }
-const isServer = Object.assign(__vite_import_meta_env__, { LANG: process.env.LANG, _: process.env._ })?.SSR ?? typeof window === "undefined";
+const isServer = Object.assign(__vite_import_meta_env__, { _: process.env._, LANG: process.env.LANG })?.SSR ?? typeof window === "undefined";
 globalThis.__paraglide = /** @type {any} */
 globalThis.__paraglide ?? {};
 globalThis.__paraglide.ssr = /** @type {any} */

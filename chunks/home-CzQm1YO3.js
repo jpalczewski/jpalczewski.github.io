@@ -1,4 +1,4 @@
-import { p as parsePostId, r as renderEntry, d as generateExcerpt, a as getPostUrl, c as getCurrentLang } from './content-DeT_LGmN.js';
+import { p as parsePostId, r as renderEntry, d as generateExcerpt, a as getPostUrl, c as getCurrentLang } from './content-DEnsadUI.js';
 
 const THREADS = {
   tech: {
