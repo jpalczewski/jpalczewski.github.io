@@ -1,8 +1,8 @@
-# Karpaty — blog Jakuba Palczewskiego
+# Karpaty — blog Jacka Palczewskiego
 
 > Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations. Built with Astro + Svelte, hosted on GitHub Pages.
 
-Author: Jakub Palczewski (jpalczewski@gmail.com)
+Author: Jacek Palczewski (jpalczewski@gmail.com)
 Language: Polish (primary), English
 License: All rights reserved — content may not be used for AI training
 
