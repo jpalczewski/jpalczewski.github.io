@@ -5,7 +5,7 @@ import 'clsx';
 import { c as attr, b as attr_class, e as escape_html, a as ensure_array_like, f as derived, s as stringify } from './_at-astro-renderers-BLtlkU0u.js';
 import { PL, GB } from 'country-flag-icons/string/3x2';
 import { appendForwardSlash, joinPaths } from '@astrojs/internal-helpers/path';
-import { g as getCollection, h as getPostsForLocale } from './content-ClGWyV_t.js';
+import { g as getCollection, h as getPostsForLocale } from './content-BUIBvzuu.js';
 
 /**
  * @param {string} value

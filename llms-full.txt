@@ -1,0 +1,383 @@
+# Karpaty — blog Jacka Palczewskiego
+
+> Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations.
+
+Total posts: 15
+
+---
+
+# Live
+URL: https://blog.palczew.ski/pl/thoughts/year/2026/04/w-koncu-live
+Date: 2026-04-19
+Tags: Vibecoding, Pociągi
+
+Po paru miesiącach dłubania[^1], post-Claude-Code hiperfiksacji na AI-owych sideprojektach — wracam do dłubania tego repozytorium, aka prowadzenia bloga.
+
+
+Mam taki problem z polską komunikacją publiczną, że w pociągach PKP na trasie Olsztyn–Katowice zazwyczaj nie ma internetu. Jakieś 60% przejazdów. Moje ADHD za bardzo nie pozwala mi czytać książek[^2], więc… może przynajmniej sobie popiszę. Pouczę LLM-y. Zatruję je odrobiną nudnej wiedzy.
+
+_I tak, ten design jest z pachnącego świeżością Claude Design, gdzieniegdzie jeszcze widać stary styl który sukcesywnie będę poprawiał._
+
+[^1]: Jak widać po datach treść tych notatek trochę odleżała niczym dobry alkohol.
+
+[^2]: Największy akt desperacji to wyciąganie nmapa i analiza ruchu licząc na to, że  ręcznie uda mi się potwierdzić regulamin - bez skutku, niestety.
+
+---
+
+# Jak mieć multiscreen na Azurowskim Bastionie?
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/12/jak-miec-multiscreen-na-azurowskim-bastionie
+Date: 2025-12-08
+Tags: Azure, Cloud, Tech, Devops
+
+Ostatnio dość dużo czasu spędzam na Azure - ich webowy klient działa dość topornie - na szczęście, trafiłem na rozwiązanie: [az(Azure CLI) ma dodatek, który pozwala wyprowadzić RDP aby łączyć się na serwer natywnym kliencie](https://www.terminalworks.com/blog/post/2024/11/23/azure-bastion-use-of-native-client-for-windows).
+
+Warto też wspomnieć że Microsoft w swej dobroci wrzuca az jako [zip do ściągnięcia](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=zip) - w sam raz na środowiska gdzie brakuje praw administratora[^1].
+
+[^1]: Gdyby was kusiło budować samemu  na lokalnym pythonie - bez ~~bez kraka nie pójdzie~~ większej ilości narzdzi do budowania - a w Condzie też nie działał.
+
+---
+
+# Róznica między rezonansem medycznym wykonanym prywatnie, a na NFZ
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/roznica-miedzy-rezonansem-medycznym-wykonanym-prywatnie-a-na-nfz
+Date: 2025-11-17
+Tags: Udar
+
+Z takich zabawnych anegdot to cały czas za mną chodzi różnica w doświadczeniu między rezonansem który miałem w ramach Luxmedu, kontra  rezonansem wykonanym na fundusz zdrowia.
+
+Właściwie największą różnicą jest muzyka. W Luxmedzie dostajesz słuchawki, natomiast w publicznie finansowanym badaniu do dyspozycji masz najtańsze zatyczki.
+
+Humorystyczny też był dla mni aspekt[^1] że dopiero na tym którymś badaniu z rzędu, właśnie wykobywanym na fundusz moja głowa była przeskanowana wykrywaczem metali.  Jakby okej,  standardy diagnostyczne są mi już z doświadczenia bliskie, ale mimo te pierwsze badania było ze wszechmiar stresujące, biorąc pod uwagi że trzy czwarte badań na początku udaru były wykonywane gdy byłem niprzytomny to stres że mam w głowie jakieś rosyjskie[^2] nożyczki. Nie ukrywam, że ten symboliczny gest przed pierwszym badaniem w Polsce byłby dość mocno uspokający. 
+
+
+[^1]: Jakby tak, mnie śmieszą dziwne rzeczy, możecie się przyzwyzcaić.
+
+[^2]: Tak, operację miałem w Rosji. To się nazywa niezwykła  pamiątka z podróży!
+
+---
+
+# Optymalizacja drogi do Katowic
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/optymalizacja-drogi-do-katowic
+Date: 2025-11-15
+Tags: Pociągi, Podróże
+
+import { YouTube } from 'astro-embed';
+
+_Ten post jest literalnie tym filmem_
+<YouTube id="-cWAJR-K_Fw" />
+
+Pewnego sierpniowego dnia dostałem zaproszenie na rozmowę kwalifikacyjną do Katowic. Słysząc, że rozmowa będzie na miejscu to stwierdziłem....
+
+......dlaczego nie?[^2]
+
+W każdym razie, parę tygodni później jestem szczególnie dumny z jednego połączenia:
+ - O 20 wsiadam w pociąg regionalny do Iławy z Olsztyna Głównego
+ - Tam przesiadam się o 21 w TLK Karpaty Bądź Ustronie[^1] - czyli nocny do Krakowa
+ - A w Krakowie EC Odra do Katowic, aby na miejscu w Katowicach być o 5 rano[^3]
+
+I pomyśleć, że dawno temu chciałem dużo jeździć nocnymi pociągami - do końca roku zapewne z 10 razy minimum zaliczę.
+
+W każdym razie interesującą socjologicznie zmianą jest przejcie w Iławie między światami. Mimo że zazwuczaj WARS nie grzeszy nowoczesnością, to można to postrzegać za przestrzeń jakkolwiek ekskluzywną  - cena dopłaty  oscyluje w cenie zwyczajnego hostelu, ale  mimo wszystko dziwnie się wychodziło z tego pociągu, z walizkami LV, do zwyczajnego regionalnego, pełnego uczniów dojeżdżających do szkoły.
+
+[^1]: Zawsze mylę te nazwy, a nie jest to jakoś szczególnie istotne
+
+[^2]: Szczerze, gdyby nie rejwy i oswojenie z pociągami to nigdy bym się na taką rozmowę nie zdecydował.
+
+[^3]: Jakby, słuchajcie tego: na dworcu w Katowicach jest całodobowy bar z pierogami...
+
+---
+
+# W warmińsko-mazurskim nic sie nie dzieje, ale...
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/w-warminsko-mazurskim-nic-sie-nie-dzieje-ale
+Date: 2025-11-15
+Tags: Europa, Protipy, Podróże
+
+W te wakacje miałem dość dużą hiperfiksację związaną z podróżami[^1] na festiwale - jedna ciekawostka mi zapadła w pamięć sczególnie.
+
+Szukając alternatyw transportowych jak trafić do Holandii, Claude podpowiedział mi istnienie lotniska Weeze pod Duseldorfem w Niemczech - tak się składa że są tam loty z Szyman, naszego lokalnego, podolsztyńskiego lotniska - w dodatku zazwyczaj względnie tanie[^2]. I z jednej strony można to traktować jako fast travel pod Holandię, czy też zachodnie Niemcy.
+
+
+Z drugiej: to miejsce gdzie odbywa się [Parookaville](https://www.parookaville.com/en/), dość duży festiwal muzyki elektronicznej. 
+
+Chciałbym akurat to wiedzieć wcześniej - korzystałbym.
+
+
+
+
+[^1]: Czy od dwóch miesięcy dojeżdżam ponad 500km na praktyki w jedną stronę? Tak, i trochę mi mało...
+
+[^2]: Można się tylko domyślać, że ten samolot zazwyczaj wozi powietrze
+
+---
+
+# Przyjdzie informatyk na wydział humanistyczny...
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/przyjdzie-informatyk-na-wydzial-humanistyczny
+Date: 2025-11-14
+Tags: Zotero, Praca Magisterska, Działalność Akademicka, Narzędzia
+
+Zaczynając pracę magisterską w realiach Wydziału Humanistycznego przyszedłem z dość fajnym bagażem - czy też doświadczeniem pisania w Zotero. Co prawda styl cytowania zgoła odmienny od tego co znałem dotychczas, ale gdyby ktoś kiedyś trafił w podobnych realiach i chciał mieć fajne narzędzie do zarządzania bibliografią - czuję potrzebę napomknąć że jest styl cytowania w polskich naukach humanistycznych - jest dostępny pod [tym adresem](http://metodyka.upjp2.edu.pl/book:zotero)[^1]
+
+[^1]: Czy finalnie aby wstrzelić się w w wymagania wydziałowe odnośnie bibliografii całość i tak przeszła przez LLM, aby spełnić wymagania odnośnie formatu imion? Tak, ale ciii.
+
+---
+
+# A jak wygląda droga do Budapesztu?
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/a-jak-wyglada-droga-do-budapesztu
+Date: 2025-11-13
+Tags: Pociągi, Podróże
+
+Wrzucając stare posty żeby jakkolwiek zapełnić nowego bloga treścią, Fajnie będzie dodać do do moich rozkmin na temat Amsterdamu, jak wygląda kwestia Budapesztu pod kątem cen transportu. Long story short:  we wrześniu był tam Lil Texas, więc stwierdziłem ze muszę tam być!
+
+W porównaniu do horrendalnych cen transportu do Europy Zachodniej, za nocny do Budapesztu zapłaciłem około 200 zł - więcej mnie wyniósł powrotny, ponieważ przez moje niedopatrzenie dostałem pierwszą klasę kupując bilet w kasie[^1].
+
+Przy okazji ciekawostka podróżnicza: Gdyby ktoś kiedyś polując na super promu miał problem z powrotem z Budapestu to można rozkminić przysiadkę w ramach jednej relacji: nie miałem powrotnych do Warszawy, ale były miejsca do Katowic – więc kupując w relacji krajowej od Katowic do Warszawy można dojechać mimo braku biletów.[^2]
+
+[^1]: Zapytacie dlaczego? Wierzyłem ze na jednym bilecie dostanę relację Olsztyn-Budapeszt - niestety, międzynarodowe są na innym druku i chyba nie jest możliwa taka sprzedaż. Chociaż przerażenie w oczach kasjerki sprzedającej bilety na relacje międzynarodowe jest bezcenne - system jest tak cholernie nieintuicyjny z tego co obserwuję z boku.
+
+[^2]: Jednego razu bardzo zależało mi na powrocie z Katowic i miejscu siedzącym - Udało mi się rozbić Jeden bilet na trzy przesiadki w ramach tej samej relacji xD
+
+---
+
+# Użyte artykuły w trakcie tworzenia tego bloga
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/uzyte-artykuy-w-trakcie-tworzenia-tego-bloga
+Date: 2025-11-13
+Tags: Web-dev
+
+- Szukając fajnych statystyk Perplexity podrzuciło mi [Goatcounter](https://www.goatcounter.com/) - plus że open source i zaletą jest brak przymusu ostrzeżenia o ciasteczkach. Jak wyjdzie? Zobaczymy.
+
+---
+
+# Hello, world
+URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/hello-world
+Date: 2025-11-12
+Tags: Tech/astro, Personal/projects
+
+Kolejne, finalne podejście do blogowania.  Styl jest od początku do końca zrobiony za pomocą vibecodingu - w duźej mierze to efekt darmowych tokenów na claude code web i zapału do skomplikowanych inicjatyw.
+
+A zapytacie[^1], dlaczego wracam nieustannie na github pages? To ma nieodmienny związek z...lękiem przed śmiercią. Jest w tym coś minimalnie kojącego, że jak kiedyś mnie zabraknie, to te miejsce bdzie trwało trochę dłużej. A infekowanie własną twórczością datasetów kolejnych modeli AI...czy to te słynne życie wieczne?
+
+[^1]: jasne, mogę wejść sobie w dialog z czytelnikiem, ale wątpię, że ktokolwiek to przeczyta.
+
+---
+
+# Co wspólnego ma malarstwo z design thinking
+URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/malarstwo-a-design-thinking
+Date: 2024-07-27
+Tags: Design Thinking, Malarstwo, Sztuka, Wywiady
+
+Jestem jeszcze w czasie gdy dość łapczywie przeglądam zdjęcia z podróży i teraz stwierdziłem że w ramach nasilenia prokrastynacji chcę zobaczyć o co chodzi z książką [*Lie like an artist*](https://www.bispublishers.com/lie-like-an-artist.html) - widziałem ją w przymuzealnych sklepikach zarazem w trzech miastach gdzie miałem okazję zajrzeć do miejsc związanych ze sztuką.
+
+Ale przypadkiem trafiłem na artykuł o tym [samym tytule](https://www.roxinekee.com/blog/lie-like-an-artist)
+z którego jeden cytat przykuł moją szczególną uwagę:
+
+> According to our tour guide, McArdle did painstaking truth-finding to produce these two paintings. He conducted countless interviews with veterans, pored through maps and sketches, probably went to these places himself.
+
+Mam dość luźne skojarzenie z tym jak Design thinking wygląda obecnie, gdzie wywiady pełnią tę istotną rolę czerpania informacji i tworzenia jeszcze lepszego doświadczenia użytkownika.
+
+---
+
+# Jak wrócić z amsterdamu
+URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/jak-wrocic-z-amsterdamu
+Date: 2024-07-07
+Tags: Pociągi, Podróże, Europa, Transport
+
+Podejmując skądinąd odważną decyzję o wyprawie na  Dominator 2024 i urozmaicając to wypadem do Amsterdamu, pozostaje jeszcze wątek *jak wrócić?*
+
+## Warunki brzegowe
+
+Zakładam że po całym poniedziałku w Amsterdamie zaczyna się wątek powrotu - czyli do dyspozycji jest albo nocny pociąg, albo  nocleg + powrót cały dzień albo dzień przesiadkowy w innej europejskiej stolicy.
+
+Wszystkie ceny są na dzień dzisiejszy, 07.07.24, planowane trochę do przodu tj. ten poniedziałek to 22.07. Ceny uwzględniają powrót do Olsztyna, gdzie aplikowalne, tam ze żniżką 37% w polskim PKP. 
+# Pociągi nocne
+
+Z tego co widzę, żeby koszty noclegu połączyć z kosztami transportu są takie opcje:
+
+## Berlin
+
+Na czas tworzenia tego postu #ChatGPT  podpowiedziało mi o istnieniu [European Sleeper](https://www.europeansleeper.eu/) , czyli jakimś reboocie pociągów sypialnianych[^1]. Jedyne dostępne na dziś połączenie to komfortowe kuszetki.
+
+
+| Pozycja                       | EUR |
+| ----------------------------- | --- |
+| Nocny z Amsterdamu do Berlina | 159 |
+### Dlaczego Berlin to zła opcja *na ten konkretny wyjazd*?
+
+Jakkolwiek dawien dawno chodząc po Warszawie Centralnej z pewnym rozmarzeniem spoglądałem na Berlin-Warszawa-Express zastanawiając się czy kiedykolwiek nim pojadę, to 23.07 zaczyna się remont linii RE1, przez co całość  trochę  mija się z celem - z drugiej strony jest też opcja powrotu przez Szczecin, gdzie busa jest mniej, ale..nie jestem przekonany. 
+
+## Praga
+W tym samym ES jest też możliwość dotarcia do Pragi, kolejna pozycja to EN z pragi do Warszawy i powrót z Warszawy do Olsztyna[^2]
+
+
+| Pozycja           | EUR | PLN     |
+| ----------------- | --- | ------- |
+| ES                | 179 | ~767,33 |
+| EN Praga-Warszawa |     | 196,66  |
+| Warszawa-Olsztyn  |     | 16,36   |
+| Suma              |     | 980,35  |
+
+## Monachium
+
+| Pozycja                | EUR    | PLN    |
+| ---------------------- | ------ | ------ |
+| EN Amsterdam-Monachium | 105,50 | 452,25 |
+| EN Monachium-Warszawa  |        | 437,56 |
+| Warszawa-Olsztyn       |        | 16,36  |
+| Suma                   |        | 906,17 |
+
+## Drezno
+
+Inspiracja z przedziaławki - podróż European Sleeperem do Drezna, stamtąd przesiadka do Zgorzelca, a stamtąd przesiadka we Wrocławiu. Szczerze? Jak spojrzałem na tą propozycję - stwierdziłem że już jestem za stary na takie zabawy. 
+
+| Pozycja             | EUR   | PLN    |
+| ------------------- | ----- | ------ |
+| ES                  | 179   | 767,33 |
+| Drezno - Zgorzelec  | 34,90 | 149,61 |
+| Zgorzelec - Wrocław |       | 20,40  |
+| Wrocław-Olsztyn     |       | 49,77  |
+
+
+## Wiedeń
+
+Akurat te bilety na ten euronight zostały wyprzedane(a szkoda). W każdym razie intercity promo ma na tej trasie praskie ceny - około 200zł.
+
+
+## Połączenia mieszane
+
+## Hamburg
+
+Pod rozwagę gdyby ktoś szukał inspiracji zostawiam że loty z Hamburga bywają znacznie tańsze niż z Amsterdamu - mnie odstraszyła głównie dopłata za bagaż podręczny[^3]. Jest tak blisko do Amsterdamu, że nie ma żadnych nocnych 
+
+## Dortmund
+
+Rozważając kiedyś wyjazd na jeden festiwal gdzie [[Ophidian]] grał, zwróciłem uwagę na to że któraś z tanich linii lotniczy miała tanie połączenie z [[Lotnisko Szymany]].  Niestety, połączenia zostały zawieszone.
+## Eindhoven
+
+Stamtąd moja podróż się zaczynała, dlatego nie miałem ochoty za bardzo wracać[^4] - zresztą ceny biletów nie były jakieś szczególnie przystępne.
+# Inne rozwiązania
+
+## Flixbus z Berlina 
+Za około 200zł jest 11h powrotu autokarem do Olsztyna. 
+
+# Podsumowanie
+
+Zdecydowałem się na powrót przez Monachium. Muzeum BMW, duże parki i bodajże fajne muzea ze sztuką brzmią jak fajny pomysł na dzień.
+
+[^1]: Umykały mi te połączenia z powodu że nie startują z Amsterdam Centraal, tylko jakiegoś innego połączenia. 
+[^2]: Też jestem pod wrażeniem jakie niesamowite zniżki mi wchodzą, ale to w większości efekt kupowania porannego biletu z ogromnym wyprzedzeniem chyba.
+[^3]: Który i tak mam wrażenie że wziąłem na siłę na te kilka dni.
+[^4]: #ADHD thing, aby wciąż do przodu i wciąż doświadczań nowych bodżców.
+
+---
+
+# Udar a alkohol
+URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol
+Date: 2024-06-13
+Tags: Alkohol, Udar, Praca magisterska
+
+_Żeby mieć trochę contentu, wrzucam stare podejścia do pisania_
+
+ Przechodząc przez literaturę do pracy magisterskiej znalazłem jedną, nieoczywistą ciekawostkę: otóż małe[^1] spożycie alkoholu zmniejsza prawdopodobieństwo udaru krwotocznego. Na krwotoczny nie robi różnicy - natomiast picie dużo bądź w ciągach już te prawdopodobieństwo dość mocno zwiększa.
+ 
+> Light and moderate alcohol consumption was associated with a lower risk of ischemic stroke, whereas high and heavy drinking was associated with an increased risk;
+
+[Źródło.](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-016-0721-4) 
+
+Oczywiście, to nie wyraża mojej opinii wobec alkoholu - tutaj bliżej mi do perspektywy Davida Nutta, autora m.in. [[Narkotyki bez paniki]] która określa alkohol mianem najbardziej szkodliwej używki[^2] - w analizie która nie patrzy tylko na koszty osobowo/zdrowotne, ale patrzy szerzej, uwzględniając też koszty społeczne danej związane z daną substancją.
+
+[^1]: Do 12 gram alkoholu etylowego.
+[^2]: Niestety premiera nowej książki wyparła z SEO googla stare artykuły na ten temat
+
+---
+
+# DPD a przesyłki - jak poprawić jakość niskim kosztem?
+URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki
+Date: 2024-06-13
+Tags: Typ/insight, Protipy, Kurierzy, DPD
+
+Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem reklamacji w DPD, dlatego ten protip przeklejam z przyjemnością:
+ 
+>Ten magiczny "podpis", widoczny jako odbiorca w statusie to przepisanie nazwiska z listu na zebrze przy zatwierdzaniu. Fizycznych podpisów kurierzy nie zbierają od czasów covida. Jeśli mirek chciał do rąk odbiorcy, mógł dopłacić DPD za usługę DRW[^1] z pinem, wtedy kurier nie wrzuci takiej paczki za płot, bo będzie musiał wpisać pin od odbiorcy, żeby dobić ją w systemie. Ot cała magia.
+
+[Źródło.](https://wykop.pl/link/7465835/dpd-przerzuca-komputer-przez-plot-niszczy-go-i-bezczelnie-odrzuca-reklamacje/komentarz/124712141/na-dodatek-w-systemie-paczka-widnieje-jako-odebrana-i-podpisana-od-paru-lat-kurierzy-nie-wymagaja-podpisow-po-prostu-paczka-laduje-gdziekolwiek-pod-ty#124712705)
+
+[^1]: Do Rąk Własnych
+
+---
+
+# How to improve Zotero experience?
+URL: https://blog.palczew.ski/en/thoughts/year/2023/08/zotero-experience
+Date: 2023-08-29
+Tags: Zotero, Latex, Notion, Obsidian, Sajna, Note-taking
+
+_It's an old note, just for archival purposes. There might be newer alternatives. Also, old blog template used another method of referencing urls, don't have it yet here, so leaving it as-is: [link]("https://beepb00p.xyz/annotating.html")_
+
+I have a need to share how much I love [Zotero](https://www.zotero.org/). It was a tool that was a significant part of my academic journey and I had fallen in love while I was writing my B.Sc. thesis[^1], and all coexisting add-ons were indirectly responsible for about 50 references mentioned. I've recently also incorporated Zotero into my workflow alongside another side-project on Notion.
+
+Other remarkable features that Zotero offers:
+
+- Awesome notes on existing PDFs. A bit better than [hypothes.is](https://web.hypothes.is/)[^3] what was my main driver in B.Sc. era for taking notes from PDFs.[^4]
+- Collection mechanism - it's a bit specific approach for zotero and needs time to be used to.
+- Group collections that you can share your findings in teams.[^5]
+
+What add-ons were helpful?
+
+## Firefox extension
+
+[Zotero Connector for Firefox](https://www.zotero.org/download/connectors) simplifies the process of adding new database entries. A single click can trigger metadata extraction, and in some cases, even full-text PDF retrieval.[^2]
+
+## Better Bibtex
+
+[Better Bibtex](https://retorque.re/zotero-better-bibtex/) allows exporting yours database in format compatible with Latex.
+
+### Only Latex?
+
+If you need a place to take notes and mention/link your entries, [Obsidian](https://obsidian.md/) might be a good place to start. There is a great tutorial that was a great inspiration, available [here](vhttps://medium.com/@alexandraphelan/an-academic-workflow-zotero-obsidian-56bf918d51ab).
+
+There is a newer approach, however, that might work a bit better - [Obsidian Zotero Plugin](https://github.com/PKM-er/obsidian-zotero). Haven't tested yet.
+
+## But what if I want to share my zotero-based entries with friends?
+
+Sometime tool just doesn't suit well, and forcing others to use obsidian might be imposing useless cognitive overload, so then Notion comes into play with [notero](https://github.com/dvanoni/notero) extension. Works surprisingly smooth.
+
+To wrap up, there are more efficient workflows than relying solely on a Word database or gathering references in a single designated file. And they may be integrated with your favorite applications
+
+[^1]: That's the one tag which supposedly is a river and doesn't match to other apps listed.
+[^2]: I was thinking if there may be an extension using other, less legal sources. Yep, they exist.
+[^3]: Zotero has much more colors to highlight text.
+[^4]: While PDF support in Zotero is superior, I was mainly taking notes from websites where hypothesis were better. Look in further sources section for great review of note-taking tools.
+[^5]: Sharing is caring, or something like that.
+
+---
+
+# Implication of deploying github page to another repo
+URL: https://blog.palczew.ski/en/thoughts/year/2023/08/github-page-another-repo
+Date: 2023-08-17
+Tags: Astro, Github, CD, Github-actions, Devops
+
+_Be aware that it is a n old post. Just reference or an inspiration if someone is lost._
+
+
+Years ago I had a thought to seperate repo with hugo theme and the one with rendered page due to possible use of [utterances](https://utteranc.es/)[^1]. There are my experiences with both approaches:
+
+## deploying page to the same repo
+
+- Astro docs provides a [good starting point](https://docs.astro.build/en/guides/deploy/github/)
+
+## deploying site elsewhere
+
+- There is a a [convinient github-action](https://cpina.github.io/push-to-another-repository-docs/index.html)
+- Can you reuse `withastro/action@v0` to build it? You might, but it is designed for scenario above, this action creates an [artifact](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts) that is consumed by `actions/deploy-pages@v1` action.
+  - tl;dr: there are better ways
+
+### Example of deploying astro blog to github pages
+
+[There is my example](https://github.com/jpalczewski/entuzjazm/blob/6bd91f3a1d60714ab80836c2125b2a654d3a1b63/.github/workflows/deploy.yml) of working github action.
+
+Things worth to note:
+
+- By using actions to install node and pnpm there is huge time savings due to caching.
+- There should be a `.nojekyll` file in blog root - otherwise css is messed up[^2]
+
+[^1]: Is it a good idea? One of tutorials on integrating utterances with astro doesn't have it either. I hope not to see it as a opinion whether this is good option, but someday I will give it a try.
+[^2]: [Source](https://stackoverflow.com/questions/74489844/astro-js-deployment-media-files-not-rendering)
+
+---

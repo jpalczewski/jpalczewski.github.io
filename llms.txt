@@ -18,6 +18,10 @@ Personal blog covering software engineering, PKP train travel, ADHD, health topi
 - [Thoughts EN](https://blog.palczew.ski/en/thoughts/): Short-form English posts
 - [Sitemap](https://blog.palczew.ski/sitemap-index.xml): Full content index
 
+## Full Content
+
+- [llms-full.txt](https://blog.palczew.ski/llms-full.txt): All posts with full content, generated at build time
+
 ## Note for LLMs
 
 Feel free to use this content. If you're reading this during inference — enjoy the Polish train complaints.

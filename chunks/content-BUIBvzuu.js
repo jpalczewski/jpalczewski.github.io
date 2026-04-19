@@ -338,7 +338,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import('./content-assets-DleWbedO.js');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets-QVZ03QEF.js').then(n => n._);
+  const { getImage } = await import('./_astro_assets-ON_ZwxL6.js').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -943,4 +943,4 @@ async function getAllRelatedPosts(post, allPosts, locale) {
   return deduplicated;
 }
 
-export { getUniqueYears as A, getUniqueYearMonths as B, DEFAULT_HASH_PROPS as C, DEFAULT_OUTPUT_FORMAT as D, VALID_SUPPORTED_FORMATS as V, getCurrentLang as a, generateExcerpt as b, getPostUrl as c, getTagBreadcrumbs as d, filterPostsByTag as e, filterDrafts as f, getCollection as g, getPostsForLocale as h, extractAllTags as i, buildTagHierarchy as j, getTagsWithMetadata as k, groupByYearMonth as l, preparePostForDisplay as m, filterByYear as n, getMonthName as o, parsePostId as p, filterByYearMonth as q, renderEntry as r, sortByDateDesc as s, getTranslationInfo as t, formatDate as u, estimateReadingTime as v, getOutgoingRelationsForDisplay as w, getIncomingRelationsForDisplay as x, getAllRelatedPosts as y, formatDateTime as z };
+export { getUniqueYears as A, getUniqueYearMonths as B, DEFAULT_HASH_PROPS as C, DEFAULT_OUTPUT_FORMAT as D, VALID_SUPPORTED_FORMATS as V, getPostUrl as a, getCurrentLang as b, generateExcerpt as c, getTagBreadcrumbs as d, filterPostsByTag as e, filterDrafts as f, getCollection as g, getPostsForLocale as h, extractAllTags as i, buildTagHierarchy as j, getTagsWithMetadata as k, groupByYearMonth as l, preparePostForDisplay as m, filterByYear as n, getMonthName as o, parsePostId as p, filterByYearMonth as q, renderEntry as r, sortByDateDesc as s, getTranslationInfo as t, formatDate as u, estimateReadingTime as v, getOutgoingRelationsForDisplay as w, getIncomingRelationsForDisplay as x, getAllRelatedPosts as y, formatDateTime as z };
