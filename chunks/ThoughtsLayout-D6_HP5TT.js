@@ -1,7 +1,7 @@
 import { c as createAstro, a as createComponent, r as renderComponent, b as renderTemplate, m as maybeRenderHead, e as renderSlot } from './astro-server-CNTtBI_2.js';
 import 'piccolore';
-import { $ as $$Layout } from './Layout-DNfZsI7x.js';
-import { g as getCollection, i as getPostsForLocale, A as getUniqueYears, B as getUniqueYearMonths } from './content-D7VCeSST.js';
+import { $ as $$Layout } from './Layout-CS-9fGnr.js';
+import { g as getCollection, i as getPostsForLocale, A as getUniqueYears, B as getUniqueYearMonths } from './content-Cj08WLk1.js';
 import { a as createThoughtsNavConfig } from './secondary-nav-config-0UbuDUCn.js';
 
 const $$Astro = createAstro("https://blog.palczew.ski");

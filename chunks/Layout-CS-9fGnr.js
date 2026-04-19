@@ -2,11 +2,11 @@ import { c as createAstro, a as createComponent, d as addAttribute, f as renderS
 import 'piccolore';
 /* empty css                        */
 import 'clsx';
-import { $ as $$Font } from './_astro_assets-0fzwvnO0.js';
+import { $ as $$Font } from './_astro_assets-7upKxtBB.js';
 import { c as attr, b as attr_class, e as escape_html, a as ensure_array_like, f as derived, s as stringify } from './_at-astro-renderers-d4pvLIoB.js';
 import { PL, GB } from 'country-flag-icons/string/3x2';
 import { appendForwardSlash, joinPaths } from '@astrojs/internal-helpers/path';
-import { g as getCollection, i as getPostsForLocale } from './content-D7VCeSST.js';
+import { g as getCollection, i as getPostsForLocale } from './content-Cj08WLk1.js';
 
 /**
  * @param {string} value
