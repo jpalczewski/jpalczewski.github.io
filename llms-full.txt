@@ -2,7 +2,93 @@
 
 > Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations.
 
-Total posts: 15
+Total posts: 18
+
+---
+
+# Rust, Docker, and the GHA layer caching problem
+URL: https://blog.palczew.ski/en/thoughts/year/2026/04/rust-docker-cache
+Date: 2026-04-27
+Tags: Rust, Docker, DevOps, Vibecoding, GitHub Actions, Projekty/Kartoteka, Sideprojects
+
+Lately I've been working on my own vibe-designed todo app rewrite in Rust[^1]. Along the way I started looking for a sensible path to optimizing Docker image builds on GitHub Actions.
+
+One of the solutions you can easily stumble upon is [`cargo-chef`](https://github.com/lukemathwalker/cargo-chef) — it separates dependency fetching from building the actual code to better cache layers. The problem is it's designed for simpler applications with a single `lib.rs`. In a workspace with more crates it doesn't cache what it should, and every push ends up recompiling everything from scratch.
+
+Two approaches I tried: buildkit cache dance[^2] — speeds things up a bit, but doesn't cache brilliantly and adds its own time overhead[^3] — and [`swatinem/rust-cache`](https://github.com/swatinem/rust-cache), which works nicely on GHA for binary caching, but deploying Kartoteka as a Docker image on Coolify rules that action out.
+
+Research turned up `sccache` as worth trying — I made an attempt, but Hetzner S3 is a no-go[^4]. So Cloudflare R2 on the free tier as a potential alternative[^5].
+
+For now I'm parking at cache dance. Not ruling out going toward my own runner with local cache — just on a slightly bigger server.
+
+[^1]: Kartoteka — somewhere between Todoist, Jira, Amazing Marvin, and Toggl. Classic scope creep.
+[^2]: [Example in the Kartoteka repo.](https://github.com/jpalczewski/kartoteka/blob/a588f99a204ec6c3688f2ae7aafe9ab8cd883559/.github/workflows/docker-build.yml)
+[^3]: In Kartoteka's case there's also the exotic stack — Leptos — which means deploying the server binary together with the built frontend/wasm.
+[^4]: Hetzner S3 bills storage in 1 TB blocks. A bit astronomical for one innocent backup and build artifacts.
+[^5]: Yes, I know — suggesting I go back to Cloudflare when I've spent two weeks rewriting an MCP from a Cloudflare Worker to axum/rmcp specifically to get off the Cloudflare ecosystem, sure.
+
+---
+
+# AAAAA Rejwa szukam
+URL: https://blog.palczew.ski/pl/thoughts/year/2026/04/aaaaa-rejwa-szukam
+Date: 2026-04-27
+Tags: Rave, Podróśe
+
+import { YouTube } from 'astro-embed';
+
+
+Jednym z najbardziej niespecyficznych nawyków które mam, to obczajanie zagranicznych miast na Resident Advisor:
+
+![Resident Advisor](@assets/images/resident-advisor.png "pov: moje typowa historia przeglądania gdy myślę o wyjeździe za granicę")
+
+Zaczęło się rok temu jak przypadkiem trafiłem na Lil Texasa w Budapeszcie.
+
+<figure class="post-figure">
+  <YouTube id="SWDZJDfiFJw" />
+  <figcaption>Domyślam się ze nie kady zna, dlatego tez podrzucam przykład xD</figcaption>
+</figure>
+
+Do refleksji i wspomnień pewnie jeszcze wrócę, ale gdyby  ktoś szukał inspiracji jak na imprezę za granicę  bądź w Polsce trafić, to  chciałbym popełnić spis  stron na które warto rzucić okiem planując jakiś wyjazd.
+
+## Polska
+
+- [Załoga Rave](https://zalogarave.pl/) jest całkiem  przyjemnym agregatorem imprez - nie spaczonym gatunkowo, co mozemy postrzegac zarowno w formie zalety jak i wady 
+- [Core'owe Ogłoszenia Parafialne](https://www.facebook.com/CoreInfoPL?locale=pl_PL) tu juz stricte hardkory i inne gatunki muzyczne
+
+## Holandia
+
+- [Partyflock](https://partyflock.nl/) - na chwilę pisania posta niestety nie działa, ale gdyby miała wrócić - polecam!
+
+
+## Ogólne
+
+- [Resident Advisor](https://pl.ra.co/) - na plus bardzo duza baza z rozbiciem na gatunki, na minus - w wiekszych krajach brak mi feedów narodowych[^1]
+- [Harderstylemap](https://harderstylemap.com/) - niczym core'owe ogłoszenia parafialne, ino z mapą. I bez barier.
+
+[^1]: Mam tak na przykład z Wielką Brytanią lub Francją
+
+---
+
+# Rust, Docker i problem z cache'owaniem warstw na GHA
+URL: https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache
+Date: 2026-04-26
+Tags: Rust, Docker, DevOps, Vibecoding, GitHub Actions, Projekty/Kartoteka, Sideprojekty
+
+Ostatnio dłubię sobie własny vibe-designed rewrite aplikacji todo w Ruscie[^1]. Przy okazji zacząłem szukać sensownej ścieżki do optymalizowania budowania obrazów Dockerowych na GitHub Actions.
+
+Jedno z rozwiązań, na które można dość łatwo trafić, to [`cargo-chef`](https://github.com/lukemathwalker/cargo-chef) — separuje pobieranie zależności od właściwego kodu, żeby lepiej cache'ować warstwy. Problem w tym, że jest projektowany pod prostsze aplikacje z jednym `lib.rs`. W workspace z większą liczbą crate'ów nie cache'uje tego co trzeba i przy każdym pushu i tak kompilujesz wszystko od nowa.
+
+Dwa podejścia które próbowałem: buildkit cache dance[^2] — trochę przyspiesza, ale nie cache'uje rewelacyjnie i dorzuca własny narzut czasowy[^3] — oraz [`swatinem/rust-cache`](https://github.com/swatinem/rust-cache), który na GHA sprawdza się fajnie przy cache'owaniu binarek, ale deployment Kartoteki jako obrazu Dockerowego na Coolify tę akcję wyklucza.
+
+Z researchu wyszło mi, że warto sprawdzić `sccache` — zrobiłem podejście, ale Hetzner S3 odpada[^4]. Stąd Cloudflare R2 w free tierze jako potencjalna alternatywa[^5].
+
+Na razie tymczasowo parkuję przy cache dance. Nie jest wykluczone, że pójdę w stronę własnego runnera z lokalnym cache — tylko na trochę większym serwerze.
+
+[^1]: Kartoteka — gdzieś pomiędzy Todoistem, Jirą, Amazing Marvin i Togglem. Klasyczny scope creep.
+[^2]: [Przykład w repo Kartoteka.](https://github.com/jpalczewski/kartoteka/blob/a588f99a204ec6c3688f2ae7aafe9ab8cd883559/.github/workflows/docker-build.yml)
+[^3]: W przypadku Kartoteki dochodzi jeszcze kwestia egzotycznego stacku w postaci Leptosa — razem z plikiem serwera trzeba też deployować zbudowany frontend/wasm.
+[^4]: Hetzner S3 rozlicza storage w pakietach po 1 TB — jak na jeden niewinny backup i artefakty do cache to trochę astronomiczne.
+[^5]: Tak, wiem — sugerowanie żebym wracał do Cloudflare, kiedy od dwóch tygodni przepisuję MCP z Cloudflare Workera na axum/rmcp żeby zejść z ekosystemu Cloudflare, mhm.
 
 ---
 
