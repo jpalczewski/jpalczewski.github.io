@@ -1,5 +1,5 @@
 import { n as createVNode, F as Fragment, _ as __astro_tag_component__ } from './astro-server-82cx7PaZ.js';
-import { a as $$Image } from './_astro_assets-TPNCJdlx.js';
+import { a as $$Image } from './_astro_assets-C3JfKHRT.js';
 import { a as __0________________assets_images_resident_advisor_png__ } from './resident-advisor-u3YipV2H.js';
 import { $ as $$YouTube } from './post-h-WWnw8X.js';
 import 'clsx';

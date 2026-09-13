@@ -1,6 +1,7 @@
 import { _ as __vite_glob_0_0 } from './pingu-teraz-juz-nie-chce-CxFu4IsJ.js';
 import { _ as __vite_glob_0_1 } from './resident-advisor-u3YipV2H.js';
-import { p as parsePostId, r as renderEntry, e as generateExcerpt, a as getPostUrl, d as getCurrentLang } from './content-B-zNVUw9.js';
+import { p as parsePostId, r as renderEntry, e as generateExcerpt, a as getPostUrl, d as getCurrentLang } from './content-DPTyjld4.js';
+import '@astrojs/markdown-remark';
 
 const THREADS = {
   tech: {
