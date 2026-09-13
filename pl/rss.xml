@@ -1,6 +1,355 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Karpaty</title><description>Kolekcja myśli, esejów i notatek serwisowych</description><link>https://blog.palczew.ski/</link><language>pl-PL</language><managingEditor>jpalczewski@gmail.com (Jacek Palczewski)</managingEditor><webMaster>jpalczewski@gmail.com (Jacek Palczewski)</webMaster><item><title>Jak zalogować się do Grafany przez Authelię jako admin?</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin/</guid><description>Ostatnio hobbystycznie wracam do zabawy w selfhosting — jeden z tych okresowych nawrotów, gdzie na nowo można rozwiązać stare problemy, testując różne podejścia do rzeczy, które kiedyś już &quot;rozwiązałem&quot;[^1]. Tym razem przyszła kolej na monitoring. Zdziwiło mnie, że zaraz po skonfigurowaniu OIDC...</description><pubDate>Sun, 13 Sep 2026 17:32:54 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>AAAAA Rejwa szukam</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/04/aaaaa-rejwa-szukam/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/04/aaaaa-rejwa-szukam/</guid><description>Jednym z najbardziej niespecyficznych nawyków które mam, to obczajanie zagranicznych miast na Resident Advisor: !Resident Advisor Zaczęło się rok temu jak przypadkiem trafiłem na Lil Texasa w Budapeszcie. &lt;figure class=&quot;post-figure&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Karpaty</title><description>Kolekcja myśli, esejów i notatek serwisowych</description><link>https://blog.palczew.ski/</link><language>pl-PL</language><managingEditor>jpalczewski@gmail.com (Jacek Palczewski)</managingEditor><webMaster>jpalczewski@gmail.com (Jacek Palczewski)</webMaster><item><title>Jak zalogować się do Grafany przez Authelię jako admin?</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin/</guid><description>Ostatnio hobbystycznie wracam do zabawy w selfhosting — jeden z tych okresowych nawrotów, gdzie na nowo można rozwiązać stare problemy, testując różne podejścia do rzeczy, które kiedyś już &quot;rozwiązałem&quot;[^1]. Tym razem przyszła kolej na monitoring. Zdziwiło mnie, że zaraz po skonfigurowaniu OIDC...</description><pubDate>Sun, 13 Sep 2026 17:32:54 GMT</pubDate><content:encoded>&lt;p&gt;Ostatnio hobbystycznie wracam do zabawy w selfhosting — jeden z tych okresowych nawrotów, gdzie na nowo można rozwiązać stare problemy, testując różne podejścia do rzeczy, które kiedyś już “rozwiązałem”&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Tym razem przyszła kolej na monitoring.&lt;/p&gt;
+&lt;p&gt;Zdziwiło mnie, że zaraz po skonfigurowaniu OIDC nie mogłem dodać żadnego dashboardu w Grafanie — logowanie działało, a mimo to brakowało uprawnień.&lt;/p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Grafana stała już za Authelią (self-hosted SSO, jeden użytkownik, w grupie &lt;code&gt;admins&lt;/code&gt;) przez natywne OIDC&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (&lt;code&gt;auth.generic_oauth&lt;/code&gt;). Zadanie wydawało się trywialne: każdy z grupy &lt;code&gt;admins&lt;/code&gt; ma dostawać rolę &lt;code&gt;GrafanaAdmin&lt;/code&gt; w Grafanie automatycznie przy logowaniu, zamiast nadać ręcznie w UI — i tak zostałoby nadpisane przy każdym logowaniu, bo &lt;code&gt;allow_sign_up: true&lt;/code&gt; re-provisionuje usera za każdym razem.&lt;/p&gt;
+&lt;h2 id=&quot;grafana&quot;&gt;Grafana&lt;/h2&gt;
+&lt;p&gt;Standardowa, udokumentowana ścieżka: scope &lt;code&gt;groups&lt;/code&gt; na kliencie OIDC + &lt;code&gt;role_attribute_path&lt;/code&gt; (wyrażenie JMESPath&lt;sup&gt;&lt;a href=&quot;#user-content-fn-3&quot; id=&quot;user-content-fnref-3&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;) po stronie Grafany.&lt;/p&gt;
+&lt;p&gt;Grafanę stawiam przez Ansible, rolą &lt;a href=&quot;https://github.com/grafana/grafana-ansible-collection&quot;&gt;&lt;code&gt;grafana.grafana.grafana&lt;/code&gt;&lt;/a&gt;. Najważniejszy fragment configu to zmienna &lt;code&gt;grafana_ini_oauth&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;astro-code github-dark&quot; style=&quot;background-color:#24292e;color:#e1e4e8; overflow-x: auto;&quot; tabindex=&quot;0&quot; data-language=&quot;yaml&quot;&gt;&lt;code&gt;&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;grafana_ini_oauth&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;  &quot;auth.generic_oauth&quot;&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    enabled&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#79B8FF&quot;&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    name&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;Authelia&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    client_id&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;grafana&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    client_secret&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&quot;{{ grafana_authelia_oidc_secret | default(&apos;&apos;) }}&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    scopes&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&quot;openid profile email groups&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    auth_url&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&quot;https://authelia.example.com/api/oidc/authorization&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    token_url&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&quot;https://authelia.example.com/api/oidc/token&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    api_url&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&quot;https://authelia.example.com/api/oidc/userinfo&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    use_pkce&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#79B8FF&quot;&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    allow_sign_up&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#79B8FF&quot;&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    role_attribute_path&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&quot;contains(groups[*], &apos;admins&apos;) &amp;#x26;&amp;#x26; &apos;GrafanaAdmin&apos; || &apos;Viewer&apos;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Admin user jest jedynym członkiem grupy &lt;code&gt;admins&lt;/code&gt; w Authelii — stąd &lt;code&gt;contains(groups[*], &apos;admins&apos;)&lt;/code&gt; w wyrażeniu wyżej. Warunek konieczny, żeby to zadziałało: scope &lt;code&gt;groups&lt;/code&gt; musi być dodany do klienta OIDC Grafany, tak jak w configu powyżej.&lt;/p&gt;
+&lt;h2 id=&quot;co-miało-się-wydarzyć&quot;&gt;Co miało się wydarzyć&lt;/h2&gt;
+&lt;p&gt;Dokumentacja &lt;code&gt;role_attribute_path&lt;/code&gt; w Grafanie opisuje trójstopniowy fallback: najpierw &lt;code&gt;id_token&lt;/code&gt;, jeśli nic nie znajdzie — &lt;code&gt;userinfo&lt;/code&gt; (&lt;code&gt;api_url&lt;/code&gt;), jeśli nadal nic — &lt;code&gt;access_token&lt;/code&gt;. Brzmi jak solidna redundancja.&lt;/p&gt;
+&lt;h2 id=&quot;co-się-wydarzyło-w-praktyce&quot;&gt;Co się wydarzyło w praktyce&lt;/h2&gt;
+&lt;p&gt;W Grafanie 13.2.1 fallback do &lt;code&gt;userinfo&lt;/code&gt; jest zepsuty — potwierdzone przez &lt;a href=&quot;https://github.com/grafana/grafana/issues/106686&quot;&gt;grafana/grafana#106686&lt;/a&gt;. Jeśli claima nie ma w &lt;code&gt;id_token&lt;/code&gt;, Grafana nie sprawdza &lt;code&gt;userinfo&lt;/code&gt; tak, jak deklaruje dokumentacja.&lt;/p&gt;
+&lt;p&gt;Tymczasem Authelia od wersji 4.39 przestała domyślnie wrzucać claimy ze scope’ów (np. &lt;code&gt;groups&lt;/code&gt;) do &lt;code&gt;id_token&lt;/code&gt; — trafiają tylko do &lt;code&gt;userinfo&lt;/code&gt;. To sensowne zaostrzenie bezpieczeństwa samo w sobie (mniej PII w tokenie, który trafia do różnych stron), ale w zderzeniu ze zepsutym fallbackiem Grafany daje cichy blackout: dokładnie ten claim, który ma znaczenie dla roli, nigdzie nie dociera.&lt;sup&gt;&lt;a href=&quot;#user-content-fn-4&quot; id=&quot;user-content-fnref-4&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 id=&quot;fix-po-stronie-authelii&quot;&gt;Fix po stronie Authelii&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;identity_providers.oidc.claims_policies&lt;/code&gt; po stronie Authelii — jawnie wymusza konkretne claimy z powrotem do &lt;code&gt;id_token&lt;/code&gt; per-klient, referencjonowane z klienta przez &lt;code&gt;claims_policy: &amp;#x3C;nazwa&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&quot;astro-code github-dark&quot; style=&quot;background-color:#24292e;color:#e1e4e8; overflow-x: auto;&quot; tabindex=&quot;0&quot; data-language=&quot;yaml&quot;&gt;&lt;code&gt;&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;identity_providers&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;  oidc&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#6A737D&quot;&gt;    # ...&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    claims_policies&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;      grafana&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#6A737D&quot;&gt;# nazwa polityki, dowolna, referencjonowana niżej&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;        id_token&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;          - &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;groups&apos;&lt;/span&gt;&lt;span style=&quot;color:#6A737D&quot;&gt; # wymuś ten claim do id_tokenu&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;    clients&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;      - &lt;/span&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;client_id&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;inny&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#6A737D&quot;&gt;        # brak claims_policy — nie dostaje tego traktowania&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;      - &lt;/span&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;client_id&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;grafana&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;        client_secret&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;...&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;        claims_policy&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;grafana&apos;&lt;/span&gt;&lt;span style=&quot;color:#6A737D&quot;&gt; # podłączenie polityki do klienta&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;        redirect_uris&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;          - &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;https://grafana.example.com/login/generic_oauth&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#85E89D&quot;&gt;        scopes&lt;/span&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;          - &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;openid&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;          - &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;profile&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;          - &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;email&apos;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;line&quot;&gt;&lt;span style=&quot;color:#E1E4E8&quot;&gt;          - &lt;/span&gt;&lt;span style=&quot;color:#9ECBFF&quot;&gt;&apos;groups&apos;&lt;/span&gt;&lt;span style=&quot;color:#6A737D&quot;&gt; # musi być zażądany, inaczej nic do wymuszenia&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Z tymi ustawieniami ponownie można logować się do Grafany jako admin — kolejny stary problem odhaczony, na nowo i inaczej niż ostatnim razem.&lt;/p&gt;
+&lt;p&gt;I czy, mając możliwość dodania dashboardu, dodałem go?&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;figure class=&quot;post-figure&quot;&gt;&lt;img alt=&quot;Pingu siedzący na krześle z napisem &amp;quot;TERAZ JUŻ NIE CHCĘ&amp;quot;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; width=&quot;700&quot; height=&quot;670&quot; src=&quot;https://blog.palczew.ski/_astro/pingu-teraz-juz-nie-chce.BWNWlzG9_Zojzbp.webp&quot;&gt;&lt;figcaption&gt;teraz już nie chcę&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/RPi-Monitor/RPi-Monitor&quot;&gt;RPi-Monitor&lt;/a&gt;, pamiętamy &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;OIDC (OpenID Connect) — protokół logowania (SSO) zbudowany na OAuth2. &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://jmespath.org/&quot;&gt;JMESPath&lt;/a&gt; — język zapytań do wyciągania i przekształcania danych z dokumentów JSON, tu używany do wyciągnięcia grup z claimów tokenu. &lt;a href=&quot;#user-content-fnref-3&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 3&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-4&quot;&gt;
+&lt;p&gt;Kto się naszukał, jak dodać nowy dashboard, żeby po dłuższej chwili zorientować się, że ma tylko Viewera? Autor. &lt;a href=&quot;#user-content-fnref-4&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 4&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>AAAAA Rejwa szukam</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/04/aaaaa-rejwa-szukam/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/04/aaaaa-rejwa-szukam/</guid><description>Jednym z najbardziej niespecyficznych nawyków które mam, to obczajanie zagranicznych miast na Resident Advisor: !Resident Advisor Zaczęło się rok temu jak przypadkiem trafiłem na Lil Texasa w Budapeszcie. &lt;figure class=&quot;post-figure&quot;&gt;
   
-  &lt;figcaption&gt;Domyślam się ze nie kady zna, dlatego tez...</description><pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Rust, Docker i problem z cache&apos;owaniem warstw na GHA</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache/</guid><description>Ostatnio dłubię sobie własny vibe-designed rewrite aplikacji todo w Ruscie[^1]. Przy okazji zacząłem szukać sensownej ścieżki do optymalizowania budowania obrazów Dockerowych na GitHub Actions. Jedno z rozwiązań, na które można dość łatwo trafić, to cargo-chef — separuje pobieranie zależności od...</description><pubDate>Sun, 26 Apr 2026 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Live</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/04/w-koncu-live/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/04/w-koncu-live/</guid><description>Po paru miesiącach dłubania[^1], post-Claude-Code hiperfiksacji na AI-owych sideprojektach — wracam do dłubania tego repozytorium, aka prowadzenia bloga. Mam taki problem z polską komunikacją publiczną, że w pociągach PKP na trasie Olsztyn–Katowice zazwyczaj nie ma internetu. Jakieś 60%...</description><pubDate>Sun, 19 Apr 2026 12:48:03 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Jak mieć multiscreen na Azurowskim Bastionie?</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/12/jak-miec-multiscreen-na-azurowskim-bastionie/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/12/jak-miec-multiscreen-na-azurowskim-bastionie/</guid><description>Ostatnio dość dużo czasu spędzam na Azure - ich webowy klient działa dość topornie - na szczęście, trafiłem na rozwiązanie: az(Azure CLI) ma dodatek, który pozwala wyprowadzić RDP aby łączyć się na serwer natywnym kliencie. Warto też wspomnieć że Microsoft w swej dobroci wrzuca az jako zip do...</description><pubDate>Mon, 08 Dec 2025 20:01:36 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Róznica między rezonansem medycznym wykonanym prywatnie, a na NFZ</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/roznica-miedzy-rezonansem-medycznym-wykonanym-prywatnie-a-na-nfz/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/roznica-miedzy-rezonansem-medycznym-wykonanym-prywatnie-a-na-nfz/</guid><description>Z takich zabawnych anegdot to cały czas za mną chodzi różnica w doświadczeniu między rezonansem który miałem w ramach Luxmedu, kontra  rezonansem wykonanym na fundusz zdrowia. Właściwie największą różnicą jest muzyka. W Luxmedzie dostajesz słuchawki, natomiast w publicznie finansowanym badaniu do...</description><pubDate>Mon, 17 Nov 2025 19:02:47 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Optymalizacja drogi do Katowic</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/optymalizacja-drogi-do-katowic/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/optymalizacja-drogi-do-katowic/</guid><description>Ten post jest literalnie tym filmem Pewnego sierpniowego dnia dostałem zaproszenie na rozmowę kwalifikacyjną do Katowic. Słysząc, że rozmowa będzie na miejscu to stwierdziłem.... ......dlaczego nie?[^2] W każdym razie, parę tygodni później jestem szczególnie dumny z jednego połączenia:
- - O 20...</description><pubDate>Sat, 15 Nov 2025 16:07:41 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>W warmińsko-mazurskim nic sie nie dzieje, ale...</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/w-warminsko-mazurskim-nic-sie-nie-dzieje-ale/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/w-warminsko-mazurskim-nic-sie-nie-dzieje-ale/</guid><description>W te wakacje miałem dość dużą hiperfiksację związaną z podróżami[^1] na festiwale - jedna ciekawostka mi zapadła w pamięć sczególnie. Szukając alternatyw transportowych jak trafić do Holandii, Claude podpowiedział mi istnienie lotniska Weeze pod Duseldorfem w Niemczech - tak się składa że są tam...</description><pubDate>Sat, 15 Nov 2025 15:23:35 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Przyjdzie informatyk na wydział humanistyczny...</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/przyjdzie-informatyk-na-wydzial-humanistyczny/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/przyjdzie-informatyk-na-wydzial-humanistyczny/</guid><description>Zaczynając pracę magisterską w realiach Wydziału Humanistycznego przyszedłem z dość fajnym bagażem - czy też doświadczeniem pisania w Zotero. Co prawda styl cytowania zgoła odmienny od tego co znałem dotychczas, ale gdyby ktoś kiedyś trafił w podobnych realiach i chciał mieć fajne narzędzie do...</description><pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>A jak wygląda droga do Budapesztu?</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/a-jak-wyglada-droga-do-budapesztu/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/a-jak-wyglada-droga-do-budapesztu/</guid><description>Wrzucając stare posty żeby jakkolwiek zapełnić nowego bloga treścią, Fajnie będzie dodać do do moich rozkmin na temat Amsterdamu, jak wygląda kwestia Budapesztu pod kątem cen transportu. Long story short:  we wrześniu był tam Lil Texas, więc stwierdziłem ze muszę tam być! W porównaniu do...</description><pubDate>Thu, 13 Nov 2025 23:08:48 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Użyte artykuły w trakcie tworzenia tego bloga</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/uzyte-artykuy-w-trakcie-tworzenia-tego-bloga/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/uzyte-artykuy-w-trakcie-tworzenia-tego-bloga/</guid><description>- Szukając fajnych statystyk Perplexity podrzuciło mi Goatcounter - plus że open source i zaletą jest brak przymusu ostrzeżenia o ciasteczkach. Jak wyjdzie? Zobaczymy.</description><pubDate>Thu, 13 Nov 2025 07:57:25 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Hello, world</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/hello-world/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/hello-world/</guid><description>Kolejne, finalne podejście do blogowania.  Styl jest od początku do końca zrobiony za pomocą vibecodingu - w duźej mierze to efekt darmowych tokenów na claude code web i zapału do skomplikowanych inicjatyw. A zapytacie[^1], dlaczego wracam nieustannie na github pages? To ma nieodmienny związek...</description><pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Co wspólnego ma malarstwo z design thinking</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/malarstwo-a-design-thinking/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/malarstwo-a-design-thinking/</guid><description>Jestem jeszcze w czasie gdy dość łapczywie przeglądam zdjęcia z podróży i teraz stwierdziłem że w ramach nasilenia prokrastynacji chcę zobaczyć o co chodzi z książką Lie like an artist - widziałem ją w przymuzealnych sklepikach zarazem w trzech miastach gdzie miałem okazję zajrzeć do miejsc...</description><pubDate>Sat, 27 Jul 2024 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Jak wrócić z amsterdamu</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/jak-wrocic-z-amsterdamu/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/jak-wrocic-z-amsterdamu/</guid><description>Podejmując skądinąd odważną decyzję o wyprawie na  Dominator 2024 i urozmaicając to wypadem do Amsterdamu, pozostaje jeszcze wątek jak wrócić? Warunki brzegowe Zakładam że po całym poniedziałku w Amsterdamie zaczyna się wątek powrotu - czyli do dyspozycji jest albo nocny pociąg, albo  nocleg +...</description><pubDate>Sun, 07 Jul 2024 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>DPD a przesyłki - jak poprawić jakość niskim kosztem?</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki/</guid><description>Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem reklamacji w DPD, dlatego ten protip przeklejam z przyjemnością:
+  &lt;figcaption&gt;Domyślam się ze nie kady zna, dlatego tez...</description><pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Rust, Docker i problem z cache&apos;owaniem warstw na GHA</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache/</guid><description>Ostatnio dłubię sobie własny vibe-designed rewrite aplikacji todo w Ruscie[^1]. Przy okazji zacząłem szukać sensownej ścieżki do optymalizowania budowania obrazów Dockerowych na GitHub Actions. Jedno z rozwiązań, na które można dość łatwo trafić, to cargo-chef — separuje pobieranie zależności od...</description><pubDate>Sun, 26 Apr 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Ostatnio dłubię sobie własny vibe-designed rewrite aplikacji todo w Ruscie&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Przy okazji zacząłem szukać sensownej ścieżki do optymalizowania budowania obrazów Dockerowych na GitHub Actions.&lt;/p&gt;
+&lt;p&gt;Jedno z rozwiązań, na które można dość łatwo trafić, to &lt;a href=&quot;https://github.com/lukemathwalker/cargo-chef&quot;&gt;&lt;code&gt;cargo-chef&lt;/code&gt;&lt;/a&gt; — separuje pobieranie zależności od właściwego kodu, żeby lepiej cache’ować warstwy. Problem w tym, że jest projektowany pod prostsze aplikacje z jednym &lt;code&gt;lib.rs&lt;/code&gt;. W workspace z większą liczbą crate’ów nie cache’uje tego co trzeba i przy każdym pushu i tak kompilujesz wszystko od nowa.&lt;/p&gt;
+&lt;p&gt;Dwa podejścia które próbowałem: buildkit cache dance&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; — trochę przyspiesza, ale nie cache’uje rewelacyjnie i dorzuca własny narzut czasowy&lt;sup&gt;&lt;a href=&quot;#user-content-fn-3&quot; id=&quot;user-content-fnref-3&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; — oraz &lt;a href=&quot;https://github.com/swatinem/rust-cache&quot;&gt;&lt;code&gt;swatinem/rust-cache&lt;/code&gt;&lt;/a&gt;, który na GHA sprawdza się fajnie przy cache’owaniu binarek, ale deployment Kartoteki jako obrazu Dockerowego na Coolify tę akcję wyklucza.&lt;/p&gt;
+&lt;p&gt;Z researchu wyszło mi, że warto sprawdzić &lt;code&gt;sccache&lt;/code&gt; — zrobiłem podejście, ale Hetzner S3 odpada&lt;sup&gt;&lt;a href=&quot;#user-content-fn-4&quot; id=&quot;user-content-fnref-4&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Stąd Cloudflare R2 w free tierze jako potencjalna alternatywa&lt;sup&gt;&lt;a href=&quot;#user-content-fn-5&quot; id=&quot;user-content-fnref-5&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Na razie tymczasowo parkuję przy cache dance. Nie jest wykluczone, że pójdę w stronę własnego runnera z lokalnym cache — tylko na trochę większym serwerze.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Kartoteka — gdzieś pomiędzy Todoistem, Jirą, Amazing Marvin i Togglem. Klasyczny scope creep. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jpalczewski/kartoteka/blob/a588f99a204ec6c3688f2ae7aafe9ab8cd883559/.github/workflows/docker-build.yml&quot;&gt;Przykład w repo Kartoteka.&lt;/a&gt; &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-3&quot;&gt;
+&lt;p&gt;W przypadku Kartoteki dochodzi jeszcze kwestia egzotycznego stacku w postaci Leptosa — razem z plikiem serwera trzeba też deployować zbudowany frontend/wasm. &lt;a href=&quot;#user-content-fnref-3&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 3&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-4&quot;&gt;
+&lt;p&gt;Hetzner S3 rozlicza storage w pakietach po 1 TB — jak na jeden niewinny backup i artefakty do cache to trochę astronomiczne. &lt;a href=&quot;#user-content-fnref-4&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 4&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-5&quot;&gt;
+&lt;p&gt;Tak, wiem — sugerowanie żebym wracał do Cloudflare, kiedy od dwóch tygodni przepisuję MCP z Cloudflare Workera na axum/rmcp żeby zejść z ekosystemu Cloudflare, mhm. &lt;a href=&quot;#user-content-fnref-5&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 5&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Live</title><link>https://blog.palczew.ski/pl/thoughts/year/2026/04/w-koncu-live/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2026/04/w-koncu-live/</guid><description>Po paru miesiącach dłubania[^1], post-Claude-Code hiperfiksacji na AI-owych sideprojektach — wracam do dłubania tego repozytorium, aka prowadzenia bloga. Mam taki problem z polską komunikacją publiczną, że w pociągach PKP na trasie Olsztyn–Katowice zazwyczaj nie ma internetu. Jakieś 60%...</description><pubDate>Sun, 19 Apr 2026 12:48:03 GMT</pubDate><content:encoded>&lt;p&gt;Po paru miesiącach dłubania&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, post-Claude-Code hiperfiksacji na AI-owych sideprojektach — wracam do dłubania tego repozytorium, aka prowadzenia bloga.&lt;/p&gt;
+&lt;p&gt;Mam taki problem z polską komunikacją publiczną, że w pociągach PKP na trasie Olsztyn–Katowice zazwyczaj nie ma internetu. Jakieś 60% przejazdów. Moje ADHD za bardzo nie pozwala mi czytać książek&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, więc… może przynajmniej sobie popiszę. Pouczę LLM-y. Zatruję je odrobiną nudnej wiedzy.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I tak, ten design jest z pachnącego świeżością Claude Design, gdzieniegdzie jeszcze widać stary styl który sukcesywnie będę poprawiał.&lt;/em&gt;&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Jak widać po datach treść tych notatek trochę odleżała niczym dobry alkohol. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;Największy akt desperacji to wyciąganie nmapa i analiza ruchu licząc na to, że  ręcznie uda mi się potwierdzić regulamin - bez skutku, niestety. &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Jak mieć multiscreen na Azurowskim Bastionie?</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/12/jak-miec-multiscreen-na-azurowskim-bastionie/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/12/jak-miec-multiscreen-na-azurowskim-bastionie/</guid><description>Ostatnio dość dużo czasu spędzam na Azure - ich webowy klient działa dość topornie - na szczęście, trafiłem na rozwiązanie: az(Azure CLI) ma dodatek, który pozwala wyprowadzić RDP aby łączyć się na serwer natywnym kliencie. Warto też wspomnieć że Microsoft w swej dobroci wrzuca az jako zip do...</description><pubDate>Mon, 08 Dec 2025 20:01:36 GMT</pubDate><content:encoded>&lt;p&gt;Ostatnio dość dużo czasu spędzam na Azure - ich webowy klient działa dość topornie - na szczęście, trafiłem na rozwiązanie: &lt;a href=&quot;https://www.terminalworks.com/blog/post/2024/11/23/azure-bastion-use-of-native-client-for-windows&quot;&gt;az(Azure CLI) ma dodatek, który pozwala wyprowadzić RDP aby łączyć się na serwer natywnym kliencie&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Warto też wspomnieć że Microsoft w swej dobroci wrzuca az jako &lt;a href=&quot;https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&amp;#x26;pivots=zip&quot;&gt;zip do ściągnięcia&lt;/a&gt; - w sam raz na środowiska gdzie brakuje praw administratora&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Gdyby was kusiło budować samemu  na lokalnym pythonie - bez &lt;del&gt;bez kraka nie pójdzie&lt;/del&gt; większej ilości narzdzi do budowania - a w Condzie też nie działał. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Róznica między rezonansem medycznym wykonanym prywatnie, a na NFZ</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/roznica-miedzy-rezonansem-medycznym-wykonanym-prywatnie-a-na-nfz/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/roznica-miedzy-rezonansem-medycznym-wykonanym-prywatnie-a-na-nfz/</guid><description>Z takich zabawnych anegdot to cały czas za mną chodzi różnica w doświadczeniu między rezonansem który miałem w ramach Luxmedu, kontra  rezonansem wykonanym na fundusz zdrowia. Właściwie największą różnicą jest muzyka. W Luxmedzie dostajesz słuchawki, natomiast w publicznie finansowanym badaniu do...</description><pubDate>Mon, 17 Nov 2025 19:02:47 GMT</pubDate><content:encoded>&lt;p&gt;Z takich zabawnych anegdot to cały czas za mną chodzi różnica w doświadczeniu między rezonansem który miałem w ramach Luxmedu, kontra  rezonansem wykonanym na fundusz zdrowia.&lt;/p&gt;
+&lt;p&gt;Właściwie największą różnicą jest muzyka. W Luxmedzie dostajesz słuchawki, natomiast w publicznie finansowanym badaniu do dyspozycji masz najtańsze zatyczki.&lt;/p&gt;
+&lt;p&gt;Humorystyczny też był dla mni aspekt&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; że dopiero na tym którymś badaniu z rzędu, właśnie wykobywanym na fundusz moja głowa była przeskanowana wykrywaczem metali.  Jakby okej,  standardy diagnostyczne są mi już z doświadczenia bliskie, ale mimo te pierwsze badania było ze wszechmiar stresujące, biorąc pod uwagi że trzy czwarte badań na początku udaru były wykonywane gdy byłem niprzytomny to stres że mam w głowie jakieś rosyjskie&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; nożyczki. Nie ukrywam, że ten symboliczny gest przed pierwszym badaniem w Polsce byłby dość mocno uspokający.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Jakby tak, mnie śmieszą dziwne rzeczy, możecie się przyzwyzcaić. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;Tak, operację miałem w Rosji. To się nazywa niezwykła  pamiątka z podróży! &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Optymalizacja drogi do Katowic</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/optymalizacja-drogi-do-katowic/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/optymalizacja-drogi-do-katowic/</guid><description>Ten post jest literalnie tym filmem Pewnego sierpniowego dnia dostałem zaproszenie na rozmowę kwalifikacyjną do Katowic. Słysząc, że rozmowa będzie na miejscu to stwierdziłem.... ......dlaczego nie?[^2] W każdym razie, parę tygodni później jestem szczególnie dumny z jednego połączenia:
+ - O 20...</description><pubDate>Sat, 15 Nov 2025 16:07:41 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>W warmińsko-mazurskim nic sie nie dzieje, ale...</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/w-warminsko-mazurskim-nic-sie-nie-dzieje-ale/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/w-warminsko-mazurskim-nic-sie-nie-dzieje-ale/</guid><description>W te wakacje miałem dość dużą hiperfiksację związaną z podróżami[^1] na festiwale - jedna ciekawostka mi zapadła w pamięć sczególnie. Szukając alternatyw transportowych jak trafić do Holandii, Claude podpowiedział mi istnienie lotniska Weeze pod Duseldorfem w Niemczech - tak się składa że są tam...</description><pubDate>Sat, 15 Nov 2025 15:23:35 GMT</pubDate><content:encoded>&lt;p&gt;W te wakacje miałem dość dużą hiperfiksację związaną z podróżami&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; na festiwale - jedna ciekawostka mi zapadła w pamięć sczególnie.&lt;/p&gt;
+&lt;p&gt;Szukając alternatyw transportowych jak trafić do Holandii, Claude podpowiedział mi istnienie lotniska Weeze pod Duseldorfem w Niemczech - tak się składa że są tam loty z Szyman, naszego lokalnego, podolsztyńskiego lotniska - w dodatku zazwyczaj względnie tanie&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. I z jednej strony można to traktować jako fast travel pod Holandię, czy też zachodnie Niemcy.&lt;/p&gt;
+&lt;p&gt;Z drugiej: to miejsce gdzie odbywa się &lt;a href=&quot;https://www.parookaville.com/en/&quot;&gt;Parookaville&lt;/a&gt;, dość duży festiwal muzyki elektronicznej.&lt;/p&gt;
+&lt;p&gt;Chciałbym akurat to wiedzieć wcześniej - korzystałbym.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Czy od dwóch miesięcy dojeżdżam ponad 500km na praktyki w jedną stronę? Tak, i trochę mi mało… &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;Można się tylko domyślać, że ten samolot zazwyczaj wozi powietrze &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Przyjdzie informatyk na wydział humanistyczny...</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/przyjdzie-informatyk-na-wydzial-humanistyczny/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/przyjdzie-informatyk-na-wydzial-humanistyczny/</guid><description>Zaczynając pracę magisterską w realiach Wydziału Humanistycznego przyszedłem z dość fajnym bagażem - czy też doświadczeniem pisania w Zotero. Co prawda styl cytowania zgoła odmienny od tego co znałem dotychczas, ale gdyby ktoś kiedyś trafił w podobnych realiach i chciał mieć fajne narzędzie do...</description><pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Zaczynając pracę magisterską w realiach Wydziału Humanistycznego przyszedłem z dość fajnym bagażem - czy też doświadczeniem pisania w Zotero. Co prawda styl cytowania zgoła odmienny od tego co znałem dotychczas, ale gdyby ktoś kiedyś trafił w podobnych realiach i chciał mieć fajne narzędzie do zarządzania bibliografią - czuję potrzebę napomknąć że jest styl cytowania w polskich naukach humanistycznych - jest dostępny pod &lt;a href=&quot;http://metodyka.upjp2.edu.pl/book:zotero&quot;&gt;tym adresem&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Czy finalnie aby wstrzelić się w w wymagania wydziałowe odnośnie bibliografii całość i tak przeszła przez LLM, aby spełnić wymagania odnośnie formatu imion? Tak, ale ciii. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>A jak wygląda droga do Budapesztu?</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/a-jak-wyglada-droga-do-budapesztu/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/a-jak-wyglada-droga-do-budapesztu/</guid><description>Wrzucając stare posty żeby jakkolwiek zapełnić nowego bloga treścią, Fajnie będzie dodać do do moich rozkmin na temat Amsterdamu, jak wygląda kwestia Budapesztu pod kątem cen transportu. Long story short:  we wrześniu był tam Lil Texas, więc stwierdziłem ze muszę tam być! W porównaniu do...</description><pubDate>Thu, 13 Nov 2025 23:08:48 GMT</pubDate><content:encoded>&lt;p&gt;Wrzucając stare posty żeby jakkolwiek zapełnić nowego bloga treścią, Fajnie będzie dodać do do moich rozkmin na temat Amsterdamu, jak wygląda kwestia Budapesztu pod kątem cen transportu. Long story short:  we wrześniu był tam Lil Texas, więc stwierdziłem ze muszę tam być!&lt;/p&gt;
+&lt;p&gt;W porównaniu do horrendalnych cen transportu do Europy Zachodniej, za nocny do Budapesztu zapłaciłem około 200 zł - więcej mnie wyniósł powrotny, ponieważ przez moje niedopatrzenie dostałem pierwszą klasę kupując bilet w kasie&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Przy okazji ciekawostka podróżnicza: Gdyby ktoś kiedyś polując na super promu miał problem z powrotem z Budapestu to można rozkminić przysiadkę w ramach jednej relacji: nie miałem powrotnych do Warszawy, ale były miejsca do Katowic – więc kupując w relacji krajowej od Katowic do Warszawy można dojechać mimo braku biletów.&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Zapytacie dlaczego? Wierzyłem ze na jednym bilecie dostanę relację Olsztyn-Budapeszt - niestety, międzynarodowe są na innym druku i chyba nie jest możliwa taka sprzedaż. Chociaż przerażenie w oczach kasjerki sprzedającej bilety na relacje międzynarodowe jest bezcenne - system jest tak cholernie nieintuicyjny z tego co obserwuję z boku. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;Jednego razu bardzo zależało mi na powrocie z Katowic i miejscu siedzącym - Udało mi się rozbić Jeden bilet na trzy przesiadki w ramach tej samej relacji xD &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Użyte artykuły w trakcie tworzenia tego bloga</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/uzyte-artykuy-w-trakcie-tworzenia-tego-bloga/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/uzyte-artykuy-w-trakcie-tworzenia-tego-bloga/</guid><description>- Szukając fajnych statystyk Perplexity podrzuciło mi Goatcounter - plus że open source i zaletą jest brak przymusu ostrzeżenia o ciasteczkach. Jak wyjdzie? Zobaczymy.</description><pubDate>Thu, 13 Nov 2025 07:57:25 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;Szukając fajnych statystyk Perplexity podrzuciło mi &lt;a href=&quot;https://www.goatcounter.com/&quot;&gt;Goatcounter&lt;/a&gt; - plus że open source i zaletą jest brak przymusu ostrzeżenia o ciasteczkach. Jak wyjdzie? Zobaczymy.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Hello, world</title><link>https://blog.palczew.ski/pl/thoughts/year/2025/11/hello-world/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2025/11/hello-world/</guid><description>Kolejne, finalne podejście do blogowania.  Styl jest od początku do końca zrobiony za pomocą vibecodingu - w duźej mierze to efekt darmowych tokenów na claude code web i zapału do skomplikowanych inicjatyw. A zapytacie[^1], dlaczego wracam nieustannie na github pages? To ma nieodmienny związek...</description><pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Kolejne, finalne podejście do blogowania.  Styl jest od początku do końca zrobiony za pomocą vibecodingu - w duźej mierze to efekt darmowych tokenów na claude code web i zapału do skomplikowanych inicjatyw.&lt;/p&gt;
+&lt;p&gt;A zapytacie&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, dlaczego wracam nieustannie na github pages? To ma nieodmienny związek z…lękiem przed śmiercią. Jest w tym coś minimalnie kojącego, że jak kiedyś mnie zabraknie, to te miejsce bdzie trwało trochę dłużej. A infekowanie własną twórczością datasetów kolejnych modeli AI…czy to te słynne życie wieczne?&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;jasne, mogę wejść sobie w dialog z czytelnikiem, ale wątpię, że ktokolwiek to przeczyta. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Co wspólnego ma malarstwo z design thinking</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/malarstwo-a-design-thinking/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/malarstwo-a-design-thinking/</guid><description>Jestem jeszcze w czasie gdy dość łapczywie przeglądam zdjęcia z podróży i teraz stwierdziłem że w ramach nasilenia prokrastynacji chcę zobaczyć o co chodzi z książką Lie like an artist - widziałem ją w przymuzealnych sklepikach zarazem w trzech miastach gdzie miałem okazję zajrzeć do miejsc...</description><pubDate>Sat, 27 Jul 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Jestem jeszcze w czasie gdy dość łapczywie przeglądam zdjęcia z podróży i teraz stwierdziłem że w ramach nasilenia prokrastynacji chcę zobaczyć o co chodzi z książką &lt;a href=&quot;https://www.bispublishers.com/lie-like-an-artist.html&quot;&gt;&lt;em&gt;Lie like an artist&lt;/em&gt;&lt;/a&gt; - widziałem ją w przymuzealnych sklepikach zarazem w trzech miastach gdzie miałem okazję zajrzeć do miejsc związanych ze sztuką.&lt;/p&gt;
+&lt;p&gt;Ale przypadkiem trafiłem na artykuł o tym &lt;a href=&quot;https://www.roxinekee.com/blog/lie-like-an-artist&quot;&gt;samym tytule&lt;/a&gt;
+z którego jeden cytat przykuł moją szczególną uwagę:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;According to our tour guide, McArdle did painstaking truth-finding to produce these two paintings. He conducted countless interviews with veterans, pored through maps and sketches, probably went to these places himself.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Mam dość luźne skojarzenie z tym jak Design thinking wygląda obecnie, gdzie wywiady pełnią tę istotną rolę czerpania informacji i tworzenia jeszcze lepszego doświadczenia użytkownika.&lt;/p&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Jak wrócić z amsterdamu</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/jak-wrocic-z-amsterdamu/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/jak-wrocic-z-amsterdamu/</guid><description>Podejmując skądinąd odważną decyzję o wyprawie na  Dominator 2024 i urozmaicając to wypadem do Amsterdamu, pozostaje jeszcze wątek jak wrócić? Warunki brzegowe Zakładam że po całym poniedziałku w Amsterdamie zaczyna się wątek powrotu - czyli do dyspozycji jest albo nocny pociąg, albo  nocleg +...</description><pubDate>Sun, 07 Jul 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Podejmując skądinąd odważną decyzję o wyprawie na  Dominator 2024 i urozmaicając to wypadem do Amsterdamu, pozostaje jeszcze wątek &lt;em&gt;jak wrócić?&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;warunki-brzegowe&quot;&gt;Warunki brzegowe&lt;/h2&gt;
+&lt;p&gt;Zakładam że po całym poniedziałku w Amsterdamie zaczyna się wątek powrotu - czyli do dyspozycji jest albo nocny pociąg, albo  nocleg + powrót cały dzień albo dzień przesiadkowy w innej europejskiej stolicy.&lt;/p&gt;
+&lt;p&gt;Wszystkie ceny są na dzień dzisiejszy, 07.07.24, planowane trochę do przodu tj. ten poniedziałek to 22.07. Ceny uwzględniają powrót do Olsztyna, gdzie aplikowalne, tam ze żniżką 37% w polskim PKP.&lt;/p&gt;
+&lt;h2 id=&quot;pociągi-nocne&quot;&gt;Pociągi nocne&lt;/h2&gt;
+&lt;p&gt;Z tego co widzę, żeby koszty noclegu połączyć z kosztami transportu są takie opcje:&lt;/p&gt;
+&lt;h2 id=&quot;berlin&quot;&gt;Berlin&lt;/h2&gt;
+&lt;p&gt;Na czas tworzenia tego postu #ChatGPT  podpowiedziało mi o istnieniu &lt;a href=&quot;https://www.europeansleeper.eu/&quot;&gt;European Sleeper&lt;/a&gt; , czyli jakimś reboocie pociągów sypialnianych&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Jedyne dostępne na dziś połączenie to komfortowe kuszetki.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Pozycja&lt;/th&gt;&lt;th&gt;EUR&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Nocny z Amsterdamu do Berlina&lt;/td&gt;&lt;td&gt;159&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;dlaczego-berlin-to-zła-opcja-na-ten-konkretny-wyjazd&quot;&gt;Dlaczego Berlin to zła opcja &lt;em&gt;na ten konkretny wyjazd&lt;/em&gt;?&lt;/h3&gt;
+&lt;p&gt;Jakkolwiek dawien dawno chodząc po Warszawie Centralnej z pewnym rozmarzeniem spoglądałem na Berlin-Warszawa-Express zastanawiając się czy kiedykolwiek nim pojadę, to 23.07 zaczyna się remont linii RE1, przez co całość  trochę  mija się z celem - z drugiej strony jest też opcja powrotu przez Szczecin, gdzie busa jest mniej, ale..nie jestem przekonany.&lt;/p&gt;
+&lt;h2 id=&quot;praga&quot;&gt;Praga&lt;/h2&gt;
+&lt;p&gt;W tym samym ES jest też możliwość dotarcia do Pragi, kolejna pozycja to EN z pragi do Warszawy i powrót z Warszawy do Olsztyna&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Pozycja&lt;/th&gt;&lt;th&gt;EUR&lt;/th&gt;&lt;th&gt;PLN&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;ES&lt;/td&gt;&lt;td&gt;179&lt;/td&gt;&lt;td&gt;~767,33&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;EN Praga-Warszawa&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;196,66&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Warszawa-Olsztyn&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;16,36&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Suma&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;980,35&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;monachium&quot;&gt;Monachium&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Pozycja&lt;/th&gt;&lt;th&gt;EUR&lt;/th&gt;&lt;th&gt;PLN&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;EN Amsterdam-Monachium&lt;/td&gt;&lt;td&gt;105,50&lt;/td&gt;&lt;td&gt;452,25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;EN Monachium-Warszawa&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;437,56&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Warszawa-Olsztyn&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;16,36&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Suma&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;906,17&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;drezno&quot;&gt;Drezno&lt;/h2&gt;
+&lt;p&gt;Inspiracja z przedziaławki - podróż European Sleeperem do Drezna, stamtąd przesiadka do Zgorzelca, a stamtąd przesiadka we Wrocławiu. Szczerze? Jak spojrzałem na tą propozycję - stwierdziłem że już jestem za stary na takie zabawy.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Pozycja&lt;/th&gt;&lt;th&gt;EUR&lt;/th&gt;&lt;th&gt;PLN&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;ES&lt;/td&gt;&lt;td&gt;179&lt;/td&gt;&lt;td&gt;767,33&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Drezno - Zgorzelec&lt;/td&gt;&lt;td&gt;34,90&lt;/td&gt;&lt;td&gt;149,61&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Zgorzelec - Wrocław&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;20,40&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Wrocław-Olsztyn&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;49,77&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;wiedeń&quot;&gt;Wiedeń&lt;/h2&gt;
+&lt;p&gt;Akurat te bilety na ten euronight zostały wyprzedane(a szkoda). W każdym razie intercity promo ma na tej trasie praskie ceny - około 200zł.&lt;/p&gt;
+&lt;h2 id=&quot;połączenia-mieszane&quot;&gt;Połączenia mieszane&lt;/h2&gt;
+&lt;h2 id=&quot;hamburg&quot;&gt;Hamburg&lt;/h2&gt;
+&lt;p&gt;Pod rozwagę gdyby ktoś szukał inspiracji zostawiam że loty z Hamburga bywają znacznie tańsze niż z Amsterdamu - mnie odstraszyła głównie dopłata za bagaż podręczny&lt;sup&gt;&lt;a href=&quot;#user-content-fn-3&quot; id=&quot;user-content-fnref-3&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;. Jest tak blisko do Amsterdamu, że nie ma żadnych nocnych&lt;/p&gt;
+&lt;h2 id=&quot;dortmund&quot;&gt;Dortmund&lt;/h2&gt;
+&lt;p&gt;Rozważając kiedyś wyjazd na jeden festiwal gdzie [[Ophidian]] grał, zwróciłem uwagę na to że któraś z tanich linii lotniczy miała tanie połączenie z [[Lotnisko Szymany]].  Niestety, połączenia zostały zawieszone.&lt;/p&gt;
+&lt;h2 id=&quot;eindhoven&quot;&gt;Eindhoven&lt;/h2&gt;
+&lt;p&gt;Stamtąd moja podróż się zaczynała, dlatego nie miałem ochoty za bardzo wracać&lt;sup&gt;&lt;a href=&quot;#user-content-fn-4&quot; id=&quot;user-content-fnref-4&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; - zresztą ceny biletów nie były jakieś szczególnie przystępne.&lt;/p&gt;
+&lt;h2 id=&quot;inne-rozwiązania&quot;&gt;Inne rozwiązania&lt;/h2&gt;
+&lt;h2 id=&quot;flixbus-z-berlina&quot;&gt;Flixbus z Berlina&lt;/h2&gt;
+&lt;p&gt;Za około 200zł jest 11h powrotu autokarem do Olsztyna.&lt;/p&gt;
+&lt;h2 id=&quot;podsumowanie&quot;&gt;Podsumowanie&lt;/h2&gt;
+&lt;p&gt;Zdecydowałem się na powrót przez Monachium. Muzeum BMW, duże parki i bodajże fajne muzea ze sztuką brzmią jak fajny pomysł na dzień.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Umykały mi te połączenia z powodu że nie startują z Amsterdam Centraal, tylko jakiegoś innego połączenia. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;Też jestem pod wrażeniem jakie niesamowite zniżki mi wchodzą, ale to w większości efekt kupowania porannego biletu z ogromnym wyprzedzeniem chyba. &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-3&quot;&gt;
+&lt;p&gt;Który i tak mam wrażenie że wziąłem na siłę na te kilka dni. &lt;a href=&quot;#user-content-fnref-3&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 3&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-4&quot;&gt;
+&lt;p&gt;#ADHD thing, aby wciąż do przodu i wciąż doświadczań nowych bodżców. &lt;a href=&quot;#user-content-fnref-4&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 4&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>DPD a przesyłki - jak poprawić jakość niskim kosztem?</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki/</guid><description>Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem reklamacji w DPD, dlatego ten protip przeklejam z przyjemnością:
  
-&gt;Ten magiczny &quot;podpis&quot;, widoczny jako odbiorca w statusie to przepisanie nazwiska z listu na zebrze przy zatwierdzaniu. Fizycznych podpisów kurierzy nie...</description><pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Udar a alkohol</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol/</guid><description>Żeby mieć trochę contentu, wrzucam stare podejścia do pisania  Przechodząc przez literaturę do pracy magisterskiej znalazłem jedną, nieoczywistą ciekawostkę: otóż małe[^1] spożycie alkoholu zmniejsza prawdopodobieństwo udaru krwotocznego. Na krwotoczny nie robi różnicy - natomiast picie dużo bądź...</description><pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item></channel></rss>
+&gt;Ten magiczny &quot;podpis&quot;, widoczny jako odbiorca w statusie to przepisanie nazwiska z listu na zebrze przy zatwierdzaniu. Fizycznych podpisów kurierzy nie...</description><pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem reklamacji w DPD, dlatego ten protip przeklejam z przyjemnością:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ten magiczny “podpis”, widoczny jako odbiorca w statusie to przepisanie nazwiska z listu na zebrze przy zatwierdzaniu. Fizycznych podpisów kurierzy nie zbierają od czasów covida. Jeśli mirek chciał do rąk odbiorcy, mógł dopłacić DPD za usługę DRW&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; z pinem, wtedy kurier nie wrzuci takiej paczki za płot, bo będzie musiał wpisać pin od odbiorcy, żeby dobić ją w systemie. Ot cała magia.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://wykop.pl/link/7465835/dpd-przerzuca-komputer-przez-plot-niszczy-go-i-bezczelnie-odrzuca-reklamacje/komentarz/124712141/na-dodatek-w-systemie-paczka-widnieje-jako-odebrana-i-podpisana-od-paru-lat-kurierzy-nie-wymagaja-podpisow-po-prostu-paczka-laduje-gdziekolwiek-pod-ty#124712705&quot;&gt;Źródło.&lt;/a&gt;&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Do Rąk Własnych &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>Udar a alkohol</title><link>https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol/</link><guid isPermaLink="true">https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol/</guid><description>Żeby mieć trochę contentu, wrzucam stare podejścia do pisania  Przechodząc przez literaturę do pracy magisterskiej znalazłem jedną, nieoczywistą ciekawostkę: otóż małe[^1] spożycie alkoholu zmniejsza prawdopodobieństwo udaru krwotocznego. Na krwotoczny nie robi różnicy - natomiast picie dużo bądź...</description><pubDate>Thu, 13 Jun 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;Żeby mieć trochę contentu, wrzucam stare podejścia do pisania&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Przechodząc przez literaturę do pracy magisterskiej znalazłem jedną, nieoczywistą ciekawostkę: otóż małe&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; spożycie alkoholu zmniejsza prawdopodobieństwo udaru krwotocznego. Na krwotoczny nie robi różnicy - natomiast picie dużo bądź w ciągach już te prawdopodobieństwo dość mocno zwiększa.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Light and moderate alcohol consumption was associated with a lower risk of ischemic stroke, whereas high and heavy drinking was associated with an increased risk;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-016-0721-4&quot;&gt;Źródło.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Oczywiście, to nie wyraża mojej opinii wobec alkoholu - tutaj bliżej mi do perspektywy Davida Nutta, autora m.in. [[Narkotyki bez paniki]] która określa alkohol mianem najbardziej szkodliwej używki&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; - w analizie która nie patrzy tylko na koszty osobowo/zdrowotne, ale patrzy szerzej, uwzględniając też koszty społeczne danej związane z daną substancją.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Przypisy&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;Do 12 gram alkoholu etylowego. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;Niestety premiera nowej książki wyparła z SEO googla stare artykuły na ten temat &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item></channel></rss>
