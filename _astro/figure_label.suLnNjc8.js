@@ -1,0 +1,1 @@
+import{t as e}from"./runtime.Bbp_EQ4L.js";var t=()=>`Fig.`,n=()=>`Rys.`,r=((r={},i={})=>(i.locale??e())===`pl`?n(r):t(r));export{r as t};

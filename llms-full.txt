@@ -8,6 +8,7 @@ Total posts: 19
 
 # Jak zalogować się do Grafany przez Authelię jako admin?
 URL: https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin
+Language: Polish
 Date: 2026-09-13
 Tags: grafana, authelia, devops, oidc, oauth, monitoring
 
@@ -97,8 +98,10 @@ I czy, mając możliwość dodania dashboardu, dodałem go?
 
 # Rust, Docker, and the GHA layer caching problem
 URL: https://blog.palczew.ski/en/thoughts/year/2026/04/rust-docker-cache
+Language: English
 Date: 2026-04-27
 Tags: Rust, Docker, DevOps, Vibecoding, GitHub Actions, Projekty/Kartoteka, Sideprojects
+Translation: https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache
 
 Lately I've been working on my own vibe-designed todo app rewrite in Rust[^1]. Along the way I started looking for a sensible path to optimizing Docker image builds on GitHub Actions.
 
@@ -120,6 +123,7 @@ For now I'm parking at cache dance. Not ruling out going toward my own runner wi
 
 # AAAAA Rejwa szukam
 URL: https://blog.palczew.ski/pl/thoughts/year/2026/04/aaaaa-rejwa-szukam
+Language: Polish
 Date: 2026-04-27
 Tags: Rave, Podróśe
 
@@ -160,8 +164,10 @@ Do refleksji i wspomnień pewnie jeszcze wrócę, ale gdyby  ktoś szukał inspi
 
 # Rust, Docker i problem z cache'owaniem warstw na GHA
 URL: https://blog.palczew.ski/pl/thoughts/year/2026/04/rust-docker-cache
+Language: Polish
 Date: 2026-04-26
 Tags: Rust, Docker, DevOps, Vibecoding, GitHub Actions, Projekty/Kartoteka, Sideprojekty
+Translation: https://blog.palczew.ski/en/thoughts/year/2026/04/rust-docker-cache
 
 Ostatnio dłubię sobie własny vibe-designed rewrite aplikacji todo w Ruscie[^1]. Przy okazji zacząłem szukać sensownej ścieżki do optymalizowania budowania obrazów Dockerowych na GitHub Actions.
 
@@ -183,6 +189,7 @@ Na razie tymczasowo parkuję przy cache dance. Nie jest wykluczone, że pójdę 
 
 # Live
 URL: https://blog.palczew.ski/pl/thoughts/year/2026/04/w-koncu-live
+Language: Polish
 Date: 2026-04-19
 Tags: Vibecoding, Pociągi
 
@@ -201,6 +208,7 @@ _I tak, ten design jest z pachnącego świeżością Claude Design, gdzieniegdzi
 
 # Jak mieć multiscreen na Azurowskim Bastionie?
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/12/jak-miec-multiscreen-na-azurowskim-bastionie
+Language: Polish
 Date: 2025-12-08
 Tags: Azure, Cloud, Tech, Devops
 
@@ -214,6 +222,7 @@ Warto też wspomnieć że Microsoft w swej dobroci wrzuca az jako [zip do ścią
 
 # Róznica między rezonansem medycznym wykonanym prywatnie, a na NFZ
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/roznica-miedzy-rezonansem-medycznym-wykonanym-prywatnie-a-na-nfz
+Language: Polish
 Date: 2025-11-17
 Tags: Udar, medycyna
 
@@ -232,6 +241,7 @@ Humorystyczny też był dla mni aspekt[^1] że dopiero na tym którymś badaniu 
 
 # Optymalizacja drogi do Katowic
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/optymalizacja-drogi-do-katowic
+Language: Polish
 Date: 2025-11-15
 Tags: Pociągi, Podróże
 
@@ -263,6 +273,7 @@ W każdym razie interesującą socjologicznie zmianą jest przejcie w Iławie mi
 
 # W warmińsko-mazurskim nic sie nie dzieje, ale...
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/w-warminsko-mazurskim-nic-sie-nie-dzieje-ale
+Language: Polish
 Date: 2025-11-15
 Tags: Europa, Protipy, Podróże
 
@@ -286,6 +297,7 @@ Chciałbym akurat to wiedzieć wcześniej - korzystałbym.
 
 # Przyjdzie informatyk na wydział humanistyczny...
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/przyjdzie-informatyk-na-wydzial-humanistyczny
+Language: Polish
 Date: 2025-11-14
 Tags: Zotero, Praca Magisterska, Działalność Akademicka, Narzędzia
 
@@ -297,6 +309,7 @@ Zaczynając pracę magisterską w realiach Wydziału Humanistycznego przyszedłe
 
 # A jak wygląda droga do Budapesztu?
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/a-jak-wyglada-droga-do-budapesztu
+Language: Polish
 Date: 2025-11-13
 Tags: Pociągi, Podróże
 
@@ -314,6 +327,7 @@ Przy okazji ciekawostka podróżnicza: Gdyby ktoś kiedyś polując na super pro
 
 # Użyte artykuły w trakcie tworzenia tego bloga
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/uzyte-artykuy-w-trakcie-tworzenia-tego-bloga
+Language: Polish
 Date: 2025-11-13
 Tags: Web-dev
 
@@ -323,6 +337,7 @@ Tags: Web-dev
 
 # Hello, world
 URL: https://blog.palczew.ski/pl/thoughts/year/2025/11/hello-world
+Language: Polish
 Date: 2025-11-12
 Tags: Tech/astro, Personal/projects
 
@@ -336,6 +351,7 @@ A zapytacie[^1], dlaczego wracam nieustannie na github pages? To ma nieodmienny 
 
 # Co wspólnego ma malarstwo z design thinking
 URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/malarstwo-a-design-thinking
+Language: Polish
 Date: 2024-07-27
 Tags: Design Thinking, Malarstwo, Sztuka, Wywiady
 
@@ -352,6 +368,7 @@ Mam dość luźne skojarzenie z tym jak Design thinking wygląda obecnie, gdzie 
 
 # Jak wrócić z amsterdamu
 URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/jak-wrocic-z-amsterdamu
+Language: Polish
 Date: 2024-07-07
 Tags: Pociągi, Podróże, Europa, Transport
 
@@ -362,7 +379,7 @@ Podejmując skądinąd odważną decyzję o wyprawie na  Dominator 2024 i urozma
 Zakładam że po całym poniedziałku w Amsterdamie zaczyna się wątek powrotu - czyli do dyspozycji jest albo nocny pociąg, albo  nocleg + powrót cały dzień albo dzień przesiadkowy w innej europejskiej stolicy.
 
 Wszystkie ceny są na dzień dzisiejszy, 07.07.24, planowane trochę do przodu tj. ten poniedziałek to 22.07. Ceny uwzględniają powrót do Olsztyna, gdzie aplikowalne, tam ze żniżką 37% w polskim PKP. 
-# Pociągi nocne
+## Pociągi nocne
 
 Z tego co widzę, żeby koszty noclegu połączyć z kosztami transportu są takie opcje:
 
@@ -427,12 +444,12 @@ Rozważając kiedyś wyjazd na jeden festiwal gdzie [[Ophidian]] grał, zwróci�
 ## Eindhoven
 
 Stamtąd moja podróż się zaczynała, dlatego nie miałem ochoty za bardzo wracać[^4] - zresztą ceny biletów nie były jakieś szczególnie przystępne.
-# Inne rozwiązania
+## Inne rozwiązania
 
 ## Flixbus z Berlina 
 Za około 200zł jest 11h powrotu autokarem do Olsztyna. 
 
-# Podsumowanie
+## Podsumowanie
 
 Zdecydowałem się na powrót przez Monachium. Muzeum BMW, duże parki i bodajże fajne muzea ze sztuką brzmią jak fajny pomysł na dzień.
 
@@ -445,6 +462,7 @@ Zdecydowałem się na powrót przez Monachium. Muzeum BMW, duże parki i bodajż
 
 # DPD a przesyłki - jak poprawić jakość niskim kosztem?
 URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki
+Language: Polish
 Date: 2024-06-13
 Tags: Typ/insight, Protipy, Kurierzy, DPD
 
@@ -460,6 +478,7 @@ Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem rekla
 
 # Udar a alkohol
 URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol
+Language: Polish
 Date: 2024-06-13
 Tags: Alkohol, Udar, Praca magisterska
 
@@ -480,6 +499,7 @@ Oczywiście, to nie wyraża mojej opinii wobec alkoholu - tutaj bliżej mi do pe
 
 # How to improve Zotero experience?
 URL: https://blog.palczew.ski/en/thoughts/year/2023/08/zotero-experience
+Language: English
 Date: 2023-08-29
 Tags: Zotero, Latex, Notion, Obsidian, Sajna, Note-taking
 
@@ -525,6 +545,7 @@ To wrap up, there are more efficient workflows than relying solely on a Word dat
 
 # Implication of deploying github page to another repo
 URL: https://blog.palczew.ski/en/thoughts/year/2023/08/github-page-another-repo
+Language: English
 Date: 2023-08-17
 Tags: Astro, Github, CD, Github-actions, Devops
 
