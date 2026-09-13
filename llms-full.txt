@@ -2,7 +2,96 @@
 
 > Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations.
 
-Total posts: 18
+Total posts: 19
+
+---
+
+# Jak zalogować się do Grafany przez Authelię jako admin?
+URL: https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin
+Date: 2026-09-13
+Tags: grafana, authelia, devops, oidc, oauth, monitoring
+
+Ostatnio hobbystycznie wracam do zabawy w selfhosting — jeden z tych okresowych nawrotów, gdzie na nowo można rozwiązać stare problemy, testując różne podejścia do rzeczy, które kiedyś już "rozwiązałem"[^1]. Tym razem przyszła kolej na monitoring.
+
+Zdziwiło mnie, że zaraz po skonfigurowaniu OIDC nie mogłem dodać żadnego dashboardu w Grafanie — logowanie działało, a mimo to brakowało uprawnień.
+
+## Setup
+
+Grafana stała już za Authelią (self-hosted SSO, jeden użytkownik, w grupie `admins`) przez natywne OIDC[^2] (`auth.generic_oauth`). Zadanie wydawało się trywialne: każdy z grupy `admins` ma dostawać rolę `GrafanaAdmin` w Grafanie automatycznie przy logowaniu, zamiast nadać ręcznie w UI — i tak zostałoby nadpisane przy każdym logowaniu, bo `allow_sign_up: true` re-provisionuje usera za każdym razem.
+
+## Grafana
+
+Standardowa, udokumentowana ścieżka: scope `groups` na kliencie OIDC + `role_attribute_path` (wyrażenie JMESPath[^3]) po stronie Grafany.
+
+Grafanę stawiam przez Ansible, rolą [`grafana.grafana.grafana`](https://github.com/grafana/grafana-ansible-collection). Najważniejszy fragment configu to zmienna `grafana_ini_oauth`:
+
+```yaml
+grafana_ini_oauth:
+  "auth.generic_oauth":
+    enabled: true
+    name: Authelia
+    client_id: grafana
+    client_secret: "{{ grafana_authelia_oidc_secret | default('') }}"
+    scopes: "openid profile email groups"
+    auth_url: "https://authelia.example.com/api/oidc/authorization"
+    token_url: "https://authelia.example.com/api/oidc/token"
+    api_url: "https://authelia.example.com/api/oidc/userinfo"
+    use_pkce: true
+    allow_sign_up: true
+    role_attribute_path: "contains(groups[*], 'admins') && 'GrafanaAdmin' || 'Viewer'"
+```
+
+Admin user jest jedynym członkiem grupy `admins` w Authelii — stąd `contains(groups[*], 'admins')` w wyrażeniu wyżej. Warunek konieczny, żeby to zadziałało: scope `groups` musi być dodany do klienta OIDC Grafany, tak jak w configu powyżej.
+
+## Co miało się wydarzyć
+
+Dokumentacja `role_attribute_path` w Grafanie opisuje trójstopniowy fallback: najpierw `id_token`, jeśli nic nie znajdzie — `userinfo` (`api_url`), jeśli nadal nic — `access_token`. Brzmi jak solidna redundancja.
+
+## Co się wydarzyło w praktyce
+
+W Grafanie 13.2.1 fallback do `userinfo` jest zepsuty — potwierdzone przez [grafana/grafana#106686](https://github.com/grafana/grafana/issues/106686). Jeśli claima nie ma w `id_token`, Grafana nie sprawdza `userinfo` tak, jak deklaruje dokumentacja.
+
+Tymczasem Authelia od wersji 4.39 przestała domyślnie wrzucać claimy ze scope'ów (np. `groups`) do `id_token` — trafiają tylko do `userinfo`. To sensowne zaostrzenie bezpieczeństwa samo w sobie (mniej PII w tokenie, który trafia do różnych stron), ale w zderzeniu ze zepsutym fallbackiem Grafany daje cichy blackout: dokładnie ten claim, który ma znaczenie dla roli, nigdzie nie dociera.[^4]
+
+## Fix po stronie Authelii
+
+`identity_providers.oidc.claims_policies` po stronie Authelii — jawnie wymusza konkretne claimy z powrotem do `id_token` per-klient, referencjonowane z klienta przez `claims_policy: <nazwa>`.
+
+```yaml
+identity_providers:
+  oidc:
+    # ...
+    claims_policies:
+      grafana: # nazwa polityki, dowolna, referencjonowana niżej
+        id_token:
+          - 'groups' # wymuś ten claim do id_tokenu
+
+    clients:
+      - client_id: 'inny'
+        # brak claims_policy — nie dostaje tego traktowania
+
+      - client_id: 'grafana'
+        client_secret: '...'
+        claims_policy: 'grafana' # podłączenie polityki do klienta
+        redirect_uris:
+          - 'https://grafana.example.com/login/generic_oauth'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'email'
+          - 'groups' # musi być zażądany, inaczej nic do wymuszenia
+```
+
+Z tymi ustawieniami ponownie można logować się do Grafany jako admin — kolejny stary problem odhaczony, na nowo i inaczej niż ostatnim razem.
+
+I czy, mając możliwość dodania dashboardu, dodałem go?
+
+![Pingu siedzący na krześle z napisem "TERAZ JUŻ NIE CHCĘ"](@assets/images/pingu-teraz-juz-nie-chce.png "teraz już nie chcę")
+
+[^1]: [RPi-Monitor](https://github.com/RPi-Monitor/RPi-Monitor), pamiętamy
+[^2]: OIDC (OpenID Connect) — protokół logowania (SSO) zbudowany na OAuth2.
+[^3]: [JMESPath](https://jmespath.org/) — język zapytań do wyciągania i przekształcania danych z dokumentów JSON, tu używany do wyciągnięcia grup z claimów tokenu.
+[^4]: Kto się naszukał, jak dodać nowy dashboard, żeby po dłuższej chwili zorientować się, że ma tylko Viewera? Autor.
 
 ---
 
@@ -354,6 +443,21 @@ Zdecydowałem się na powrót przez Monachium. Muzeum BMW, duże parki i bodajż
 
 ---
 
+# DPD a przesyłki - jak poprawić jakość niskim kosztem?
+URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki
+Date: 2024-06-13
+Tags: Typ/insight, Protipy, Kurierzy, DPD
+
+Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem reklamacji w DPD, dlatego ten protip przeklejam z przyjemnością:
+ 
+>Ten magiczny "podpis", widoczny jako odbiorca w statusie to przepisanie nazwiska z listu na zebrze przy zatwierdzaniu. Fizycznych podpisów kurierzy nie zbierają od czasów covida. Jeśli mirek chciał do rąk odbiorcy, mógł dopłacić DPD za usługę DRW[^1] z pinem, wtedy kurier nie wrzuci takiej paczki za płot, bo będzie musiał wpisać pin od odbiorcy, żeby dobić ją w systemie. Ot cała magia.
+
+[Źródło.](https://wykop.pl/link/7465835/dpd-przerzuca-komputer-przez-plot-niszczy-go-i-bezczelnie-odrzuca-reklamacje/komentarz/124712141/na-dodatek-w-systemie-paczka-widnieje-jako-odebrana-i-podpisana-od-paru-lat-kurierzy-nie-wymagaja-podpisow-po-prostu-paczka-laduje-gdziekolwiek-pod-ty#124712705)
+
+[^1]: Do Rąk Własnych
+
+---
+
 # Udar a alkohol
 URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/udar-a-alkohol
 Date: 2024-06-13
@@ -371,21 +475,6 @@ Oczywiście, to nie wyraża mojej opinii wobec alkoholu - tutaj bliżej mi do pe
 
 [^1]: Do 12 gram alkoholu etylowego.
 [^2]: Niestety premiera nowej książki wyparła z SEO googla stare artykuły na ten temat
-
----
-
-# DPD a przesyłki - jak poprawić jakość niskim kosztem?
-URL: https://blog.palczew.ski/pl/thoughts/year/2024/06/dpd-a-przesylki
-Date: 2024-06-13
-Tags: Typ/insight, Protipy, Kurierzy, DPD
-
-Nie, żebym samemu miał bardzo nieprzyjemne doświadczenie ze składaniem reklamacji w DPD, dlatego ten protip przeklejam z przyjemnością:
- 
->Ten magiczny "podpis", widoczny jako odbiorca w statusie to przepisanie nazwiska z listu na zebrze przy zatwierdzaniu. Fizycznych podpisów kurierzy nie zbierają od czasów covida. Jeśli mirek chciał do rąk odbiorcy, mógł dopłacić DPD za usługę DRW[^1] z pinem, wtedy kurier nie wrzuci takiej paczki za płot, bo będzie musiał wpisać pin od odbiorcy, żeby dobić ją w systemie. Ot cała magia.
-
-[Źródło.](https://wykop.pl/link/7465835/dpd-przerzuca-komputer-przez-plot-niszczy-go-i-bezczelnie-odrzuca-reklamacje/komentarz/124712141/na-dodatek-w-systemie-paczka-widnieje-jako-odebrana-i-podpisana-od-paru-lat-kurierzy-nie-wymagaja-podpisow-po-prostu-paczka-laduje-gdziekolwiek-pod-ty#124712705)
-
-[^1]: Do Rąk Własnych
 
 ---
 
