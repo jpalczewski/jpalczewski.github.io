@@ -10,7 +10,7 @@ Total posts: 19
 URL: https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin
 Language: Polish
 Date: 2026-09-13
-Tags: grafana, authelia, devops, oidc, oauth, monitoring
+Tags: grafana, authelia, devops, oidc, oauth, monitoring, ansible
 
 Ostatnio hobbystycznie wracam do zabawy w selfhosting — jeden z tych okresowych nawrotów, gdzie na nowo można rozwiązać stare problemy, testując różne podejścia do rzeczy, które kiedyś już "rozwiązałem"[^1]. Tym razem przyszła kolej na monitoring.
 
