@@ -2,7 +2,123 @@
 
 > Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations.
 
-Total posts: 20
+Total posts: 22
+
+---
+
+# From n8n Laziness to Stress-Testing an App in Zig
+URL: https://blog.palczew.ski/en/thoughts/year/2026/09/from-n8n-laziness-to-stress-testing-an-app-in-zig
+Language: English
+Date: 2026-09-14
+Tags: stress-tests, locust, python, zig, http, connection-pooling, ntfy
+Translation: https://blog.palczew.ski/pl/thoughts/year/2026/09/od-lenistwa-przy-nauce-n8n-do-stress-testow-aplikacji-w-zigu
+
+## Context
+
+It started with a simple need: relaying notifications from n8n on [Coolify](https://coolify.io/) to [ntfy](https://github.com/binwiederhier/ntfy)[^1]. The problem - I couldn't figure out a sane way to save an n8n workflow to git (and didn't feel like spending more time on it), so instead of fighting it any further, I wrote the thing myself, from scratch, in [Zig](https://ziglang.org/)[^2].
+
+That's how [ntfy.zig](https://github.com/jpalczewski/ntfy.zig) came to be - a small relay: it takes in webhooks (Coolify and GitHub Actions/Deployments, for now), turns them into a title/message/priority, and forwards them to ntfy.
+
+Months of vibe-coding can basically be summed up as the standard disclaimer under any LLM client - "use it, but verify" - which is why it seemed like a good excuse to put some QA experience to use and run stress tests with Locust.
+
+## Setup
+
+One `stress/` directory in the repo: a fake ntfy endpoint simulating latency/failure rate/timeouts, Locust mixing traffic from both webhook channels (Coolify + GitHub, including a deliberately wrong HMAC signature - the secret GitHub uses to sign the webhook payload so the recipient can verify the request actually came from GitHub - to test 401 rejection), and a script tying it all together, all inside a single `uv` environment on free-threaded Python 3.14t. Full technical details, including why free-threaded actually makes sense here, are in [PR #14](https://github.com/jpalczewski/ntfy.zig/pull/14).
+
+## First run - something's off
+
+At 20 users everything looked great: median 5-6ms. I cranked it up to 300 users to find the ceiling and got:
+
+```
+OSError(49, "Can't assign requested address")
+```
+
+Uh oh. `OSError 49` means the ephemeral port pool is exhausted - and that happened before the CPU even broke a sweat.
+
+## Root cause and fix
+
+The cause: every single forward to ntfy built a brand new HTTP client from scratch and closed it immediately after. Which means a fresh TCP connection (and for https, a fresh TLS handshake) for every single webhook. Zero connection pooling[^3] - hence the rapid port exhaustion.
+
+The fix: one `http.Client` built once at startup and shared across all requests[^4], instead of creating a new one for every forward. TCP connections start getting reused instead of multiplying endlessly.
+
+## verification
+
+150 users, ~550 req/s. `lsof` on the ntfy.zig process showed 11 persistent connections to the fake ntfy instead of a new one per request. Zero port-exhaustion errors.
+
+| Metric | Before | After |
+|---|---|---|
+| TCP connections at 150 VU / ~550 req/s | ~1 per request | ~11 persistent |
+| Throughput (local) | ~70 req/s (wait_time-bound) | ~550 req/s |
+
+## Conclusion
+
+The stress test didn't need to be clever to catch a real bug - it was enough to push the user count high enough to hit the port limit instead of the CPU limit. It's a strange world, honestly, where you can write and load-test an application in a language you don't actually know[^5].
+
+By the way: the whole app sits at around 2MB of RAM at rest - so on top of working correctly, it's also pretty easy on resources.
+
+[^1]: A nice, fairly minimalist self-hosted push notification server.
+[^2]: That's basically my approach to life, in a nutshell. In more ways than one.
+[^3]: A mechanism where a connection, once opened, is kept alive and reused for subsequent requests instead of being closed and reopened every time.
+[^4]: context7 often has stale docs for niche libraries like Zig's fresh-off-the-press stdlib - so Sonnet 5, working on the new `std.http`, happily navigated straight through the library's source code instead of relying on the (outdated) documentation.
+[^5]: And apparently so does the model - except it, unlike me, has considerably more patience for reading library source code.
+
+---
+
+# Od lenistwa przy nauce n8n do stress-testów aplikacji w Zigu
+URL: https://blog.palczew.ski/pl/thoughts/year/2026/09/od-lenistwa-przy-nauce-n8n-do-stress-testow-aplikacji-w-zigu
+Language: Polish
+Date: 2026-09-14
+Tags: stress-testy, locust, python, zig, http, connection-pooling, ntfy
+Translation: https://blog.palczew.ski/en/thoughts/year/2026/09/from-n8n-laziness-to-stress-testing-an-app-in-zig
+
+## Kontekst
+
+Zaczęło się od potrzeby: przelotka powiadomień z n8n na [Coolify](https://coolify.io/) do [ntfy](https://github.com/binwiederhier/ntfy)[^1]. Problem - nie umiałem sensownie zapisać workflow n8n do gita (i nie chciało mi się poświęcać na to więcej czasu), więc zamiast dalej z tym walczyć, napisałem to sam, od zera, w [Zigu](https://ziglang.org/)[^2].
+
+I tak powstał [ntfy.zig](https://github.com/jpalczewski/ntfy.zig) - mały relay: przyjmuje webhooki (póki co Coolify i GitHub Actions/Deployments), przerabia je na tytuł/wiadomość/priorytet i forwarduje do ntfy.
+
+Relację z vibe-codingiem na przestrzeni miesięcy można streścić do typowej adnotacji pod klientem llm, "korzystaj, ale sprawdzaj" - stąd też fajnie było wykorzystać doświadczenie testerskie i zrobić stress testy Locustem.
+
+## Setup
+
+Jeden katalog `stress/` w repo: fake endpoint ntfy symulujący opóźnienia/fail rate/timeouty, Locust mieszający ruch z obu kanałów webhooków (Coolify + GitHub, z celowo złym podpisem HMAC - sekretem, którym GitHub podpisuje payload webhooka, żeby odbiorca mógł zweryfikować, że request faktycznie pochodzi od niego - do testowania odrzucenia 401) i skrypt spinający całość, wszystko w jednym środowisku `uv` na free-threaded Pythonie 3.14t. Pełne techniczne detale, w tym dlaczego free-threaded akurat tu ma sens, są w [PR #14](https://github.com/jpalczewski/ntfy.zig/pull/14).
+
+## Pierwszy przebieg - coś jest nie tak
+
+Przy 20 użytkownikach wszystko ładnie: mediana 5-6ms. Podbiłem do 300 użytkowników żeby znaleźć sufit i dostałem:
+
+```
+OSError(49, "Can't assign requested address")
+```
+
+Oho, problemy. `OSError 49` to wyczerpanie puli efemerycznych portów - i to zanim CPU zdążyło coś poczuć.
+
+## Przyczyna i fix
+
+Powód: każdy pojedynczy forward do ntfy tworzył nowego klienta HTTP od zera i od razu go zamykał. Czyli nowe połączenie TCP (a dla https - nowy handshake TLS) na każdy webhook. Zero connection poolingu[^3] - stąd tak szybkie wyczerpanie portów.
+
+Fix: jeden `http.Client` budowany raz przy starcie i współdzielony między wszystkimi requestami[^4], zamiast tworzenia nowego na każdy forward. Połączenia TCP zaczynają się zatem reużywać, a nie mnożyć w nieskończoność.
+
+## Weryfikacja
+
+150 użytkowników, ~550 req/s. `lsof` na procesie ntfy.zig pokazał 11 stałych połączeń do fake ntfy zamiast jednego nowego na request. Zero błędów wyczerpania portów.
+
+| Metryka | Przed | Po |
+|---|---|---|
+| Połączeń TCP przy 150 VU / ~550 req/s | ~1 na request | ~11 stałych |
+| Throughput (lokalnie) | ~70 req/s (wait_time-bound) | ~550 req/s |
+
+## Wniosek
+
+Stress test nie musiał być wyszukany, żeby złapać realny bug - wystarczyło podbić liczbę użytkowników wystarczająco wysoko, żeby zderzyć się z limitem portów zamiast z limitem CPU. Dziwny to zresztą świat, w którym można napisać i przetestować pod obciążeniem aplikację w języku, którego się w ogóle nie zna[^5].
+
+Przy okazji: cała aplikacja w spoczynku zajmuje około 2MB RAM-u - więc obok tego, że działa poprawnie, jest też całkiem sympatyczna dla zasobów.
+
+[^1]: Sympatyczny i dość minimalistyczny selfhosted serwer do powiadomień push.
+[^2]: Tak w skrócie wygląda moje podejście do życia. W wielu aspektach.
+[^3]: Mechanizm, w którym raz otwarte połączenie zostaje utrzymane i reużywane dla kolejnych requestów, zamiast być zamykane i otwierane od nowa za każdym razem.
+[^4]: context7 często ma nieaktualną dokumentację dla tak egzotycznych bibliotek jak świeża stdlib Ziga - przez co Sonnet 5, pracując nad nowym `std.http`, sympatycznie nawigował wprost po kodzie źródłowym biblioteki, zamiast polegać na (nieaktualnej) dokumentacji.
+[^5]: I model najwyraźniej też, ale on dla odmiany ma znacznie więcej cierpliwości do czytania kodu bibliotek.
 
 ---
 

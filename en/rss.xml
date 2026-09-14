@@ -1,4 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Karpaty</title><description>A collection of thoughts, essays and service notes</description><link>https://blog.palczew.ski/</link><language>en-US</language><managingEditor>jpalczewski@gmail.com (Jacek Palczewski)</managingEditor><webMaster>jpalczewski@gmail.com (Jacek Palczewski)</webMaster><item><title>How to Log Into Grafana via Authelia as Admin?</title><link>https://blog.palczew.ski/en/thoughts/year/2026/09/how-to-log-into-grafana-via-authelia-as-admin/</link><guid isPermaLink="true">https://blog.palczew.ski/en/thoughts/year/2026/09/how-to-log-into-grafana-via-authelia-as-admin/</guid><description>I&apos;ve recently returned to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already &quot;solved&quot; once before[^1]. This time it was monitoring&apos;s turn. I was surprised that right after setting up OIDC I couldn&apos;t add a...</description><pubDate>Sun, 13 Sep 2026 17:32:54 GMT</pubDate><content:encoded>&lt;p&gt;I’ve recently returned to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already “solved” once before&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. This time it was monitoring’s turn.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Karpaty</title><description>A collection of thoughts, essays and service notes</description><link>https://blog.palczew.ski/</link><language>en-US</language><managingEditor>jpalczewski@gmail.com (Jacek Palczewski)</managingEditor><webMaster>jpalczewski@gmail.com (Jacek Palczewski)</webMaster><item><title>From n8n Laziness to Stress-Testing an App in Zig</title><link>https://blog.palczew.ski/en/thoughts/year/2026/09/from-n8n-laziness-to-stress-testing-an-app-in-zig/</link><guid isPermaLink="true">https://blog.palczew.ski/en/thoughts/year/2026/09/from-n8n-laziness-to-stress-testing-an-app-in-zig/</guid><description>Context It started with a simple need: relaying notifications from n8n on Coolify to ntfy[^1]. The problem - I couldn&apos;t figure out a sane way to save an n8n workflow to git (and didn&apos;t feel like spending more time on it), so instead of fighting it any further, I wrote the thing myself, from...</description><pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;context&quot;&gt;Context&lt;/h2&gt;
+&lt;p&gt;It started with a simple need: relaying notifications from n8n on &lt;a href=&quot;https://coolify.io/&quot;&gt;Coolify&lt;/a&gt; to &lt;a href=&quot;https://github.com/binwiederhier/ntfy&quot;&gt;ntfy&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. The problem - I couldn’t figure out a sane way to save an n8n workflow to git (and didn’t feel like spending more time on it), so instead of fighting it any further, I wrote the thing myself, from scratch, in &lt;a href=&quot;https://ziglang.org/&quot;&gt;Zig&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;That’s how &lt;a href=&quot;https://github.com/jpalczewski/ntfy.zig&quot;&gt;ntfy.zig&lt;/a&gt; came to be - a small relay: it takes in webhooks (Coolify and GitHub Actions/Deployments, for now), turns them into a title/message/priority, and forwards them to ntfy.&lt;/p&gt;
+&lt;p&gt;Months of vibe-coding can basically be summed up as the standard disclaimer under any LLM client - “use it, but verify” - which is why it seemed like a good excuse to put some QA experience to use and run stress tests with Locust.&lt;/p&gt;
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;One &lt;code&gt;stress/&lt;/code&gt; directory in the repo: a fake ntfy endpoint simulating latency/failure rate/timeouts, Locust mixing traffic from both webhook channels (Coolify + GitHub, including a deliberately wrong HMAC signature - the secret GitHub uses to sign the webhook payload so the recipient can verify the request actually came from GitHub - to test 401 rejection), and a script tying it all together, all inside a single &lt;code&gt;uv&lt;/code&gt; environment on free-threaded Python 3.14t. Full technical details, including why free-threaded actually makes sense here, are in &lt;a href=&quot;https://github.com/jpalczewski/ntfy.zig/pull/14&quot;&gt;PR #14&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;first-run---somethings-off&quot;&gt;First run - something’s off&lt;/h2&gt;
+&lt;p&gt;At 20 users everything looked great: median 5-6ms. I cranked it up to 300 users to find the ceiling and got:&lt;/p&gt;
+&lt;pre class=&quot;astro-code github-dark&quot; style=&quot;background-color:#24292e;color:#e1e4e8; overflow-x: auto;&quot; tabindex=&quot;0&quot; data-language=&quot;plaintext&quot;&gt;&lt;code&gt;&lt;span class=&quot;line&quot;&gt;&lt;span&gt;OSError(49, &quot;Can&apos;t assign requested address&quot;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Uh oh. &lt;code&gt;OSError 49&lt;/code&gt; means the ephemeral port pool is exhausted - and that happened before the CPU even broke a sweat.&lt;/p&gt;
+&lt;h2 id=&quot;root-cause-and-fix&quot;&gt;Root cause and fix&lt;/h2&gt;
+&lt;p&gt;The cause: every single forward to ntfy built a brand new HTTP client from scratch and closed it immediately after. Which means a fresh TCP connection (and for https, a fresh TLS handshake) for every single webhook. Zero connection pooling&lt;sup&gt;&lt;a href=&quot;#user-content-fn-3&quot; id=&quot;user-content-fnref-3&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; - hence the rapid port exhaustion.&lt;/p&gt;
+&lt;p&gt;The fix: one &lt;code&gt;http.Client&lt;/code&gt; built once at startup and shared across all requests&lt;sup&gt;&lt;a href=&quot;#user-content-fn-4&quot; id=&quot;user-content-fnref-4&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;, instead of creating a new one for every forward. TCP connections start getting reused instead of multiplying endlessly.&lt;/p&gt;
+&lt;h2 id=&quot;verification&quot;&gt;verification&lt;/h2&gt;
+&lt;p&gt;150 users, ~550 req/s. &lt;code&gt;lsof&lt;/code&gt; on the ntfy.zig process showed 11 persistent connections to the fake ntfy instead of a new one per request. Zero port-exhaustion errors.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Metric&lt;/th&gt;&lt;th&gt;Before&lt;/th&gt;&lt;th&gt;After&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;TCP connections at 150 VU / ~550 req/s&lt;/td&gt;&lt;td&gt;~1 per request&lt;/td&gt;&lt;td&gt;~11 persistent&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Throughput (local)&lt;/td&gt;&lt;td&gt;~70 req/s (wait_time-bound)&lt;/td&gt;&lt;td&gt;~550 req/s&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The stress test didn’t need to be clever to catch a real bug - it was enough to push the user count high enough to hit the port limit instead of the CPU limit. It’s a strange world, honestly, where you can write and load-test an application in a language you don’t actually know&lt;sup&gt;&lt;a href=&quot;#user-content-fn-5&quot; id=&quot;user-content-fnref-5&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;By the way: the whole app sits at around 2MB of RAM at rest - so on top of working correctly, it’s also pretty easy on resources.&lt;/p&gt;
+&lt;section data-footnotes=&quot;&quot; class=&quot;footnotes&quot;&gt;&lt;h2 class=&quot;&quot; id=&quot;footnote-label&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;user-content-fn-1&quot;&gt;
+&lt;p&gt;A nice, fairly minimalist self-hosted push notification server. &lt;a href=&quot;#user-content-fnref-1&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 1&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-2&quot;&gt;
+&lt;p&gt;That’s basically my approach to life, in a nutshell. In more ways than one. &lt;a href=&quot;#user-content-fnref-2&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 2&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-3&quot;&gt;
+&lt;p&gt;A mechanism where a connection, once opened, is kept alive and reused for subsequent requests instead of being closed and reopened every time. &lt;a href=&quot;#user-content-fnref-3&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 3&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-4&quot;&gt;
+&lt;p&gt;context7 often has stale docs for niche libraries like Zig’s fresh-off-the-press stdlib - so Sonnet 5, working on the new &lt;code&gt;std.http&lt;/code&gt;, happily navigated straight through the library’s source code instead of relying on the (outdated) documentation. &lt;a href=&quot;#user-content-fnref-4&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 4&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;user-content-fn-5&quot;&gt;
+&lt;p&gt;And apparently so does the model - except it, unlike me, has considerably more patience for reading library source code. &lt;a href=&quot;#user-content-fnref-5&quot; data-footnote-backref=&quot;&quot; aria-label=&quot;Back to reference 5&quot; class=&quot;data-footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content:encoded><author>jpalczewski@gmail.com (Jacek Palczewski)</author></item><item><title>How to Log Into Grafana via Authelia as Admin?</title><link>https://blog.palczew.ski/en/thoughts/year/2026/09/how-to-log-into-grafana-via-authelia-as-admin/</link><guid isPermaLink="true">https://blog.palczew.ski/en/thoughts/year/2026/09/how-to-log-into-grafana-via-authelia-as-admin/</guid><description>I&apos;ve recently returned to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already &quot;solved&quot; once before[^1]. This time it was monitoring&apos;s turn. I was surprised that right after setting up OIDC I couldn&apos;t add a...</description><pubDate>Sun, 13 Sep 2026 17:32:54 GMT</pubDate><content:encoded>&lt;p&gt;I’ve recently returned to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already “solved” once before&lt;sup&gt;&lt;a href=&quot;#user-content-fn-1&quot; id=&quot;user-content-fnref-1&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. This time it was monitoring’s turn.&lt;/p&gt;
 &lt;p&gt;I was surprised that right after setting up OIDC I couldn’t add a single dashboard in Grafana — login worked, yet permissions were missing.&lt;/p&gt;
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
 &lt;p&gt;Grafana already sat behind Authelia (self-hosted SSO, single user, in the &lt;code&gt;admins&lt;/code&gt; group) via native OIDC&lt;sup&gt;&lt;a href=&quot;#user-content-fn-2&quot; id=&quot;user-content-fnref-2&quot; data-footnote-ref=&quot;&quot; aria-describedby=&quot;footnote-label&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (&lt;code&gt;auth.generic_oauth&lt;/code&gt;). The task seemed trivial: everyone in the &lt;code&gt;admins&lt;/code&gt; group should automatically get the &lt;code&gt;GrafanaAdmin&lt;/code&gt; role in Grafana on login, instead of assigning it manually in the UI — which would get overwritten on every login anyway, since &lt;code&gt;allow_sign_up: true&lt;/code&gt; re-provisions the user each time.&lt;/p&gt;
