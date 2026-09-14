@@ -2,7 +2,98 @@
 
 > Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations.
 
-Total posts: 19
+Total posts: 20
+
+---
+
+# How to Log Into Grafana via Authelia as Admin?
+URL: https://blog.palczew.ski/en/thoughts/year/2026/09/how-to-log-into-grafana-via-authelia-as-admin
+Language: English
+Date: 2026-09-13
+Tags: grafana, authelia, devops, oidc, oauth, monitoring, ansible
+Translation: https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin
+
+I've recently been hobby-returning to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already "solved" once before[^1]. This time it was monitoring's turn.
+
+I was surprised that right after setting up OIDC I couldn't add a single dashboard in Grafana — login worked, yet permissions were missing.
+
+## Setup
+
+Grafana already sat behind Authelia (self-hosted SSO, single user, in the `admins` group) via native OIDC[^2] (`auth.generic_oauth`). The task seemed trivial: everyone in the `admins` group should automatically get the `GrafanaAdmin` role in Grafana on login, instead of assigning it manually in the UI — which would get overwritten on every login anyway, since `allow_sign_up: true` re-provisions the user each time.
+
+## Grafana
+
+The standard, documented path: `groups` scope on the OIDC client + `role_attribute_path` (a JMESPath[^3] expression) on Grafana's side.
+
+I provision Grafana via Ansible, using the [`grafana.grafana.grafana`](https://github.com/grafana/grafana-ansible-collection) role. The key piece of config is the `grafana_ini_oauth` variable:
+
+```yaml
+grafana_ini_oauth:
+  "auth.generic_oauth":
+    enabled: true
+    name: Authelia
+    client_id: grafana
+    client_secret: "{{ grafana_authelia_oidc_secret | default('') }}"
+    scopes: "openid profile email groups"
+    auth_url: "https://authelia.example.com/api/oidc/authorization"
+    token_url: "https://authelia.example.com/api/oidc/token"
+    api_url: "https://authelia.example.com/api/oidc/userinfo"
+    use_pkce: true
+    allow_sign_up: true
+    role_attribute_path: "contains(groups[*], 'admins') && 'GrafanaAdmin' || 'Viewer'"
+```
+
+The admin user is the only member of the `admins` group in Authelia — hence `contains(groups[*], 'admins')` in the expression above. A necessary condition for this to work: the `groups` scope must be added to Grafana's OIDC client, just like in the config above.
+
+## What was supposed to happen
+
+Grafana's docs for `role_attribute_path` describe a three-tier fallback: first `id_token`, if nothing's found there — `userinfo` (`api_url`), if still nothing — `access_token`. Sounds like solid redundancy.
+
+## What happened in practice
+
+In Grafana 13.2.1 the fallback to `userinfo` is broken — confirmed by [grafana/grafana#106686](https://github.com/grafana/grafana/issues/106686). If the claim isn't in `id_token`, Grafana doesn't check `userinfo` the way the docs claim it does.
+
+Meanwhile, since version 4.39 Authelia stopped putting scope claims (like `groups`) into `id_token` by default — they only land in `userinfo`. That's a sensible security tightening on its own (less PII in a token that ends up on various sites), but combined with Grafana's broken fallback it produces a silent blackout: exactly the claim that matters for the role never arrives anywhere.[^4]
+
+## The fix on Authelia's side
+
+`identity_providers.oidc.claims_policies` on Authelia's side — explicitly forces specific claims back into `id_token` per-client, referenced from the client via `claims_policy: <name>`.
+
+```yaml
+identity_providers:
+  oidc:
+    # ...
+    claims_policies:
+      grafana: # policy name, arbitrary, referenced below
+        id_token:
+          - 'groups' # force this claim into the id_token
+
+    clients:
+      - client_id: 'other'
+        # no claims_policy — doesn't get this treatment
+
+      - client_id: 'grafana'
+        client_secret: '...'
+        claims_policy: 'grafana' # attach the policy to the client
+        redirect_uris:
+          - 'https://grafana.example.com/login/generic_oauth'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'email'
+          - 'groups' # must be requested, otherwise there's nothing to force
+```
+
+With these settings, logging into Grafana as admin works again — another old problem checked off, solved anew and differently than last time.
+
+And, having gained the ability to add a dashboard, did I add one?
+
+![Pingu sitting in a chair with a caption reading "NOT ANYMORE"](@assets/images/pingu-teraz-juz-nie-chce.png "not anymore")
+
+[^1]: [RPi-Monitor](https://github.com/RPi-Monitor/RPi-Monitor), remember that one
+[^2]: OIDC (OpenID Connect) — a login (SSO) protocol built on top of OAuth2.
+[^3]: [JMESPath](https://jmespath.org/) — a query language for extracting and transforming data from JSON documents, used here to pull groups out of the token claims.
+[^4]: Who's spent ages figuring out how to add a new dashboard, only to eventually realize they're stuck with a Viewer role? This author.
 
 ---
 
@@ -11,6 +102,7 @@ URL: https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-graf
 Language: Polish
 Date: 2026-09-13
 Tags: grafana, authelia, devops, oidc, oauth, monitoring, ansible
+Translation: https://blog.palczew.ski/en/thoughts/year/2026/09/how-to-log-into-grafana-via-authelia-as-admin
 
 Ostatnio hobbystycznie wracam do zabawy w selfhosting — jeden z tych okresowych nawrotów, gdzie na nowo można rozwiązać stare problemy, testując różne podejścia do rzeczy, które kiedyś już "rozwiązałem"[^1]. Tym razem przyszła kolej na monitoring.
 
