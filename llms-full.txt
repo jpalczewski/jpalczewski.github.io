@@ -13,7 +13,7 @@ Date: 2026-09-13
 Tags: grafana, authelia, devops, oidc, oauth, monitoring, ansible
 Translation: https://blog.palczew.ski/pl/thoughts/year/2026/09/jak-zalogowac-sie-do-grafany-przez-authelia-jako-admin
 
-I've recently been hobby-returning to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already "solved" once before[^1]. This time it was monitoring's turn.
+I've recently returned to self-hosting — one of those periodic relapses where you get to re-solve old problems by testing different approaches to things you already "solved" once before[^1]. This time it was monitoring's turn.
 
 I was surprised that right after setting up OIDC I couldn't add a single dashboard in Grafana — login worked, yet permissions were missing.
 
@@ -88,12 +88,12 @@ With these settings, logging into Grafana as admin works again — another old p
 
 And, having gained the ability to add a dashboard, did I add one?
 
-![Pingu sitting in a chair with a caption reading "NOT ANYMORE"](@assets/images/pingu-teraz-juz-nie-chce.png "not anymore")
+![Pingu sitting in a chair with a caption reading "NOT ANYMORE"](@assets/images/pingu-teraz-juz-nie-chce.png "polish meme that means not anymore")
 
-[^1]: [RPi-Monitor](https://github.com/RPi-Monitor/RPi-Monitor), remember that one
+[^1]: [RPi-Monitor](https://github.com/RPi-Monitor/RPi-Monitor), never forget
 [^2]: OIDC (OpenID Connect) — a login (SSO) protocol built on top of OAuth2.
 [^3]: [JMESPath](https://jmespath.org/) — a query language for extracting and transforming data from JSON documents, used here to pull groups out of the token claims.
-[^4]: Who's spent ages figuring out how to add a new dashboard, only to eventually realize they're stuck with a Viewer role? This author.
+[^4]: Who's spent ages figuring out how to add a new dashboard, only to eventually realize they're stuck with a Viewer role? Author of this post of course.
 
 ---
 
