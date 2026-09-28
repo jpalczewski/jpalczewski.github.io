@@ -2,7 +2,125 @@
 
 > Bilingual (PL/EN) personal blog. Short thoughts, essays and service notes on software, trains, health, and everyday observations.
 
-Total posts: 23
+Total posts: 24
+
+---
+
+# Podróż do Czarnogóry — wskazówki
+URL: https://blog.palczew.ski/pl/thoughts/year/2026/09/podroz-do-czarnogory-wskazowki
+Language: Polish
+Date: 2026-09-28
+Tags: podróże, protipy, Pociągi, Transport, Kraj/Czarnogóra, Miasto/Podgorica, Miasto/Kotor
+
+> [!info]
+> To nie jest przewodnik, tylko notatki z wyjazdu – dla osób, które planują wyjazd i wolą informacje sprawdzone w praktyce.
+
+We wrześniu 2026 polecieliśmy tanimi liniami do Czarnogóry na cztery dni. Dwa z nich zeszły nam głównie na transport (szczegóły niżej), więc na miejscu tak naprawdę zostały dwa dni, z czego jeden deszczowy – trochę mało, ale i tak było warto.
+
+Czarnogóra to dziwne połączenie naszego PRL-u z cosplayem Unii Europejskiej: płaci się w euro (choć w Unii nie jest – euro używa jednostronnie), ale pociągi są jak za dawnych lat w Polsce. Do tego góry, które faktycznie bywają czarne[^1], i spektakularne widoki.
+
+![Szeroka dolina z domami i polami, za nią ciemne pasma gór z chmurami zawieszonymi na zboczach pod zachmurzonym niebem – widok przez szybę autobusu](@assets/images/czarnogora-gory-nad-dolina.jpg "Dowód rzeczowy: góry faktycznie bywają czarne")
+
+## Pogoda i ubrania
+
+Prognozy pogody nie kłamią – jeśli trzy dni do przodu jest dzień z deszczem, to faktycznie będzie dzień z deszczem[^2].
+
+Logistyka ubraniowa jest ciężka: w Polsce we wrześniu jest po 12 stopni i trzeba mieć kurtkę, a w Czarnogórze – dwadzieścia parę.
+
+Przy pakowaniu sprawdziły się dwie rzeczy. Siatki do kompresji ubrań pozwalają zmieścić ciuchy na dwie pogody w plecaku pod siedzenie. Z kolei wielorazowa torba na zakupy przydaje się w transporcie jako dodatkowy bagaż, przy zakupach na miejscu była bezcenna, a po złożeniu da się ją wcisnąć do plecaka.
+
+<!-- TODO: link do posta „Lista rzeczy do zabrania na wakacje”, gdy trafi do repo -->
+
+## Transport
+
+### Bilety
+
+Aktualnie działające strony z biletami:
+
+- pociągi: [tickets-zpcg.me](https://tickets-zpcg.me/en)
+- autobusy: [busticket4.me](https://busticket4.me/)
+
+Ceny (stan na wrzesień 2026) są niskie: z lotniska do Podgoricy pociąg kosztuje w okolicach 1,2 €, autobus na tej samej trasie jest trochę droższy – 3–5 € za osobę. Na każdym dworcu autobusowym dochodzi jednak opłata dworcowa – 1,5 € (na stacjach kolejowych jej nie ma).
+
+FlixBus ma w Czarnogórze część własnych linii, ale nasze bilety powrotne z Kotoru do Podgoricy nie były na jego autobus – kupowaliśmy je online na stronie FlixBusa, który był tylko pośrednikiem przewoźnika. Niewiele to dało, bo i tak na miejscu trzeba było wymienić bilet elektroniczny na lokalny, żeby dopłacić za dworzec.
+
+### Z lotniska do Podgoricy
+
+Przejazd pociągiem z lotniska do Podgoricy był ciekawy – przejechać się tak starym pociągiem w 2026 roku to wspomnienie samo w sobie.
+
+Kilka rzeczy, o których warto wiedzieć:
+
+- Stacja kolejowa przy lotnisku (Aerodrom) jest spory kawałek od terminalu – ok. 20 minut pieszo.
+- Stacja nie jest oświetlona – po zmroku bywa tam nieprzyjemnie.
+- Google Maps prowadzi okrężną drogą. Można dojść szybciej, skręcając wcześniej między domki – Google Maps tej drogi nie pokazuje, bo trzeba przejść przez tory[^3]. [Organic Maps](https://organicmaps.app/) ftw.
+- Nie ma strony z opóźnieniami pociągów – trzeba czekać albo dzwonić na dworzec, żeby czegokolwiek się dowiedzieć. Względnie dobrą heurystyką jest liczba osób na peronie – jeśli ludzie wciąż czekają, pociąg pewnie jest opóźniony, a nie odjechał.
+
+Te 20 minut sprawdziłem osobiście – dostałem questa, żeby zweryfikować, jak szybko da się tam dojść. Po drodze zauważyłem dwie emerytki, które walczyły z ustaleniem, w którą stronę iść: z Google Maps nie umiały korzystać, a jedyne, co zostawiła im córka, to mapka z drogą na stację. Zwykle mam spore opory przed zagadywaniem do obcych ludzi, ale tym razem współczucie nie pozwoliło mi ich zostawić – udało się je doprowadzić na miejsce.
+
+W drodze powrotnej pociąg na lotnisko nie pasował nam czasowo, więc wracaliśmy autobusem – jednym z tych ze strony busticket4.me.
+
+### Do Kotoru
+
+Kotor jest daleko od lotniska w Podgoricy i wymaga przesiadki: pociągiem do Podgoricy, stamtąd autobusem. Bliżej Kotoru jest lotnisko w Tivacie, ale wygląda bardzo lokalnie i nie trafiło nam się w wyszukiwaniu lotów. Żeby dotrzeć do Kotoru, musieliśmy przenocować w Podgoricy – przy późnym przylocie tego samego dnia nie zdążylibyśmy na autobus.
+
+Trasa lubi się korkować: autobus, który według rozkładu jechał 3 godziny, u nas jechał 4.
+
+Bilety na autobusy z Kotoru prawdopodobnie nie mają przydziału miejsc – liczy się kolejność przy bramce, w której wsiada się do autobusu.
+
+### Taksówki
+
+Taksówka z lotniska do Podgoricy to ok. 20 €. Tyle podaje internet i sami sprawdziliśmy, że na miejscu ceny są podobne – również w aplikacjach.
+
+Po samej Podgoricy aplikacja [TeslaGoApp](https://teslaclub.me/en/) uratowała nam życie w deszczu – z noclegu na dworzec zapłaciliśmy 2 € za parę kilometrów, podczas gdy inne aplikacje potrafiły pokazać i 6 €. To lokalna korporacja taksówkowa z samymi elektrycznymi Teslami – działa w Podgoricy, poza stolicą raczej się nie przyda.
+
+## Noclegi
+
+Spaliśmy w Podgoricy i w Kotorze, noclegi z Bookinga: ok. 50 € za dwie osoby za noc w Podgoricy, w Kotorze ok. 60 €.
+
+Wjeżdżaliśmy na paszportach – i fajnie jest dostać pieczątkę do nowego paszportu[^4]. Wynajmujący w Kotorze robił im zdjęcia. Poradniki sporo piszą o obowiązku rejestracji pobytu – u nas po prostu zajął się tym właściciel noclegu, sami nie musieliśmy nic załatwiać[^5].
+
+## Na miejscu
+
+W wielu miejscach nie można płacić kartą – zdarzało się to w lokalach gastronomicznych, a za shishę płaciliśmy wyłącznie gotówką. Mieliśmy euro z polskich kantorów i nam wystarczyło, a tam, gdzie karta przechodziła, płaciliśmy Revolutem.
+
+Używałem eSIM-a od [BNESIM](https://www.bnesim.com/) – 5 GB na dwie osoby i cztery dni wystarczyło[^6]. Ofertę wyszukało mi AI i wyszła trochę taniej niż Airalo czy eSIM w Revolucie. Brałem ją na sapera, ale finalnie było warto.
+
+Znajomość angielskiego wśród Czarnogórców jest dobra – dla porównania w Hiszpanii w lokalach czy muzeach rzadko trafiałem na kogoś, kto mówi po angielsku, a dyktowanie przez Google Translate bywa bardzo zawodne.
+
+> [!tip]
+> W supermarketach przydaje się znajomość cyrylicy – mniej więcej na jednej czwartej produktów nazwa jest zapisana właśnie nią.
+
+## Co zobaczyć
+
+- **Kotor** – daleko, ale dla tych monumentalnych gór warto. Byliśmy głównie na Starym Mieście i na plaży.
+- **Bar** – nie byliśmy, więc nie polecam ani nie odradzam. Jeśli ktoś się waha, gdzie jechać: Bar jest skomunikowany kolejowo, więc dojazd powinien być prostszy niż do Kotoru.
+
+![Zatoka Kotorska o zmierzchu: nad światłami miasta wznoszą się skaliste góry, po zboczu pną się oświetlone mury twierdzy](@assets/images/kotor-zatoka-wieczorem.jpg "Kotor wieczorem – mury twierdzy nad zatoką")
+
+## Gdzie zjeść
+
+W Kotorze – grill [Tanjga](https://www.instagram.com/bbq_tanjga/). Widząc w menu mieszane mięsa, zamawialiśmy z pewną obawą – po doświadczeniach z Albanii[^7] spodziewaliśmy się mózgu, policzków albo ozorków. Niepotrzebnie: mięso mieszane jest tu dość bezpieczne – karkówka, kiełbasy, ćevapi. Frytki też są w porządku.
+
+> [!tip]
+> Na Starym Mieście w Kotorze warto przed wejściem do lokalu sprawdzić opinie w internecie. My trafiliśmy na sałatkę Cezar w losowej pizzerii na Starówce i po zjedzeniu obstawialiśmy, ile ten lokal może mieć w recenzjach. Stanęło na 3,7 – za zimnego kurczaka. Lokal miał dokładnie tyle.
+
+Największe zagrożenie czyha jednak w sklepie. Kajmak z supermarketu to nie jest kajmak, tylko nieślubne dziecko sera i twarogu. Pełne soli.
+
+![Opakowanie „a la Kajmak” firmy Mlekara Šabac na talerzu na stole na tarasie](@assets/images/kajmak-czarnogora.jpg "a la kajmak – ani ala, ani kajmak, ratunku")
+
+[^1]: Wiedza zweryfikowana na miejscu. W planach miałem żartobliwą relację na Instagramie, która miała obalić ten mit – byłem pewien, że góry wcale nie będą czarne. Były.
+
+[^2]: Na pewnym etapie życia śledziłem burze i stąd wiem, na ile prognozom da się ufać – ta wiedza nieoczekiwanie przydaje się na wyjazdach. Trafność spada z każdym dniem wyprzedzenia: [według NOAA](https://scijinks.gov/forecast-reliability/) prognoza na 5 dni sprawdza się w ok. 90% przypadków, a na 10 dni – mniej więcej co drugi raz.
+
+[^3]: Czy to legalne? Na linii, gdzie dworcem jest ceglana buda, a pociąg przejeżdża parę razy dziennie, to chyba nie jest najważniejsze pytanie.
+
+[^4]: Po trzydziestce to prawie jak zbieranie achievementów.
+
+[^5]: Właściciel noclegu w Podgoricy był z kolei prawnikiem – i o paszporty ani rejestrację pobytu w ogóle nie pytał. Chyba dużo to mówi o prawnikach.
+
+[^6]: Dla kontrastu: za 5 MB transferu w Albanii, który iPhone przypadkiem włączył mi na karcie nju, zapłaciłem 200 zł.
+
+[^7]: W Albanii w takich zestawach można uświadczyć mózg i podobne atrakcje.
 
 ---
 
